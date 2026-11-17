@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>答题锁 v0.3.30 使用说明书</title>
+<title>答题锁 v0.3.31 使用说明书</title>
 <style>
 /* ========== 基础与调色板（青绿教育色） ========== */
 :root{
@@ -452,12 +452,12 @@ p.paragraph.no-indent{text-indent:0;}
   <div>
     <div class="cover-top">
       <div class="brand-mark">答</div>
-      <span class="version-pill">v0.3.30 · 家长使用手册</span>
+      <span class="version-pill">v0.3.31 · 家长使用手册</span>
     </div>
     <h1>答题锁</h1>
     <div class="cover-sub">使用说明书</div>
     <p class="cover-desc">家长管控 · 答题解锁 · 防卸载守护<br>把“玩多久”变成“先学会，再玩一会儿”。</p>
-    <div class="cover-meta"><span>适用设备：Android 手机</span><span>文档版本：2.1</span><span>更新日期：2026-11-17</span></div>
+    <div class="cover-meta"><span>适用设备：Android 手机</span><span>文档版本：2.2</span><span>更新日期：2026-11-18</span></div>
     <div class="cover-highlights">
       <span>5 分钟完成首次设置</span>
       <span>四道防卸载防线</span>
@@ -865,7 +865,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <aside class="callout warn">
     <div class="callout-title">体验版最多 2 个应用</div>
-    <p>体验版最多同时限制 <strong>2 个应用</strong>、每天最多拦截 <strong>4 次</strong>。勾选第 3 个时会提示“体验版最多限制 2 个应用，升级标准版后不限量”。标准版不限应用数量、不限每日拦截次数。</p>
+    <p>体验版最多同时限制 <strong>2 个应用</strong>、每天最多拦截 <strong>10 次</strong>。勾选第 3 个时会提示“体验版最多限制 2 个应用，升级标准版后不限量”。标准版不限应用数量、不限每日拦截次数。</p>
   </aside>
 
   <h2 class="heading">建议限制哪些，不建议限制哪些</h2>
@@ -1253,11 +1253,16 @@ p.paragraph.no-indent{text-indent:0;}
 
   <p class="paragraph">新安装默认是体验版，无需付费即可使用“答题解锁”的核心流程；在应用数量、每日拦截次数、单次时长、每日上限和部分进阶功能上有限制。标准版按年订阅，一次激活解锁全部功能；到期自动降回体验版，规则、记录、错题本都不受影响。</p>
 
+  <aside class="callout info">
+    <div class="callout-title">激活码只能激活一次（v0.3.29 起）</div>
+    <p>每个激活码<strong>只能成功激活一次</strong>：使用过之后，再输入同一个激活码会提示“该激活码已被使用过”，不会重复加时长。需要续费或补发时，请<strong>联系客服获取新激活码</strong>（同一台手机、同一档时长的新码），不要重复粘贴旧码。这样既保证您购买的时长不会被重复消耗，也避免激活码被截图流传后被人冒用。</p>
+  </aside>
+
   <table class="table">
     <thead><tr><th style="width:30%;">项目</th><th style="width:35%;">体验版</th><th style="width:35%;">标准版</th></tr></thead>
     <tbody>
       <tr><td class="em">限制应用数量</td><td>最多 2 个</td><td>不限</td></tr>
-      <tr><td class="em">每日拦截次数</td><td>每天最多 4 次</td><td>不限</td></tr>
+      <tr><td class="em">每日拦截次数</td><td>每天最多 10 次</td><td>不限</td></tr>
       <tr><td class="em">单次时长</td><td>最多 20 分钟</td><td>最多 180 分钟</td></tr>
       <tr><td class="em">每日上限</td><td>最多 120 分钟</td><td>最多 1440 分钟</td></tr>
       <tr><td class="em">休息时段</td><td>不可用</td><td>可用</td></tr>
@@ -1340,7 +1345,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <aside class="callout info">
     <div class="callout-title">体验版卡在页尾，进度看得见</div>
-    <p>“体验版”卡片在家长设置页最下方，用<strong>红色粗体数字</strong>显示“可限制应用：已设置 N 个”和“每日拦截：今日已用 M 次”，当天额度用了多少一目了然。升级标准版后，这张卡会换成显示到期倒计时的标准版卡。</p>
+    <p>“体验版”卡片在家长设置页最下方，用<strong>红色粗体数字</strong>显示“可限制应用：已设置 N 个”和“每日拦截：今日已用 M 次”，当天额度用了多少一目了然。当日 <strong>10 次</strong>拦截额度用完后，当天不再拦截（受限应用直接放行），并通过系统通知提醒家长升级标准版；升级标准版后，这张卡会换成显示到期倒计时的标准版卡。</p>
   </aside>
 </section>
 
@@ -1411,7 +1416,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <div class="faq-item">
     <p class="q">Q13：体验版到底限制什么？</p>
-    <p class="a">最多限制 2 个应用、每天最多拦截 4 次、单次最多 20 分钟、每日最多 120 分钟；休息时段、每周换题、自定义上传题目不可用。标准版 1 年 99 元（可选 1 / 3 / 6 年：99 / 249 / 399 元）不限应用数量和每日拦截次数，单次最高 180 分钟、每日最高 1440 分钟，并解锁全部进阶功能。</p>
+    <p class="a">最多限制 2 个应用、每天最多拦截 10 次、单次最多 20 分钟、每日最多 120 分钟；休息时段、每周换题、自定义上传题目不可用。标准版 1 年 99 元（可选 1 / 3 / 6 年：99 / 249 / 399 元）不限应用数量和每日拦截次数，单次最高 180 分钟、每日最高 1440 分钟，并解锁全部进阶功能。</p>
   </div>
 
   <div class="faq-item">
@@ -1447,6 +1452,11 @@ p.paragraph.no-indent{text-indent:0;}
   <div class="faq-item">
     <p class="q">Q20：邀请家长得标准版怎么参加？</p>
     <p class="a">家长设置页底部体验版卡 → “邀请家长得标准版 →”：① 复制自己的邀请码（即机器码）发给对方；② 对方安装答题锁后，在同一入口填入邀请码保存；③ 双方联系客服人工核验，<strong>邀请人</strong>获得 1 周标准版周卡激活码，在“升级标准版”弹窗激活。1 位有效邀请 = 1 周，累计上限 52 周；填码本身不会自动加时长。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q21：激活码提示“已被使用过”怎么办？</p>
+    <p class="a">每个激活码只能成功激活一次。提示已被使用，说明这个码此前已激活过（可能你重复输入、或转发给过别人）。这不是故障，也不影响你已获得的标准版时长。需要继续使用时，请联系客服微信 <strong>hiyuanmi2015</strong> 索取新激活码，不要反复粘贴旧码。</p>
   </div>
 </section>
 
@@ -1497,9 +1507,9 @@ p.paragraph.no-indent{text-indent:0;}
 <!-- ==================== 15 最新版本更新 ==================== -->
 <section class="section" id="update">
   <div class="kicker">15 / 这一版有什么不同</div>
-  <h1 class="heading">最新版本更新内容（v0.3.27 – v0.3.30）</h1>
+  <h1 class="heading">最新版本更新内容（v0.3.27 – v0.3.31）</h1>
 
-  <p class="paragraph">v0.3.27 以来的几次升级分别围绕“细节更好用”“版本与价格”和“真机问题修复”展开，没有改变核心的答题解锁与防卸载逻辑。已经会用的家长，可以只看下面这张表。</p>
+  <p class="paragraph">v0.3.27 至 v0.3.31 的升级分别围绕“细节更好用”“体验版 / 标准版”“激活安全加固”“价格档位优化”和“体验加量”展开，没有改变核心的答题解锁与防卸载逻辑。已经会用的家长，可以只看下面这张表。</p>
 
   <table class="table">
     <thead><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
@@ -1514,6 +1524,10 @@ p.paragraph.no-indent{text-indent:0;}
       <tr><td class="em"><span class="tag green">修复</span> 自启动直达页</td><td>华为 / 荣耀点“去开启”直达系统设置「应用启动管理」，vivo / iQOO 直达「自启动」，不再误进手机管家 / i 管家。</td></tr>
       <tr><td class="em"><span class="tag green">优化</span> 古诗干扰项对齐</td><td>“下一句”题的干扰项与正确答案<strong>字数一致</strong>、全部为真实诗句，孩子更难靠字数猜答案。</td></tr>
       <tr><td class="em"><span class="tag gray">视觉</span> 新应用图标</td><td>更换为红底白字的新图标，桌面更容易找到。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 防篡改时间</td><td>授权到期时间不再能被“改手机时间”绕过：手动把时间往前 / 往后调，都无法延长或重置标准版授权，也不会影响每日额度与休息时段。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 价格档位优化（v0.3.30）</td><td>付费档位改为 <strong>1 年 99 元 / 3 年 249 元 / 6 年 399 元</strong>（划线原价 198 / 297 / 594 元），取消 2 年档；多年档折合更便宜，一次买多年不用惦记续费。</td></tr>
+      <tr><td class="em"><span class="tag green">修复</span> 到点自动切锁屏（v0.3.30）</td><td>玩耍时间到点改为在当前页面直接切锁屏，并修复极个别机型（如华为 nova7）冷启动时误落 PIN 登录页的小概率回归，拦截更稳。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 体验版拦截加量（v0.3.31）</td><td>体验版每日拦截次数从 4 次提升到 <strong>10 次</strong>，免费体验更充足；当日额度用完后当天不再拦截（受限应用放行），并通过系统通知提醒家长升级标准版。</td></tr>
     </tbody>
   </table>
 
@@ -1633,8 +1647,8 @@ p.paragraph.no-indent{text-indent:0;}
 <section class="title end_page">
   <div class="end-mark">答题锁 · ANSWER LOCK</div>
   <h1>先学会，再玩一会儿</h1>
-  <p>答题锁 v0.3.30 · 家长使用说明书<br>本手册基于 v0.3.30 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
-  <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-17</p>
+  <p>答题锁 v0.3.31 · 家长使用说明书<br>本手册基于 v0.3.31 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
+  <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-18</p>
 </section>
 
 </div>
