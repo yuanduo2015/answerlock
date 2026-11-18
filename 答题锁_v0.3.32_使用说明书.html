@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>答题锁 v0.3.31 使用说明书</title>
+<title>答题锁 v0.3.32 使用说明书</title>
 <style>
 /* ========== 基础与调色板（青绿教育色） ========== */
 :root{
@@ -452,12 +452,12 @@ p.paragraph.no-indent{text-indent:0;}
   <div>
     <div class="cover-top">
       <div class="brand-mark">答</div>
-      <span class="version-pill">v0.3.31 · 家长使用手册</span>
+      <span class="version-pill">v0.3.32 · 家长使用手册</span>
     </div>
     <h1>答题锁</h1>
     <div class="cover-sub">使用说明书</div>
     <p class="cover-desc">家长管控 · 答题解锁 · 防卸载守护<br>把“玩多久”变成“先学会，再玩一会儿”。</p>
-    <div class="cover-meta"><span>适用设备：Android 手机</span><span>文档版本：2.2</span><span>更新日期：2026-11-18</span></div>
+    <div class="cover-meta"><span>适用设备：Android 手机</span><span>文档版本：2.3</span><span>更新日期：2026-11-18</span></div>
     <div class="cover-highlights">
       <span>5 分钟完成首次设置</span>
       <span>四道防卸载防线</span>
@@ -1251,11 +1251,16 @@ p.paragraph.no-indent{text-indent:0;}
   <div class="kicker">12 / 先免费体验，需要时再升级</div>
   <h1 class="heading">体验版与标准版</h1>
 
-  <p class="paragraph">新安装默认是体验版，无需付费即可使用“答题解锁”的核心流程；在应用数量、每日拦截次数、单次时长、每日上限和部分进阶功能上有限制。标准版按年订阅，一次激活解锁全部功能；到期自动降回体验版，规则、记录、错题本都不受影响。</p>
+  <p class="paragraph">新安装默认是体验版，无需付费即可使用“答题解锁”的核心流程；在应用数量、每日拦截次数、单次时长、每日上限和部分进阶功能上有限制。标准版按年订阅或一次性买断（永久），一次激活解锁全部功能；按年订阅到期自动降回体验版，永久授权不设到期日，规则、记录、错题本都不受影响。</p>
 
   <aside class="callout info">
     <div class="callout-title">激活码只能激活一次（v0.3.29 起）</div>
     <p>每个激活码<strong>只能成功激活一次</strong>：使用过之后，再输入同一个激活码会提示“该激活码已被使用过”，不会重复加时长。需要续费或补发时，请<strong>联系客服获取新激活码</strong>（同一台手机、同一档时长的新码），不要重复粘贴旧码。这样既保证您购买的时长不会被重复消耗，也避免激活码被截图流传后被人冒用。</p>
+  </aside>
+
+  <aside class="callout info">
+    <div class="callout-title">永久授权是什么（一次性买断）</div>
+    <p>① 永久授权指激活时限不设到期日；激活校验完全在手机本地完成，<strong>即使开发者停止运营，已激活手机不受任何影响</strong>。② 授权与手机机器码绑定，换手机联系客服免费转移激活。③ 仅一种情况会吊销授权：退款；正常使用没有任何远程限制。</p>
   </aside>
 
   <table class="table">
@@ -1275,7 +1280,7 @@ p.paragraph.no-indent{text-indent:0;}
   <div class="grid" data-cols="2">
     <div class="card">
       <h3>价格：99 元 / 年起（限时优惠）</h3>
-      <p>标准版 <strong>1 年 99 元</strong>（划线原价 198 元）。买得久更划算：升级弹窗里可选 <strong>1 年 99 元、3 年 249 元、6 年 399 元</strong>（划线原价相应为 198 / 297 / 594 元），一次买多年不用惦记续费。</p>
+      <p>标准版 <strong>1 年 99 元</strong>、<strong>3 年 249 元</strong>（折合 83 元/年）、<strong>永久 399 元</strong>（一次性买断·永久授权，首发价；正式价 449 元）。买越久越划算，一次买断不用惦记续费。</p>
     </div>
     <div class="card">
       <h3>邀请家长，免费得标准版</h3>
@@ -1287,7 +1292,7 @@ p.paragraph.no-indent{text-indent:0;}
   <ol class="timeline">
     <li>
       <div class="step-title">打开升级弹窗，选时长并复制机器码</div>
-      <div class="step-body"><p>家长设置页底部“体验版”卡片 → 点“升级标准版”。弹窗显示 <strong>99 元 / 年</strong>（划线原价 198 元 / 年 + “限时优惠”标签），先选 1 / 3 / 6 年档，再点“复制”，机器码和所选年限一次复制好，客服收到就知道该发几年的码。</p></div>
+      <div class="step-body"><p>家长设置页底部“体验版”卡片 → 点“升级标准版”。弹窗显示 <strong>99 元 / 年起</strong>（“限时优惠”标签），先选 1 年 / 3 年 / 永久档，再点“复制”，机器码和所选档位一次复制好（永久档末尾为 P），客服收到就知道该发哪种码。</p></div>
     </li>
     <li>
       <div class="step-title">加客服微信，发送机器码并付款</div>
@@ -1416,7 +1421,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <div class="faq-item">
     <p class="q">Q13：体验版到底限制什么？</p>
-    <p class="a">最多限制 2 个应用、每天最多拦截 10 次、单次最多 20 分钟、每日最多 120 分钟；休息时段、每周换题、自定义上传题目不可用。标准版 1 年 99 元（可选 1 / 3 / 6 年：99 / 249 / 399 元）不限应用数量和每日拦截次数，单次最高 180 分钟、每日最高 1440 分钟，并解锁全部进阶功能。</p>
+    <p class="a">最多限制 2 个应用、每天最多拦截 10 次、单次最多 20 分钟、每日最多 120 分钟；休息时段、每周换题、自定义上传题目不可用。标准版 1 年 99 元 / 3 年 249 元 / 永久 399 元（一次性买断），不限应用数量和每日拦截次数，单次最高 180 分钟、每日最高 1440 分钟，并解锁全部进阶功能。</p>
   </div>
 
   <div class="faq-item">
@@ -1507,14 +1512,14 @@ p.paragraph.no-indent{text-indent:0;}
 <!-- ==================== 15 最新版本更新 ==================== -->
 <section class="section" id="update">
   <div class="kicker">15 / 这一版有什么不同</div>
-  <h1 class="heading">最新版本更新内容（v0.3.27 – v0.3.31）</h1>
+  <h1 class="heading">最新版本更新内容（v0.3.27 – v0.3.32）</h1>
 
-  <p class="paragraph">v0.3.27 至 v0.3.31 的升级分别围绕“细节更好用”“体验版 / 标准版”“激活安全加固”“价格档位优化”和“体验加量”展开，没有改变核心的答题解锁与防卸载逻辑。已经会用的家长，可以只看下面这张表。</p>
+  <p class="paragraph">v0.3.27 至 v0.3.32 的升级分别围绕“细节更好用”“体验版 / 标准版”“激活安全加固”“价格档位优化”“体验加量”和“永久授权”展开，没有改变核心的答题解锁与防卸载逻辑。已经会用的家长，可以只看下面这张表。</p>
 
   <table class="table">
     <thead><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
     <tbody>
-      <tr><td class="em"><span class="tag green">新增</span> 标准版按年订阅</td><td>版本体系升级为体验版 / 标准版，标准版 <strong>1 年 99 元</strong>（划线原价 198 元），可选 1 / 3 / 6 年（99 / 249 / 399 元）；升级弹窗里选时长、复制机器码、找客服付款、输激活码，一次完成。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 标准版按年订阅</td><td>版本体系升级为体验版 / 标准版，标准版 <strong>1 年 99 元</strong>、多年档更划算；升级弹窗里选时长、复制机器码、找客服付款、输激活码，一次完成。</td></tr>
       <tr><td class="em"><span class="tag green">新增</span> 激活码一次性使用</td><td>每个激活码只能激活一次，重复粘贴会提示“已被使用”，续费 / 补发由客服发全新码；配合防篡改时钟，改手机时间也无法绕过授权。</td></tr>
       <tr><td class="em"><span class="tag green">修复</span> 到点密码页死循环</td><td>玩耍倒计时结束后一律进入答题锁屏，不再卡在密码登录页反复弹出（nova7 实测）；华为 / 荣耀“自启动”现在真正直达「应用启动管理」。</td></tr>
       <tr><td class="em"><span class="tag green">新增</span> 到期倒计时</td><td>标准版卡显示到期时间，<strong>精确到小时</strong>（如“还剩 276 天 12 小时到期续费”）；到期自动降回体验版，规则与记录不受影响。</td></tr>
@@ -1525,9 +1530,10 @@ p.paragraph.no-indent{text-indent:0;}
       <tr><td class="em"><span class="tag green">优化</span> 古诗干扰项对齐</td><td>“下一句”题的干扰项与正确答案<strong>字数一致</strong>、全部为真实诗句，孩子更难靠字数猜答案。</td></tr>
       <tr><td class="em"><span class="tag gray">视觉</span> 新应用图标</td><td>更换为红底白字的新图标，桌面更容易找到。</td></tr>
       <tr><td class="em"><span class="tag green">新增</span> 防篡改时间</td><td>授权到期时间不再能被“改手机时间”绕过：手动把时间往前 / 往后调，都无法延长或重置标准版授权，也不会影响每日额度与休息时段。</td></tr>
-      <tr><td class="em"><span class="tag blue">调整</span> 价格档位优化（v0.3.30）</td><td>付费档位改为 <strong>1 年 99 元 / 3 年 249 元 / 6 年 399 元</strong>（划线原价 198 / 297 / 594 元），取消 2 年档；多年档折合更便宜，一次买多年不用惦记续费。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 价格档位优化（v0.3.30）</td><td>付费档位改为 <strong>1 年 99 元 / 3 年 249 元 / 6 年 399 元</strong>，取消 2 年档；多年档折合更便宜，一次买多年不用惦记续费。</td></tr>
       <tr><td class="em"><span class="tag green">修复</span> 到点自动切锁屏（v0.3.30）</td><td>玩耍时间到点改为在当前页面直接切锁屏，并修复极个别机型（如华为 nova7）冷启动时误落 PIN 登录页的小概率回归，拦截更稳。</td></tr>
       <tr><td class="em"><span class="tag blue">调整</span> 体验版拦截加量（v0.3.31）</td><td>体验版每日拦截次数从 4 次提升到 <strong>10 次</strong>，免费体验更充足；当日额度用完后当天不再拦截（受限应用放行），并通过系统通知提醒家长升级标准版。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 永久授权档（v0.3.32）</td><td>新增 <strong>永久 399 元</strong>一次性买断档（首发价，正式价 449），一次付费永久授权、无到期时间；同时取消 6 年档，价格统一为 1 年 / 3 年 / 永久三档。</td></tr>
     </tbody>
   </table>
 
@@ -1609,7 +1615,7 @@ p.paragraph.no-indent{text-indent:0;}
       <tr><td class="em">电池优化</td><td>把答题锁加入“不优化”名单，减少后台被系统清理的概率。</td></tr>
       <tr><td class="em">自启动</td><td>华为 / 荣耀 / vivo / iQOO 等品牌的后台启动白名单，被划掉后能自动恢复。</td></tr>
       <tr><td class="em">机器码</td><td>与本机绑定的 10 位字母数字，用于生成标准版激活码；在邀请活动里同时作为邀请码使用。</td></tr>
-      <tr><td class="em">体验版 / 标准版</td><td>体验版限制应用数量、拦截次数与部分功能；标准版按 99 元 / 年起（可选 1 / 3 / 6 年）解锁不限量与全部进阶功能，到期自动降回体验版。</td></tr>
+      <tr><td class="em">体验版 / 标准版</td><td>体验版限制应用数量、拦截次数与部分功能；标准版按 99 元 / 年起（可选 1 / 3 年，或永久 399 元一次性买断）解锁不限量与全部进阶功能，按年订阅到期自动降回体验版。</td></tr>
       <tr><td class="em">邀请码 / 周卡</td><td>邀请码即邀请人的机器码，被邀请家长填写、客服人工核验；周卡是 1 周标准版时长的激活码，可累计，上限 52 周。</td></tr>
     </tbody>
   </table>
@@ -1647,7 +1653,7 @@ p.paragraph.no-indent{text-indent:0;}
 <section class="title end_page">
   <div class="end-mark">答题锁 · ANSWER LOCK</div>
   <h1>先学会，再玩一会儿</h1>
-  <p>答题锁 v0.3.31 · 家长使用说明书<br>本手册基于 v0.3.31 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
+  <p>答题锁 v0.3.32 · 家长使用说明书<br>本手册基于 v0.3.32 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
   <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-18</p>
 </section>
 

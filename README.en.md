@@ -8,11 +8,11 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.3.31_arm64.apk](./answerlock_v0.3.31_arm64.apk) | Latest release (Android, arm64, 17.8 MB) |
-| [答题锁_v0.3.31_使用说明书.html](./答题锁_v0.3.31_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.3.32_arm64.apk](./answerlock_v0.3.32_arm64.apk) | Latest release (Android, arm64, 17.8 MB) |
+| [答题锁_v0.3.32_使用说明书.html](./答题锁_v0.3.32_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 
-- Current version: **v0.3.31** (2026-11-18)
-- SHA256: `F03DCB6F8E2E8BF78B33DC6977635BF5CA1C73048AC65D18F876E4D366C1535F`
+- Current version: **v0.3.32** (2026-11-18)
+- SHA256: `B1FFF344AC11D343EAE6C78E62779636200A69F7D86EA94EAA59039D5B47C3F7`
 
 ## Quick start
 
@@ -31,7 +31,7 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 
 ## Version & support
 
-- The free trial edition covers the core flow (up to 2 restricted apps, 10 blocks per day); to upgrade to the Standard edition, contact support on WeChat: **hiyuanmi2015**
+- The free trial edition covers the core flow (up to 2 restricted apps, 10 blocks per day); Standard is ¥99/year, ¥249 for 3 years or ¥399 lifetime (one-time purchase) — to upgrade, contact support on WeChat: **hiyuanmi2015**
 - Upgrading the app — download the new APK and install over the previous version; rules and records are kept on the device.
 
 ---
