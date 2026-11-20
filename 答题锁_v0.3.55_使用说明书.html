@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>答题锁 v0.3.32 使用说明书</title>
+<title>答题锁 v0.3.55 使用说明书</title>
 <style>
 /* ========== 基础与调色板（青绿教育色） ========== */
 :root{
@@ -452,12 +452,12 @@ p.paragraph.no-indent{text-indent:0;}
   <div>
     <div class="cover-top">
       <div class="brand-mark">答</div>
-      <span class="version-pill">v0.3.32 · 家长使用手册</span>
+      <span class="version-pill">v0.3.55 · 家长使用手册</span>
     </div>
     <h1>答题锁</h1>
     <div class="cover-sub">使用说明书</div>
     <p class="cover-desc">家长管控 · 答题解锁 · 防卸载守护<br>把“玩多久”变成“先学会，再玩一会儿”。</p>
-    <div class="cover-meta"><span>适用设备：Android 手机</span><span>文档版本：2.3</span><span>更新日期：2026-11-18</span></div>
+    <div class="cover-meta"><span>适用设备：Android 手机 / 平板 / 电视</span><span>文档版本：2.4</span><span>更新日期：2026-11-20</span></div>
     <div class="cover-highlights">
       <span>5 分钟完成首次设置</span>
       <span>四道防卸载防线</span>
@@ -545,8 +545,8 @@ p.paragraph.no-indent{text-indent:0;}
   <table class="table">
     <thead><tr><th style="width:18%;">概念</th><th style="width:41%;">是什么意思</th><th style="width:41%;">家长要记住什么</th></tr></thead>
     <tbody>
-      <tr><td class="em">家长模式</td><td>家长输入 6 位密码后进入的状态。此时<strong>不拦截</strong>，方便家长改规则、加应用、看记录。</td><td>看到状态栏<strong>绿色“家长”</strong>徽章 = 当前无拦截。改完设置要记得点“开始管控”。</td></tr>
-      <tr><td class="em">孩子模式</td><td>家长点“开始管控”后交还手机的状态。此时受限应用会被拦截，需要答题解锁。</td><td>看到状态栏<strong>红色“孩子”</strong>徽章 = 正在拦截。徽章上会显示本轮剩余时间倒计时。</td></tr>
+      <tr><td class="em">家长模式</td><td>家长输入 6 位密码后进入的状态。此时<strong>不拦截</strong>，方便家长改规则、加应用、看记录。</td><td>看到状态栏<strong>绿色“家长”</strong>徽章 = 当前无拦截。改完设置要记得点“开始答题”。</td></tr>
+      <tr><td class="em">孩子模式</td><td>家长点“开始答题”后交还手机的状态。此时受限应用会被拦截，需要答题解锁。</td><td>看到状态栏<strong>红色“孩子”</strong>徽章 = 正在拦截。徽章上会显示本轮剩余时间倒计时。</td></tr>
       <tr><td class="em">答题解锁</td><td>孩子答对规定题数后，获得一段娱乐时长；答错会加题，连错多道本次结束。</td><td>题数、单次时长、每日上限、错题冷却都在“规则设置”里调整。</td></tr>
     </tbody>
   </table>
@@ -621,9 +621,9 @@ p.paragraph.no-indent{text-indent:0;}
       </div>
     </li>
     <li>
-      <div class="step-title">点“开始管控”，回到桌面</div>
+      <div class="step-title">点“开始答题”，回到桌面</div>
       <div class="step-body">
-        <p>在家长设置页底部点红色<strong>“开始管控”</strong>。弹窗会提示“10 秒后自动返回手机桌面”，也可以点“立即返回”。</p>
+        <p>在家长设置页底部点红色<strong>“开始答题”</strong>。弹窗会提示“10 秒后自动返回手机桌面”，也可以点“立即返回”。</p>
         <ul>
           <li><strong>必须回到桌面，拦截才会生效。</strong>停留在答题锁内不算交给孩子使用。</li>
           <li>回到桌面后，状态栏应出现红色“孩子”徽章，并显示剩余时间。</li>
@@ -641,7 +641,7 @@ p.paragraph.no-indent{text-indent:0;}
     <li><strong>防护状态</strong>：无障碍、设备管理、悬浮窗、电池优化全部绿色；华为 / 荣耀 / vivo / iQOO 的自启动也已确认。</li>
     <li><strong>限制应用</strong>：至少 1 个，且是孩子真正会沉迷的娱乐 App。</li>
     <li><strong>规则</strong>：答对题数、单次时长、每日上限符合家庭约定。</li>
-    <li><strong>开始管控</strong>：已点击，且已回到桌面。</li>
+    <li><strong>开始答题</strong>：已点击，且已回到桌面。</li>
     <li><strong>实测</strong>：打开受限应用能看到答题遮罩；打开系统设置会被拦截。</li>
   </ul>
 
@@ -676,7 +676,7 @@ p.paragraph.no-indent{text-indent:0;}
   <div class="grid" data-cols="3">
     <div class="card">
       <h3>底部主开关</h3>
-      <p>绿色<strong>“停止管控（当前拦截中）”</strong>表示正在拦截；红色<strong>“开始管控”</strong>表示当前未拦截。停止管控会二次确认。</p>
+      <p>绿色<strong>“结束答题（答题进行中）”</strong>表示正在拦截；红色<strong>“开始答题”</strong>表示当前未拦截。结束答题会二次确认。</p>
     </div>
     <div class="card">
       <h3>三个快捷按钮</h3>
@@ -713,7 +713,7 @@ p.paragraph.no-indent{text-indent:0;}
     </div>
     <div class="mode-card red">
       <div class="mode-name"><span class="dot"></span>孩子模式（红色）</div>
-      <p>家长点“开始管控”并返回桌面后进入。受限应用会被拦截，孩子需答题解锁。<br><strong>状态栏显示红色“孩子”徽章，并带本轮剩余时间倒计时。</strong></p>
+      <p>家长点“开始答题”并返回桌面后进入。受限应用会被拦截，孩子需答题解锁。<br><strong>状态栏显示红色“孩子”徽章，并带本轮剩余时间倒计时。</strong></p>
     </div>
   </div>
 
@@ -724,7 +724,7 @@ p.paragraph.no-indent{text-indent:0;}
         <div class="appbar">家长设置 <span class="warn">↑ 家长模式下无拦截</span></div>
         <div class="mini-card"><div class="h"><span>防护状态</span><span class="green-dot">全部已开启</span></div><div class="r"><span>无障碍服务</span><span class="green-dot">已开启</span></div><div class="r"><span>设备管理（防卸载）</span><span class="green-dot">已开启</span></div></div>
         <div class="mini-card"><div class="h"><span>今日概况</span><span>—</span></div><div class="r"><span>已答题</span><span>12 题 · 对 10</span></div><div class="r"><span>已解锁</span><span>40 分钟</span></div></div>
-        <div class="cta">开始管控</div>
+        <div class="cta">开始答题</div>
       </div>
     </div>
     <div class="phone-demo">
@@ -739,15 +739,15 @@ p.paragraph.no-indent{text-indent:0;}
     <div class="card" style="flex:1;min-width:220px;">
       <h3>三处颜色提醒</h3>
       <p><strong>状态栏徽章</strong>：绿“家长” / 红“孩子+倒计时”。可拖动换位置，App 会记住；可在规则页关闭或调透明度。</p>
-      <p><strong>密码页顶部胶囊</strong>：进入密码页先看到当前模式。家长模式会提示“要拦截需点开始管控”。</p>
+      <p><strong>密码页顶部胶囊</strong>：进入密码页先看到当前模式。家长模式会提示“要拦截需点开始答题”。</p>
       <p><strong>家长设置标题</strong>：红字“家长模式下无拦截，孩子模式下才会拦截”+ 向上箭头，指向状态栏徽章。</p>
     </div>
   </div>
 
   <h2 class="heading">最容易弄错的一件事</h2>
   <aside class="callout danger">
-    <div class="callout-title">输入密码 = 自动停止管控</div>
-    <p>家长每次输入正确密码进入家长端，答题锁都会<strong>自动停止管控</strong>，这是为了方便家长改设置。改完以后，必须再点一次红色<strong>“开始管控”</strong>，并等它自动返回桌面，拦截才会重新生效。否则孩子拿到的是一部“没有拦截”的手机。</p>
+    <div class="callout-title">输入密码 = 自动结束答题</div>
+    <p>家长每次输入正确密码进入家长端，答题锁都会<strong>自动结束答题</strong>，这是为了方便家长改设置。改完以后，必须再点一次红色<strong>“开始答题”</strong>，并等它自动返回桌面，拦截才会重新生效。否则孩子拿到的是一部“没有拦截”的手机。</p>
   </aside>
 
   <h2 class="heading">徽章设置</h2>
@@ -762,7 +762,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <aside class="callout info">
     <div class="callout-title">孩子玩耍中重新打开答题锁</div>
-    <p>会先看到“请输入六位数字密码”页面。孩子可点底部绿色<strong>“返回”</strong>回到桌面继续玩，倒计时不受影响；家长输入密码则会结束本轮玩耍、停止管控并进入家长设置。</p>
+    <p>会先看到“请输入六位数字密码”页面。孩子可点底部绿色<strong>“返回”</strong>回到桌面继续玩，倒计时不受影响；家长输入密码则会结束本轮玩耍、结束答题并进入家长设置。</p>
   </aside>
 </section>
 
@@ -820,7 +820,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <aside class="callout warn">
     <div class="callout-title">规则要和孩子提前约定</div>
-    <p>建议在开始管控前，把“每天大概能玩多久、答几题、什么时间不能玩”跟孩子说清楚。规则突然从宽变严，最容易引发对抗；可以一周调整一次，每次只改一个数值。</p>
+    <p>建议在开始答题前，把“每天大概能玩多久、答几题、什么时间不能玩”跟孩子说清楚。规则突然从宽变严，最容易引发对抗；可以一周调整一次，每次只改一个数值。</p>
   </aside>
 </section>
 
@@ -884,7 +884,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <aside class="callout danger">
     <div class="callout-title">不要让孩子知道家长密码</div>
-    <p>孩子只要拿到家长密码，就能进入家长模式、停止管控、关闭权限。密码泄露等于全部防护失效；如果怀疑孩子知道了，请立即在“修改密码”里更换。</p>
+    <p>孩子只要拿到家长密码，就能进入家长模式、结束答题、关闭权限。密码泄露等于全部防护失效；如果怀疑孩子知道了，请立即在“修改密码”里更换。</p>
   </aside>
 </section>
 
@@ -1021,7 +1021,7 @@ p.paragraph.no-indent{text-indent:0;}
     </div>
     <div class="card">
       <h3>重新打开答题锁</h3>
-      <p>玩耍中再点桌面图标，会先看到 6 位密码页。孩子可点绿色“返回”回桌面继续玩；家长输入密码则结束本轮、停止管控、进入家长设置。</p>
+      <p>玩耍中再点桌面图标，会先看到 6 位密码页。孩子可点绿色“返回”回桌面继续玩；家长输入密码则结束本轮、结束答题、进入家长设置。</p>
     </div>
   </div>
 
@@ -1075,7 +1075,7 @@ p.paragraph.no-indent{text-indent:0;}
   <div class="kicker">10 / 孩子最容易从这里突破</div>
   <h1 class="heading">防卸载与防绕过</h1>
 
-  <p class="paragraph">如果孩子曾经成功卸载过答题锁，通常不是“答题锁完全没防护”，而是<strong>某一层权限在当时没有真正生效</strong>：设备管理没激活、无障碍被关掉、家长密码被看到、或者家长自己停在家长模式没有开始管控。下面四道防线加上家长通道全部到位，普通孩子拿手机直接卸载的难度会大幅提高。</p>
+  <p class="paragraph">如果孩子曾经成功卸载过答题锁，通常不是“答题锁完全没防护”，而是<strong>某一层权限在当时没有真正生效</strong>：设备管理没激活、无障碍被关掉、家长密码被看到、或者家长自己停在家长模式没有开始答题。下面四道防线加上家长通道全部到位，普通孩子拿手机直接卸载的难度会大幅提高。</p>
 
   <div class="layers">
     <div class="layer green-line">
@@ -1122,7 +1122,7 @@ p.paragraph.no-indent{text-indent:0;}
     <li><strong>悬浮窗 / 电池</strong>：悬浮窗、电池优化均为绿色。</li>
     <li><strong>自启动</strong>：华为 / 荣耀 / vivo / iQOO 上“自启动”为绿色；不确定就点“测试一下”，能自动弹回即通过。</li>
     <li><strong>密码</strong>：孩子不知道；不是生日、手机号后六位等易猜数字。</li>
-    <li><strong>开始管控</strong>：已点“开始管控”，已回到桌面，状态栏为红色“孩子”徽章。</li>
+    <li><strong>开始答题</strong>：已点“开始答题”，已回到桌面，状态栏为红色“孩子”徽章。</li>
   </ul>
 
   <h2 class="heading">如果孩子已经把答题锁卸载了</h2>
@@ -1144,8 +1144,8 @@ p.paragraph.no-indent{text-indent:0;}
       <div class="step-body"><p>默认只预选抖音，需要重新勾选其他应用；规则也会恢复默认值，请按家庭约定重新设置。</p></div>
     </li>
     <li>
-      <div class="step-title">开始管控并实测</div>
-      <div class="step-body"><p>点“开始管控”回桌面；打开受限应用确认出现遮罩；打开系统设置确认被拦截；状态栏确认红色“孩子”徽章。</p></div>
+      <div class="step-title">开始答题并实测</div>
+      <div class="step-body"><p>点“开始答题”回桌面；打开受限应用确认出现遮罩；打开系统设置确认被拦截；状态栏确认红色“孩子”徽章。</p></div>
     </li>
     <li>
       <div class="step-title">标准版用户联系客服恢复激活</div>
@@ -1167,7 +1167,7 @@ p.paragraph.no-indent{text-indent:0;}
   <div class="grid" data-cols="2">
     <div class="card red-card"><h3>不要为了省电关闭无障碍</h3><p>无障碍是识别“孩子打开了哪个应用”的核心。关闭后拦截基本失效，设备管理只能挡卸载，挡不住使用。</p></div>
     <div class="card red-card"><h3>不要安装“清理 / 加速”类工具</h3><p>这类工具可能把答题锁的前台服务一起清掉，导致倒计时和拦截消失。</p></div>
-    <div class="card red-card"><h3>不要把家长密码告诉孩子</h3><p>密码等于最高权限。孩子知道密码后，可以停止管控、关闭权限、修改规则。</p></div>
+    <div class="card red-card"><h3>不要把家长密码告诉孩子</h3><p>密码等于最高权限。孩子知道密码后，可以结束答题、关闭权限、修改规则。</p></div>
     <div class="card red-card"><h3>不要让孩子单独进系统设置</h3><p>管控期间系统设置默认锁定；家长需要进设置时，走“临时进入系统设置（10 分钟）”。</p></div>
   </div>
 </section>
@@ -1361,7 +1361,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <div class="faq-item">
     <p class="q">Q1：我已经设了密码，为什么孩子还能一直玩？</p>
-    <p class="a">大概率是当前仍在“家长模式”。输入密码进入家长端会自动停止管控；改完设置后必须点红色“开始管控”，并等它自动返回桌面。确认状态栏是红色“孩子”徽章，再打开受限应用测试。</p>
+    <p class="a">大概率是当前仍在“家长模式”。输入密码进入家长端会自动结束答题；改完设置后必须点红色“开始答题”，并等它自动返回桌面。确认状态栏是红色“孩子”徽章，再打开受限应用测试。</p>
   </div>
 
   <div class="faq-item">
@@ -1396,7 +1396,7 @@ p.paragraph.no-indent{text-indent:0;}
 
   <div class="faq-item">
     <p class="q">Q8：孩子知道家长密码了怎么办？</p>
-    <p class="a">立即进入家长端 → 底部“修改密码”→ 验证旧密码 → 设置新密码。孩子知道密码意味着他可以停止管控、关闭权限、修改规则，务必尽快更换，并检查限制应用名单是否被改动。</p>
+    <p class="a">立即进入家长端 → 底部“修改密码”→ 验证旧密码 → 设置新密码。孩子知道密码意味着他可以结束答题、关闭权限、修改规则，务必尽快更换，并检查限制应用名单是否被改动。</p>
   </div>
 
   <div class="faq-item">
@@ -1505,38 +1505,32 @@ p.paragraph.no-indent{text-indent:0;}
 
   <aside class="callout info">
     <div class="callout-title">家长的控制权</div>
-    <p>家长可以随时查看、导出、清空答题记录；可以清除已掌握的错题；可以停止管控、关闭徽章、修改规则。所有操作都在本机完成，不需要把数据交给第三方。</p>
+    <p>家长可以随时查看、导出、清空答题记录；可以清除已掌握的错题；可以结束答题、关闭徽章、修改规则。所有操作都在本机完成，不需要把数据交给第三方。</p>
   </aside>
 </section>
 
 <!-- ==================== 15 最新版本更新 ==================== -->
 <section class="section" id="update">
   <div class="kicker">15 / 这一版有什么不同</div>
-  <h1 class="heading">最新版本更新内容（v0.3.27 – v0.3.32）</h1>
+    <h1 class="heading">最新版本更新内容（v0.3.33 – v0.3.55）</h1>
 
-  <p class="paragraph">v0.3.27 至 v0.3.32 的升级分别围绕“细节更好用”“体验版 / 标准版”“激活安全加固”“价格档位优化”“体验加量”和“永久授权”展开，没有改变核心的答题解锁与防卸载逻辑。已经会用的家长，可以只看下面这张表。</p>
+  <p class="paragraph">v0.3.33 至 v0.3.55 的升级围绕「多设备支持」「更懂孩子的人性化体验」展开：新增电视版与平板适配、忘记密码自助找回、游戏不打断、答错加题可设置，并全面优化了界面文案与按键体验。没有改变核心的答题解锁与防卸载逻辑。已经会用的家长，可以只看下面这张表。</p>
 
   <table class="table">
     <thead><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
     <tbody>
-      <tr><td class="em"><span class="tag green">新增</span> 标准版按年订阅</td><td>版本体系升级为体验版 / 标准版，标准版 <strong>1 年 99 元</strong>、多年档更划算；升级弹窗里选时长、复制机器码、找客服付款、输激活码，一次完成。</td></tr>
-      <tr><td class="em"><span class="tag green">新增</span> 激活码一次性使用</td><td>每个激活码只能激活一次，重复粘贴会提示“已被使用”，续费 / 补发由客服发全新码；配合防篡改时钟，改手机时间也无法绕过授权。</td></tr>
-      <tr><td class="em"><span class="tag green">修复</span> 到点密码页死循环</td><td>玩耍倒计时结束后一律进入答题锁屏，不再卡在密码登录页反复弹出（nova7 实测）；华为 / 荣耀“自启动”现在真正直达「应用启动管理」。</td></tr>
-      <tr><td class="em"><span class="tag green">新增</span> 到期倒计时</td><td>标准版卡显示到期时间，<strong>精确到小时</strong>（如“还剩 276 天 12 小时到期续费”）；到期自动降回体验版，规则与记录不受影响。</td></tr>
-      <tr><td class="em"><span class="tag green">新增</span> 邀请家长得标准版</td><td>体验版卡新增邀请入口：被邀请家长填码、客服人工核验后，邀请人得 <strong>1 周标准版</strong>，最多累计 52 周。</td></tr>
-      <tr><td class="em"><span class="tag blue">调整</span> 体验版进度看得见</td><td>体验版卡显示“已设置几个应用、今日已用几次拦截”（红色粗体数字），当天额度用了多少一目了然。</td></tr>
-      <tr><td class="em"><span class="tag green">新增</span> 首装引导默认推荐</td><td>第一次安装的引导页默认预选<strong>小学三年级 + 全部科目 + 全部难度</strong>，不用再逐项勾选。</td></tr>
-      <tr><td class="em"><span class="tag green">修复</span> 自启动直达页</td><td>华为 / 荣耀点“去开启”直达系统设置「应用启动管理」，vivo / iQOO 直达「自启动」，不再误进手机管家 / i 管家。</td></tr>
-      <tr><td class="em"><span class="tag green">优化</span> 古诗干扰项对齐</td><td>“下一句”题的干扰项与正确答案<strong>字数一致</strong>、全部为真实诗句，孩子更难靠字数猜答案。</td></tr>
-      <tr><td class="em"><span class="tag gray">视觉</span> 新应用图标</td><td>更换为红底白字的新图标，桌面更容易找到。</td></tr>
-      <tr><td class="em"><span class="tag green">新增</span> 防篡改时间</td><td>授权到期时间不再能被“改手机时间”绕过：手动把时间往前 / 往后调，都无法延长或重置标准版授权，也不会影响每日额度与休息时段。</td></tr>
-      <tr><td class="em"><span class="tag blue">调整</span> 价格档位优化（v0.3.30）</td><td>付费档位改为 <strong>1 年 99 元 / 3 年 249 元 / 6 年 399 元</strong>，取消 2 年档；多年档折合更便宜，一次买多年不用惦记续费。</td></tr>
-      <tr><td class="em"><span class="tag green">修复</span> 到点自动切锁屏（v0.3.30）</td><td>玩耍时间到点改为在当前页面直接切锁屏，并修复极个别机型（如华为 nova7）冷启动时误落 PIN 登录页的小概率回归，拦截更稳。</td></tr>
-      <tr><td class="em"><span class="tag blue">调整</span> 体验版拦截加量（v0.3.31）</td><td>体验版每日拦截次数从 4 次提升到 <strong>10 次</strong>，免费体验更充足；当日额度用完后当天不再拦截（受限应用放行），并通过系统通知提醒家长升级标准版。</td></tr>
-      <tr><td class="em"><span class="tag green">新增</span> 永久授权档（v0.3.32）</td><td>新增 <strong>永久 399 元</strong>一次性买断档（首发价，正式价 449），一次付费永久授权、无到期时间；同时取消 6 年档，价格统一为 1 年 / 3 年 / 永久三档。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 电视版（v0.3.43 起）</td><td>安卓智能电视可安装 TV 版：遥控器全流程操作（设密码、选题、开关），孩子答题、解锁、限制应用与手机版同口径。<strong>v0.3.55 完成全型号自适应</strong>——不同品牌、不同屏幕大小的电视都能一屏看全、按键到位。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 平板适配（v0.3.35）</td><td>手机版安装包在平板上自动切换大屏布局，一个包同时管手机和平板，无需另外下载。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 忘记密码自助找回（v0.3.51）</td><td>首次设置时顺便设一个密保问题，以后忘了家长密码，答对密保就能自己重设，<strong>不用再联系客服</strong>。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 游戏不打断（v0.3.53 · 标准版）</td><td>玩耍时间到了，如果孩子正在游戏对局里，答题锁会<strong>等这一局结束</strong>（结算 / 退出 / 切后台）再弹答题，避免正在团战被硬打断引发亲子冲突；手机最多等 30 分钟、电视 15 分钟，到点强制拦。等待期间状态栏显示「孩子 · 待答题」，家长首页也能看到。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 答错加题可设置（v0.3.53）</td><td>答错一题要多答几题，家长可以在规则页设置（0–5 题，默认 1）；答题页顶部会直接提醒孩子「答错一题要多答 N 题，认真看题哦」，引导认真审题而非乱蒙。</td></tr>
+      <tr><td class="em"><span class="tag green">修复</span> 每日额度用完不再卡住（v0.3.54）</td><td>当天时长用完后，锁屏改显示「今天的时长用完啦」+ <strong>「家长登录」按钮</strong>，家长随时输密码退出调整规则；此前家长不知道隐藏入口、会被卡在锁屏。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 先答题再玩耍模式（v0.3.48）</td><td>不想一个一个挑应用？开启后点「开始答题」孩子直接从第一题开始答，答对解锁一段时间自由使用，到点想接着玩再答一轮。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 文案更柔和（v0.3.53）</td><td>「开始管控 / 停止管控」统一改为<strong>「开始答题 / 结束答题」</strong>；权限引导每项可跳过但会先说明后果；检测通过自动收起弹层，全程温和、不说教。</td></tr>
+      <tr><td class="em"><span class="tag green">修复</span> 电视按键可用性（v0.3.49 – v0.3.52）</td><td>修复遥控器方向键聚不到部分按钮、规则页保存按了没反应、诊断页重新检测无反馈等问题；「保存」固定在屏幕底部，第一行按 ↑ 直接跳到。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 体验版功能边界清晰（v0.3.54）</td><td>每周换题、游戏不打断为<strong>标准版功能</strong>，体验版不再显示「已开启」误导家长；升级标准版后自动解锁。</td></tr>
     </tbody>
   </table>
-
   <h2 class="heading">怎么升级</h2>
   <ol class="timeline">
     <li>
@@ -1603,7 +1597,7 @@ p.paragraph.no-indent{text-indent:0;}
     <thead><tr><th style="width:22%;">术语</th><th style="width:78%;">解释</th></tr></thead>
     <tbody>
       <tr><td class="em">家长模式</td><td>输入家长密码后的状态，不拦截，用于配置与查看。状态栏绿色“家长”徽章。</td></tr>
-      <tr><td class="em">孩子模式</td><td>点“开始管控”并返回桌面后的状态，受限应用会被拦截。状态栏红色“孩子”徽章，带剩余时间。</td></tr>
+      <tr><td class="em">孩子模式</td><td>点“开始答题”并返回桌面后的状态，受限应用会被拦截。状态栏红色“孩子”徽章，带剩余时间。</td></tr>
       <tr><td class="em">受限应用</td><td>家长在“限制应用”里勾选的娱乐类 App，只有这些应用会被答题管控。</td></tr>
       <tr><td class="em">答题解锁</td><td>孩子答对规定题数后获得一段娱乐时长；答错会加题，连错多道本次结束。</td></tr>
       <tr><td class="em">单次时长</td><td>一次答题解锁后可以连续玩多久，到点弹回锁屏。</td></tr>
@@ -1653,8 +1647,8 @@ p.paragraph.no-indent{text-indent:0;}
 <section class="title end_page">
   <div class="end-mark">答题锁 · ANSWER LOCK</div>
   <h1>先学会，再玩一会儿</h1>
-  <p>答题锁 v0.3.32 · 家长使用说明书<br>本手册基于 v0.3.32 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
-  <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-18</p>
+  <p>答题锁 v0.3.55 · 家长使用说明书<br>本手册基于 v0.3.55 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
+  <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-20</p>
 </section>
 
 </div>
