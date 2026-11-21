@@ -11,6 +11,7 @@
 | [answerlock_v0.3.57_mobile.apk](./answerlock_v0.3.57_mobile.apk) | 手机 / 平板安装包（Android，arm64 + v7a，15.0 MB） |
 | [answerlock_v0.3.57_tv.apk](./answerlock_v0.3.57_tv.apk) | 智能电视安装包（Android TV，全架构，22.4 MB） |
 | [答题锁_v0.3.57_使用说明书.html](./答题锁_v0.3.57_使用说明书.html) | 家长使用说明书（可离线打开，可 Ctrl+P 导出 PDF） |
+| [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | 一页版产品说明（给家长看，简单易懂，适合转发） |
 
 - 当前版本：**v0.3.57**（2026-11-21）
 - 手机版 SHA256：`59E527CD3D9C2362D3E0A0F07AB8317FFEF9BD23C2F4311B4DEC810E212249D7`

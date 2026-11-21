@@ -11,6 +11,7 @@ English | [简体中文](./README.md)
 | [answerlock_v0.3.57_mobile.apk](./answerlock_v0.3.57_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
 | [answerlock_v0.3.57_tv.apk](./answerlock_v0.3.57_tv.apk) | Android TV build (all ABIs, 22.4 MB) |
 | [答题锁_v0.3.57_使用说明书.html](./答题锁_v0.3.57_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
 - Current version: **v0.3.57** (2026-11-21)
 - Phone SHA256: `59E527CD3D9C2362D3E0A0F07AB8317FFEF9BD23C2F4311B4DEC810E212249D7`
