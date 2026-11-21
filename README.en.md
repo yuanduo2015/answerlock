@@ -8,13 +8,13 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.3.55_mobile.apk](./answerlock_v0.3.55_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 14.9 MB) |
-| [answerlock_v0.3.55_tv.apk](./answerlock_v0.3.55_tv.apk) | Android TV build (all ABIs, 22.4 MB) |
-| [答题锁_v0.3.55_使用说明书.html](./答题锁_v0.3.55_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.3.57_mobile.apk](./answerlock_v0.3.57_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
+| [answerlock_v0.3.57_tv.apk](./answerlock_v0.3.57_tv.apk) | Android TV build (all ABIs, 22.4 MB) |
+| [答题锁_v0.3.57_使用说明书.html](./答题锁_v0.3.57_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 
-- Current version: **v0.3.55** (2026-11-20)
-- Phone SHA256: `0E2D0783466F5E0E72B688713C853CBB8F7E4572C4071F144182D3C093B9240E`
-- TV SHA256: `46836D31DDE506BABF6F572DFD798840C23A8BFA8B41157234A94B4FC06B5123`
+- Current version: **v0.3.57** (2026-11-21)
+- Phone SHA256: `59E527CD3D9C2362D3E0A0F07AB8317FFEF9BD23C2F4311B4DEC810E212249D7`
+- TV SHA256: `C5A4B333E8DFC3CBFBEFE8EDE93D55FFB052231BE583D534E6CE6A739E76DE78`
 
 ## Quick start
 
@@ -31,6 +31,8 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 - **Four anti-uninstall defenses** — device admin + accessibility guard + foreground service + auto-restart recovery
 - **Self-service PIN recovery** — set a security question at setup and reset the parent PIN yourself if forgotten, no support ticket needed
 - **Phone / tablet / TV** — tablets get an automatic large-screen layout; the TV build works fully by remote control and adapts to different TV brands and screen sizes
+- **Younger-kid friendly (v0.3.56)** — pinyin annotations on questions/answers for grades 1–2; a “read the question / read the answer” button on the quiz page
+- **Rich question bank** — 50+ questions per difficulty for primary Chinese and English
 - **Data stays on the device** — no sign-up, no cloud collection; uninstalling the app removes all local data
 
 ## Version & support
