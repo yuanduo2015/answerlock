@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.3.59_mobile.apk](./answerlock_v0.3.59_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
-| [answerlock_v0.3.59_tv.apk](./answerlock_v0.3.59_tv.apk) | Android TV build (all ABIs, 22.4 MB) |
-| [答题锁_v0.3.59_使用说明书.html](./答题锁_v0.3.59_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.3.60_mobile.apk](./answerlock_v0.3.60_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
+| [answerlock_v0.3.60_tv.apk](./answerlock_v0.3.60_tv.apk) | Android TV build (all ABIs, 22.4 MB) |
+| [答题锁_v0.3.60_使用说明书.html](./答题锁_v0.3.60_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.3.59** (2026-11-22)
-- Phone SHA256: `685218BAFA976609425EBF530AF0466B04017203E73C2279548685409B1FADA8`
-- TV SHA256: `F923EBD8F75CF5DCB3A43C0E1A5699A163175789CAB2FC0B4677E48FECD66858`
+- Current version: **v0.3.60** (2026-11-22)
+- Phone SHA256: `DF6702678B66A8F5DE068F6DE1103DE47E66D915A0A7B7B54C03C74E9A4ADDC7`
+- TV SHA256: `4171AE33E94BC7F968BBD602303F0E1DA52DD06F593CCF00BB83A884F5949DA3`
 
 ## Quick start
 
