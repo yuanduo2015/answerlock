@@ -13,9 +13,9 @@ English | [简体中文](./README.md)
 | [答题锁_v0.3.61_使用说明书.html](./答题锁_v0.3.61_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.3.61** (2026-11-23)
-- Phone SHA256: `5F3C1B59D3339C0ACC9D9A992ADF6AD29D8BC93CC1150594FBB8ED5629FFD9BD`
-- TV SHA256: `6B5D4E70ECACB575C9DE48BB4630B0E73EF20731DDF5E0E3531E3D2FC3896E79`
+- Current version: **v0.3.61** (2026-11-23, same-day respin: fixed the built-in version constant not being synced, which caused a wrong version display and an endless update prompt)
+- Phone SHA256: `7874F623AD798E62BBE254C209DB01FAF074F4002B563B9294D16EADAE78E6F4`
+- TV SHA256: `7DDB9DC32462BBCA0DACA43B7C5C83DB5B453D6930C1E6315463F058A9EE0AF2`
 
 ## Quick start
 
