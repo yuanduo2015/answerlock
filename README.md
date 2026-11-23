@@ -1,10 +1,19 @@
+## 下载地址
+github慢的话，有三个备用站
+
+https://www.pgyer.com/datisuo-android
+
+https://gitee.com/yuanduo2015/answerlock
+
+https://github.com/yuanduo2015/answerlock
+
 # 答题锁 AnswerLock
 
 答题解锁型家长管控 App——孩子想玩？先答对几道题。把「玩多久」变成「先学会，再玩一会儿」。
 
 [English](./README.en.md) | 简体中文
 
-## 下载
+
 
 | 文件 | 说明 |
 | --- | --- |
