@@ -8,14 +8,14 @@
 
 | 文件 | 说明 |
 | --- | --- |
-| [answerlock_v0.3.60_mobile.apk](./answerlock_v0.3.60_mobile.apk) | 手机 / 平板安装包（Android，arm64 + v7a，15.0 MB） |
-| [answerlock_v0.3.60_tv.apk](./answerlock_v0.3.60_tv.apk) | 智能电视安装包（Android TV，全架构，22.4 MB） |
-| [答题锁_v0.3.60_使用说明书.html](./答题锁_v0.3.60_使用说明书.html) | 家长使用说明书（可离线打开，可 Ctrl+P 导出 PDF） |
+| [answerlock_v0.3.61_mobile.apk](./answerlock_v0.3.61_mobile.apk) | 手机 / 平板安装包（Android，arm64 + v7a，15.0 MB） |
+| [answerlock_v0.3.61_tv.apk](./answerlock_v0.3.61_tv.apk) | 智能电视安装包（Android TV，全架构，22.4 MB） |
+| [答题锁_v0.3.61_使用说明书.html](./答题锁_v0.3.61_使用说明书.html) | 家长使用说明书（可离线打开，可 Ctrl+P 导出 PDF） |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | 一页版产品说明（给家长看，简单易懂，适合转发） |
 
-- 当前版本：**v0.3.60**（2026-11-22）
-- 手机版 SHA256：`DF6702678B66A8F5DE068F6DE1103DE47E66D915A0A7B7B54C03C74E9A4ADDC7`
-- 电视版 SHA256：`4171AE33E94BC7F968BBD602303F0E1DA52DD06F593CCF00BB83A884F5949DA3`
+- 当前版本：**v0.3.61**（2026-11-23）
+- 手机版 SHA256：`5F3C1B59D3339C0ACC9D9A992ADF6AD29D8BC93CC1150594FBB8ED5629FFD9BD`
+- 电视版 SHA256：`6B5D4E70ECACB575C9DE48BB4630B0E73EF20731DDF5E0E3531E3D2FC3896E79`
 
 ## 三步开始
 
