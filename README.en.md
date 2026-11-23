@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.3.61_mobile.apk](./answerlock_v0.3.61_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
-| [answerlock_v0.3.61_tv.apk](./answerlock_v0.3.61_tv.apk) | Android TV build (all ABIs, 22.4 MB) |
-| [答题锁_v0.3.61_使用说明书.html](./答题锁_v0.3.61_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.3.62_mobile.apk](./answerlock_v0.3.62_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
+| [answerlock_v0.3.62_tv.apk](./answerlock_v0.3.62_tv.apk) | Android TV build (all ABIs, 22.5 MB) |
+| [答题锁_v0.3.62_使用说明书.html](./答题锁_v0.3.62_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.3.61** (2026-11-23, same-day respin: fixed the built-in version constant not being synced, which caused a wrong version display and an endless update prompt)
-- Phone SHA256: `7874F623AD798E62BBE254C209DB01FAF074F4002B563B9294D16EADAE78E6F4`
-- TV SHA256: `7DDB9DC32462BBCA0DACA43B7C5C83DB5B453D6930C1E6315463F058A9EE0AF2`
+- Current version: **v0.3.62** (2026-11-23: “体验版” renamed to “免费版” (Free edition), “标准版” renamed to “专业版” (Pro edition); security-question setup moved to Change Password; TV gains change-PIN & security-question entries)
+- Phone SHA256: `809074DF47F835955A418713769DD28CBE6F3CC7F4AB067F42C25C5969A4EAE0`
+- TV SHA256: `364B0739FF295E8E3188622D5CC2A73BF20399C7CE3A5C28BE56716AE6209858`
 
 ## Quick start
 
@@ -31,7 +31,7 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 - **Time counts only when actually used (v0.3.59)** — play time is settled by actual usage: minutes not played before a parent takeover are refunded to the daily quota, and the in-app child-mode preview no longer consumes the child's quota
 - **Game-friendly interception** — if the timer runs out mid-game, the app waits until the match ends (settlement / exit / background) before showing questions, avoiding hard interruptions; capped at 30 min on phones, 15 min on TVs (Standard edition)
 - **Four anti-uninstall defenses** — device admin + accessibility guard + foreground service + auto-restart recovery
-- **Self-service PIN recovery** — set a security question at setup and reset the parent PIN yourself if forgotten, no support ticket needed
+- **Self-service PIN recovery** — set a security question from "Change Password" in parent settings (gently prompted when changing the PIN, skippable), then reset the parent PIN yourself if forgotten, no support ticket needed
 - **Phone / tablet / TV** — tablets get an automatic large-screen layout; the TV build works fully by remote control and adapts to different TV brands and screen sizes
 - **Younger-kid friendly (v0.3.56)** — pinyin annotations on questions/answers for grades 1–2; a “read the question / read the answer” button on the quiz page
 - **Rich question bank** — 50+ questions per difficulty for primary Chinese and English
@@ -39,7 +39,7 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 
 ## Version & support
 
-- The free trial edition covers the core flow (up to 2 restricted apps, 10 blocks per day); Standard is ¥99/year, ¥249 for 3 years or ¥399 lifetime (one-time purchase) — to upgrade, contact support on WeChat: **hiyuanmi2015**
+- The free edition covers the core flow (up to 2 restricted apps, 10 blocks per day); Pro is ¥99/year, ¥249 for 3 years or ¥399 lifetime (one-time purchase) — to upgrade, contact support on WeChat: **hiyuanmi2015**
 - Upgrading the app — download the new APK and install over the previous version; rules and records are kept on the device.
 
 ---
