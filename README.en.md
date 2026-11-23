@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.3.62_mobile.apk](./answerlock_v0.3.62_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
-| [answerlock_v0.3.62_tv.apk](./answerlock_v0.3.62_tv.apk) | Android TV build (all ABIs, 22.5 MB) |
-| [答题锁_v0.3.62_使用说明书.html](./答题锁_v0.3.62_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.3.63_mobile.apk](./answerlock_v0.3.63_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
+| [answerlock_v0.3.63_tv.apk](./answerlock_v0.3.63_tv.apk) | Android TV build (all ABIs, 22.5 MB) |
+| [答题锁_v0.3.63_使用说明书.html](./答题锁_v0.3.63_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.3.62** (2026-11-23: “体验版” renamed to “免费版” (Free edition), “标准版” renamed to “专业版” (Pro edition); security-question setup moved to Change Password; TV gains change-PIN & security-question entries)
-- Phone SHA256: `809074DF47F835955A418713769DD28CBE6F3CC7F4AB067F42C25C5969A4EAE0`
-- TV SHA256: `364B0739FF295E8E3188622D5CC2A73BF20399C7CE3A5C28BE56716AE6209858`
+- Current version: **v0.3.63** (2026-11-23: fixed black screen when opening overlay-permission settings on Huawei/Honor; added A/B/C/D badges to quiz options on phone; “限制应用” now defaults to “Start quiz immediately” mode)
+- Phone SHA256: `233D5567073208E05BD7B4E14C870D5A1F7BEFD6C8A2248A557071F2A0A6E15D`
+- TV SHA256: `8B9302BF390DBE4DB7E3E58071183C5B27FA6E56496B4DCBB5B88678368EFA83`
 
 ## Quick start
 
