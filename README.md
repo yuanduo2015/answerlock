@@ -4,7 +4,11 @@
 
 [English](./README.en.md) | 简体中文
 
-## 下载
+## 下载地址
+有三个备用站
+https://www.pgyer.com/datisuo-android
+https://gitee.com/yuanduo2015/answerlock
+https://github.com/yuanduo2015/answerlock
 
 | 文件 | 说明 |
 | --- | --- |
