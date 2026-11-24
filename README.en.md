@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.3.63_mobile.apk](./answerlock_v0.3.63_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.0 MB) |
-| [answerlock_v0.3.63_tv.apk](./answerlock_v0.3.63_tv.apk) | Android TV build (all ABIs, 22.5 MB) |
-| [答题锁_v0.3.63_使用说明书.html](./答题锁_v0.3.63_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.3.64_mobile.apk](./answerlock_v0.3.64_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.2 MB) |
+| [answerlock_v0.3.64_tv.apk](./answerlock_v0.3.64_tv.apk) | Android TV build (all ABIs, 22.6 MB) |
+| [答题锁_v0.3.64_使用说明书.html](./答题锁_v0.3.64_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.3.63** (2026-11-23: fixed black screen when opening overlay-permission settings on Huawei/Honor; added A/B/C/D badges to quiz options on phone; “限制应用” now defaults to “Start quiz immediately” mode)
-- Phone SHA256: `233D5567073208E05BD7B4E14C870D5A1F7BEFD6C8A2248A557071F2A0A6E15D`
-- TV SHA256: `8B9302BF390DBE4DB7E3E58071183C5B27FA6E56496B4DCBB5B88678368EFA83`
+- Current version: **v0.3.64** (2026-11-24: added Pro question-bank expansion — a new toggle in the rules page expands every bank of the selected grades/subjects to 100+ questions, 7,915 in total; locked for the free edition, turning it off restores the base bank)
+- Phone SHA256: `9167101436B6F0BAD0DB2C490988DCEA8F598F5722266F5B52340FD31B1900D0`
+- TV SHA256: `FD6208C29C881A7CCA333054E95B430136568A14F28F000E4B8D1FEF4A2B2F8D`
 
 ## Quick start
 
@@ -34,7 +34,7 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 - **Self-service PIN recovery** — set a security question from "Change Password" in parent settings (gently prompted when changing the PIN, skippable), then reset the parent PIN yourself if forgotten, no support ticket needed
 - **Phone / tablet / TV** — tablets get an automatic large-screen layout; the TV build works fully by remote control and adapts to different TV brands and screen sizes
 - **Younger-kid friendly (v0.3.56)** — pinyin annotations on questions/answers for grades 1–2; a “read the question / read the answer” button on the quiz page
-- **Rich question bank** — 50+ questions per difficulty for primary Chinese and English
+- **Rich question bank (v0.3.64)** — all 66 banks now hold 100+ questions each; Pro enables "question bank expansion" by default for 7,915 questions in total
 - **Data stays on the device** — no sign-up, no cloud collection; uninstalling the app removes all local data
 
 ## Version & support
