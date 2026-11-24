@@ -8,14 +8,15 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.3.64_mobile.apk](./answerlock_v0.3.64_mobile.apk) | Phone / tablet build (Android, arm64 + v7a, 15.2 MB) |
-| [answerlock_v0.3.64_tv.apk](./answerlock_v0.3.64_tv.apk) | Android TV build (all ABIs, 22.6 MB) |
-| [答题锁_v0.3.64_使用说明书.html](./答题锁_v0.3.64_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.3.65_mobile.apk](./answerlock_v0.3.65_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 22.8 MB) |
+| [answerlock_v0.3.65_tv.apk](./answerlock_v0.3.65_tv.apk) | Android TV build (all ABIs, 22.8 MB) |
+| [答题锁_v0.3.65_使用说明书.html](./答题锁_v0.3.65_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.3.64** (2026-11-24: added Pro question-bank expansion — a new toggle in the rules page expands every bank of the selected grades/subjects to 100+ questions, 7,915 in total; locked for the free edition, turning it off restores the base bank)
-- Phone SHA256: `9167101436B6F0BAD0DB2C490988DCEA8F598F5722266F5B52340FD31B1900D0`
-- TV SHA256: `FD6208C29C881A7CCA333054E95B430136568A14F28F000E4B8D1FEF4A2B2F8D`
+- Current version: **v0.3.65** (2026-11-25: switched to our own official signing key — upgrading from older builds requires uninstalling once first; Pro question bank expanded to 150+ questions per bank, 10,000 in total; the parent-home "Today" card now bundles answer records, the mistake notebook and the update entry)
+- Phone SHA256: `DF87085F9B332BDB49EAF877C1688384E357C1394987BFF66C5A5C56AC5E701C`
+- TV SHA256: `E5D2148C8CEF48B4CBE33368348BB8504793F822E296702D6D1671015C62DFB0`
+- ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); all later versions upgrade over the top as usual.
 
 ## Quick start
 
@@ -34,13 +35,13 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 - **Self-service PIN recovery** — set a security question from "Change Password" in parent settings (gently prompted when changing the PIN, skippable), then reset the parent PIN yourself if forgotten, no support ticket needed
 - **Phone / tablet / TV** — tablets get an automatic large-screen layout; the TV build works fully by remote control and adapts to different TV brands and screen sizes
 - **Younger-kid friendly (v0.3.56)** — pinyin annotations on questions/answers for grades 1–2; a “read the question / read the answer” button on the quiz page
-- **Rich question bank (v0.3.64)** — all 66 banks now hold 100+ questions each; Pro enables "question bank expansion" by default for 7,915 questions in total
+- **Rich question bank (v0.3.65)** — all 66 banks now hold 150+ questions each; Pro enables "question bank expansion" by default for 10,000 questions in total
 - **Data stays on the device** — no sign-up, no cloud collection; uninstalling the app removes all local data
 
 ## Version & support
 
 - The free edition covers the core flow (up to 2 restricted apps, 10 blocks per day); Pro is ¥99/year, ¥249 for 3 years or ¥399 lifetime (one-time purchase) — to upgrade, contact support on WeChat: **hiyuanmi2015**
-- Upgrading the app — download the new APK and install over the previous version; rules and records are kept on the device.
+- Upgrading the app — v0.3.65+ uses the official signing key: when upgrading from older builds, uninstall first and install fresh; later versions can be installed over the previous one with rules and records kept on the device.
 
 ---
 
