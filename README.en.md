@@ -1,4 +1,4 @@
-# AnswerLock 答题解锁
+﻿# AnswerLock 答题解锁
 
 An answer-to-unlock parental control app for Android — kids solve study questions to earn screen time. Turn "how long can I play" into "learn first, then play for a while."
 
@@ -14,8 +14,8 @@ English | [简体中文](./README.md)
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
 - Current version: **v0.4.0** (2026-11-25: renamed to 答题解锁; new free "Safety Classroom" — 200 anti-fraud questions across 5 school stages, fully free with in-quiz mixing, dedicated practice and family self-test; fixed the old TV updater opening the phone download page)
-- Phone SHA256: `AB5B770740368BE2D33E848F1C711F07EA70A51088C981DDDF7F5F93CE7A7C90`
-- TV SHA256: `550DC4D34AE8FAA9FCD9219BF955B582A1E806143A41E870783753BAE6F61CC7`
+- Phone SHA256: `B5DB9FDD8B113FDB301B96DC4EF4454148C94EF89498A2ED5633E06B24F0DCF9`
+- TV SHA256: `1C588E8FAD1878496CE16232435632275344421F79A0A6E45A3DA2C62AC720C7`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
