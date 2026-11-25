@@ -14,8 +14,8 @@ English | [简体中文](./README.md)
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
 - Current version: **v0.4.0** (2026-11-25: renamed to 答题解锁; new free "Safety Classroom" — 200 anti-fraud questions across 5 school stages, fully free with in-quiz mixing, dedicated practice and family self-test; fixed the old TV updater opening the phone download page)
-- Phone SHA256: `9ED0E7AC086FAEA26E2599B1DB577086D95CB4222721D9105B594F28D2390639`
-- TV SHA256: `0873A7B672D9D53C6A2E4414038BF2A4765B45FB7B28A4829DF22FEB0BA20FC5`
+- Phone SHA256: `1EB32E089E2A4B411217A8EEDB1A9724A256776C8E1A00766DA30CCFB5EF23CB`
+- TV SHA256: `72B06B5286AD3BD733C9C92B8A054F2D3966D0B7FAF68435E9321A0A8265EC6C`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
