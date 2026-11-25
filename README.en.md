@@ -8,15 +8,15 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.3.65_mobile.apk](./answerlock_v0.3.65_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 22.8 MB) |
-| [answerlock_v0.3.65_tv.apk](./answerlock_v0.3.65_tv.apk) | Android TV build (all ABIs, 22.8 MB) |
-| [答题锁_v0.3.65_使用说明书.html](./答题锁_v0.3.65_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.3.66_mobile.apk](./answerlock_v0.3.66_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 23.6 MB) |
+| [answerlock_v0.3.66_tv.apk](./answerlock_v0.3.66_tv.apk) | Android TV build (all ABIs, 23.6 MB) |
+| [答题锁_v0.3.66_使用说明书.html](./答题锁_v0.3.66_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.3.65** (2026-11-25: switched to our own official signing key — upgrading from older builds requires uninstalling once first; Pro question bank expanded to 150+ questions per bank, 10,000 in total; the parent-home "Today" card now bundles answer records, the mistake notebook and the update entry)
-- Phone SHA256: `DF87085F9B332BDB49EAF877C1688384E357C1394987BFF66C5A5C56AC5E701C`
-- TV SHA256: `E5D2148C8CEF48B4CBE33368348BB8504793F822E296702D6D1671015C62DFB0`
-- ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); all later versions upgrade over the top as usual.
+- Current version: **v0.3.66** (2026-11-25: fixed the TV in-app updater opening the phone download page; thoroughly fixed the option-length tell in quiz questions — around 1,500 questions got re-balanced distractors so correct answers no longer stand out visually)
+- Phone SHA256: `3006EB224886D2AEEA8794F55D2DD7E16484598E1BBABC9F301575951AF86DDD`
+- TV SHA256: `9EB35787810BB8902D247004965E73D26E067BA8CB62DA05388F8A9CB857312C`
+- ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
 
@@ -35,7 +35,7 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 - **Self-service PIN recovery** — set a security question from "Change Password" in parent settings (gently prompted when changing the PIN, skippable), then reset the parent PIN yourself if forgotten, no support ticket needed
 - **Phone / tablet / TV** — tablets get an automatic large-screen layout; the TV build works fully by remote control and adapts to different TV brands and screen sizes
 - **Younger-kid friendly (v0.3.56)** — pinyin annotations on questions/answers for grades 1–2; a “read the question / read the answer” button on the quiz page
-- **Rich question bank (v0.3.65)** — all 66 banks now hold 150+ questions each; Pro enables "question bank expansion" by default for 10,000 questions in total
+- **Rich question bank (v0.3.66)** — all 66 banks now hold 150+ questions each; Pro enables "question bank expansion" by default for 10,000 questions in total; distractors are length-calibrated so correct answers no longer stand out visually
 - **Data stays on the device** — no sign-up, no cloud collection; uninstalling the app removes all local data
 
 ## Version & support
