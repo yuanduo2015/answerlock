@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>答题解锁 v0.4.0 使用说明书</title>
+<title>答题解锁 v0.4.1 使用说明书</title>
 <style>
 /* ========== 基础与调色板（青绿教育色） ========== */
 :root{
@@ -907,7 +907,7 @@ p.paragraph.no-indent{text-indent:0;}
   <table class="table">
     <thead><tr><th style="width:16%;">项目</th><th style="width:34%;">可选范围</th><th style="width:50%;">说明</th></tr></thead>
     <tbody>
-      <tr><td class="em">年级</td><td>小学 1–6 年级、初中 1–3 年级、高中 1–3 年级，共 12 个</td><td>决定抽题的学段。选错年级，题目会过难或过易。换年级后，科目列表会自动切换为该年级实际开设的科目。</td></tr>
+      <tr><td class="em">年级</td><td>小学 1–6 年级；初一 / 初二 / 初三；高一 / 高二 / 高三；成人；老年，共 14 个档</td><td>决定抽题的学段。选错年级，题目会过难或过易。换年级后，科目列表会自动切换为该年级实际开设的科目；成人 / 老年档适合全家安全自测与成人使用。</td></tr>
       <tr><td class="em">科目</td><td>随年级变化：小学语文 / 数学 / 英语；初中增加物理、化学、生物、历史、地理、道德与法治；高中九科齐全；<strong>「安全」公益科目全年级可选</strong>（首装默认已选）</td><td>可多选。只选一科适合补短板；多选则混合抽题。勾「安全」约每 5 题混 1 道公益安全题，<strong>只勾「安全」即专练</strong>。</td></tr>
       <tr><td class="em">难度</td><td>基础 / 中等 / 挑战</td><td>可多选。基础偏课本例题，中等偏课后作业，挑战偏拓展。不选等于全部。</td></tr>
     </tbody>
@@ -1541,6 +1541,16 @@ p.paragraph.no-indent{text-indent:0;}
     <h1 class="heading">最新版本更新内容（v0.3.33 – v0.4.0）</h1>
 
   <p class="paragraph">v0.3.33 至 v0.3.60 的升级围绕「多设备支持」「更懂孩子的人性化体验」展开：新增电视版与平板适配、忘记密码自助找回、游戏不打断、答错加题可设置，并全面优化了界面文案与按键体验；v0.3.59 把每日额度改成“按实际用时结算”，玩了多久扣多久，没玩完的时长自动退；v0.3.60 修复了跳设置返回时的黑屏观感，并把「开启后直接答题」也计入每日拦截。核心的答题解锁与防卸载逻辑没有变。已经会用的家长，可以只看下面这张表。</p>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 朗读 8 声音直选 + 只读题干 + 年级档位（v0.4.1）</td><td>朗读声音从“四档音色 + 英美口音”合并为<strong>八种声音直选</strong>：美式男声（Guy / Christopher）、美式女声（Jenny / Michelle）、英式男声（Ryan / Thomas）、英式女声（Sonia / Libby）——口音随声音自带，不用再单独选英语口音；<strong>答题声音</strong>（答对夸奖/答错鼓励的语气）从规则页移到学习内容页，四选一并支持试听；<strong>自动朗读改为只读题干</strong>（不读选项、不读答案，孩子先自己想；答题页「朗读答案」手动按钮仍可用）；年级档位：初中改名<strong>初一 / 初二 / 初三</strong>、高中改名<strong>高一 / 高二 / 高三</strong>，新增<strong>成人、老年</strong>两个档位（全家安全自测与成人使用）；朗读引擎固定用系统默认语音，离线可用、不联网不上传。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag green">新增</span> 朗读八种声音（v0.4.1）</td><td>学习内容 → 语音朗读 → 朗读声音，分<strong>美式 / 英式</strong>两组各四个：<strong>美式</strong> Guy·男、Christopher·男、Jenny·女、Michelle·女；<strong>英式</strong> Ryan·男、Thomas·男、Sonia·女、Libby·女。选谁用谁的音调与口音，底部试听按钮中英文各读一句，点了马上能听到效果。</td></tr>
+            <tr><td class="em"><span class="tag blue">调整</span> 答题声音移位（v0.4.1）</td><td>孩子答对时语音夸奖、答错时语音鼓励的语气（<strong>可爱 / 标准 / 沉稳 / 活泼</strong>）从规则页移到<strong>学习内容页</strong>，与朗读声音放在一起；新增<strong>试听</strong>按钮，答对、答错各读一句，选完即听。</td></tr>
+            <tr><td class="em"><span class="tag blue">调整</span> 自动朗读只读题干（v0.4.1）</td><td>自动朗读开启后<strong>每题只读题干</strong>，不再读选项、不读答案——减少提示泄漏，孩子先自己看选项作答；想听答案可点答题页的「朗读答案」按钮（手动）。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 成人 / 老年档位（v0.4.1）</td><td>学习内容的年级列表新增<strong>成人、老年</strong>两档（共 14 档），全家自测、成人使用更方便；孩子首装向导仍只列小学/初中/高中。</td></tr>
+        </tbody>
+  </table>
 
   <table class="table">
     <thead><tr><td class="em"><span class="tag green">重要</span> 品牌更名 + 安全公益课堂（v0.4.0）</td><td>App 正式更名为<strong>「答题解锁」</strong>（原名「答题锁」，桌面图标名会同步更新，<strong>正常覆盖安装即可</strong>，答题、记录与激活状态全部保留）。同版上线<strong>公益「安全公益课堂」</strong>：<strong>400 道安全题全部免费</strong>——反诈 200 题，消防、交通安全、防溺水、用电居家各 50 题，覆盖小学到老年 5 个学段；「安全」直接放在学习内容的科目里（首次安装默认已选）；<strong>安全公益题库扩容到 3000+ 题、13 个品类</strong>（新增防拐骗、校园欺凌、食品安全、网络安全、急救自救、自然灾害、身体保护、毒品防范）；<strong>每题自动语音朗读</strong>（默认开，只读题目不读答案，声音四档可选、语速 0.5～2 倍速六档、支持试听，英语口音美式/英式）；答对/答错有语音反馈（可爱/标准/沉稳/活泼四种声音可选）；悬浮窗徽章透明度可调 0%～100%；家长密码输错 5 次锁定时长阶梯升级（1→2→5→10 分钟封顶）；图标文字更新为白色；修复华为/荣耀手机首次安装点悬浮窗授权黑屏的问题；并修复电视老版本点「立即更新」跳到手机下载页的问题。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>

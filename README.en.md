@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.4.0_mobile.apk](./answerlock_v0.4.0_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 23.8 MB) |
-| [answerlock_v0.4.0_tv.apk](./answerlock_v0.4.0_tv.apk) | Android TV build (all ABIs, 23.8 MB) |
-| [答题解锁_v0.4.0_使用说明书.html](./答题解锁_v0.4.0_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.4.1_mobile.apk](./answerlock_v0.4.1_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.0 MB) |
+| [answerlock_v0.4.1_tv.apk](./answerlock_v0.4.1_tv.apk) | Android TV build (all ABIs, 24.0 MB) |
+| [答题解锁_v0.4.1_使用说明书.html](./答题解锁_v0.4.1_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.4.0** (2026-11-25: renamed to 答题解锁; new free "Safety Classroom" — 200 anti-fraud questions across 5 school stages, fully free with in-quiz mixing, dedicated practice and family self-test; fixed the old TV updater opening the phone download page)
-- Phone SHA256: `1EB32E089E2A4B411217A8EEDB1A9724A256776C8E1A00766DA30CCFB5EF23CB`
-- TV SHA256: `72B06B5286AD3BD733C9C92B8A054F2D3966D0B7FAF68435E9321A0A8265EC6C`
+- Current version: **v0.4.1** (2026-11-26: read-aloud now offers **8 voices to pick directly** — US male Guy/Christopher, US female Jenny/Michelle, UK male Ryan/Thomas, UK female Sonia/Libby, accent follows the voice; reward voice (praise/encourage tone) moved from Rules to Study Content with a preview button; auto read-aloud now reads **the question stem only** (no options, no answer); grade labels renamed to 初一/初二/初三 and 高一/高二/高三, plus new **Adult / Senior** grade tiers; TTS engine fixed to the system default, fully offline. Earlier v0.4.0: renamed to 答题解锁, free Safety Classroom with 3040 questions across 13 categories, per-question read-aloud, badge transparency, lockout ladder, HUAWEI/HONOR first-install black-screen fix)
+- Phone SHA256: `9752F8C6288CC094A2814A59C242E2A91AB81D542E9695B5D8C4D10AFDE37CCD`
+- TV SHA256: `9797C9D2F88FE57128FD9C7B438EB332B5E4836C655C93E2865F47BF3D102681`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
