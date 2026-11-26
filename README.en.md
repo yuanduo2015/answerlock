@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.4.3_mobile.apk](./answerlock_v0.4.3_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.7 MB) |
-| [answerlock_v0.4.3_tv.apk](./answerlock_v0.4.3_tv.apk) | Android TV build (all ABIs, 24.7 MB) |
-| [答题解锁_v0.4.3_使用说明书.html](./答题解锁_v0.4.3_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.4.4_mobile.apk](./answerlock_v0.4.4_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.6 MB) |
+| [answerlock_v0.4.4_tv.apk](./answerlock_v0.4.4_tv.apk) | Android TV build (all ABIs, 24.6 MB) |
+| [答题解锁_v0.4.4_使用说明书.html](./答题解锁_v0.4.4_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.4.3** (2026-11-27: the Study Content page **drops the 4-style reward voice** and shows **“correct answer sound” and “wrong answer sound”** instead — 4 effects each, each with its own preview button; the login-page **“开始答题” button is now red** and jumps straight into the first question in child mode. Earlier v0.4.2: answers read directly, answer sound effects, adult/senior default Safety subject. v0.4.1: 8 read-aloud voices. v0.4.0: free Safety Classroom with 3040 questions across 13 categories)
-- Phone SHA256: `0DE543CB5DF1478C737B74DCCB80D606C9EBBBA68E014AC270A90F94821EFC77`
-- TV SHA256: `2D7928B83152B479975B75F571CE341053A3B2E120D23F3D9D2685459BFE179E`
+- Current version: **v0.4.4** (2026-11-27: **Safety bank compliance pass** — removed 284 questions containing sensitive content (drugs, self-harm, sexual/body, gambling, extreme violence and other high-risk wording), trimming the bank from 3040 to **2756 questions**; all 13 categories kept, still free. Earlier v0.4.3: correct/wrong answer sound pickers, red start-quiz button. v0.4.2: answers read directly, answer sound effects. v0.4.1: 8 read-aloud voices)
+- Phone SHA256: `E4EEE76B05DA40B0E3E00FECFD3BB7EE17EC35C5ACAD7FDF3A889646C0F78B99`
+- TV SHA256: `608639766C9C0ACBA49671EA7787FF190D5C16A96E0601150C40F6AF47B9583E`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
@@ -29,7 +29,7 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 ## Highlights
 
 - **Answer to unlock** — answer the required number of questions to earn a play session; wrong answers add extra questions (configurable 0–5) and go to a mistake notebook for review
-- **Safety Classroom (v0.4.0, free)** — 3040 safety questions across 5 stages (primary / junior / senior / adult / senior citizens), all free: blended into kids' quizzes (~1 in 5), a dedicated "Safety" difficulty card, and a family self-test that never consumes the child's quota; content written from public safety materials by the Ministry of Public Security and related authorities
+- **Safety Classroom (v0.4.0, free)** — the safety bank spans 5 stages (primary / junior / senior / adult / senior citizens) with **2756 questions** (284 sensitive-content questions removed as of v0.4.4), all free: blended into kids' quizzes (~1 in 5), a dedicated "Safety" difficulty card, and a family self-test that never consumes the child's quota; content written from public safety materials by the Ministry of Public Security and related authorities
 - **Time counts only when actually used (v0.3.59)** — play time is settled by actual usage: minutes not played before a parent takeover are refunded to the daily quota, and the in-app child-mode preview no longer consumes the child's quota
 - **Game-friendly interception** — if the timer runs out mid-game, the app waits until the match ends (settlement / exit / background) before showing questions, avoiding hard interruptions; capped at 30 min on phones, 15 min on TVs (Standard edition)
 - **Four anti-uninstall defenses** — device admin + accessibility guard + foreground service + auto-restart recovery
