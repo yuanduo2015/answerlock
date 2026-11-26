@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>答题解锁 v0.4.1 使用说明书</title>
+<title>答题解锁 v0.4.2 使用说明书</title>
 <style>
 /* ========== 基础与调色板（青绿教育色） ========== */
 :root{
@@ -457,7 +457,7 @@ p.paragraph.no-indent{text-indent:0;}
     <h1>答题解锁</h1>
     <div class="cover-sub">使用说明书</div>
     <p class="cover-desc">家长管控 · 答题解锁 · 防卸载守护<br>把“玩多久”变成“先学会，再玩一会儿”。</p>
-    <div class="cover-meta"><span>适用设备：Android 手机 / 平板 / 电视</span><span>文档版本：2.4</span><span>更新日期：2026-11-20</span></div>
+    <div class="cover-meta"><span>适用设备：Android 手机 / 平板 / 电视</span><span>文档版本：2.5</span><span>更新日期：2026-11-27</span></div>
     <div class="cover-highlights">
       <span>5 分钟完成首次设置</span>
       <span>四道防卸载防线</span>
@@ -1538,9 +1538,19 @@ p.paragraph.no-indent{text-indent:0;}
 <!-- ==================== 15 最新版本更新 ==================== -->
 <section class="section" id="update">
   <div class="kicker">15 / 这一版有什么不同</div>
-    <h1 class="heading">最新版本更新内容（v0.3.33 – v0.4.0）</h1>
+    <h1 class="heading">最新版本更新内容（v0.3.33 – v0.4.2）</h1>
 
   <p class="paragraph">v0.3.33 至 v0.3.60 的升级围绕「多设备支持」「更懂孩子的人性化体验」展开：新增电视版与平板适配、忘记密码自助找回、游戏不打断、答错加题可设置，并全面优化了界面文案与按键体验；v0.3.59 把每日额度改成“按实际用时结算”，玩了多久扣多久，没玩完的时长自动退；v0.3.60 修复了跳设置返回时的黑屏观感，并把「开启后直接答题」也计入每日拦截。核心的答题解锁与防卸载逻辑没有变。已经会用的家长，可以只看下面这张表。</p>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 直接读答案 + 答题音效 + 家长「开始答题」（v0.4.2）</td><td>答对/答错后<strong>直接读出正确答案原文</strong>，不再念「正确答案是……」，听着像老师在旁边随口点一句；新增<strong>答题提示音效</strong>，答对、答错各 4 款可选（共 8 款），学习内容页点选即试听；<strong>家长模式登录页</strong>增加<strong>「开始答题」</strong>按钮，点一下按钮消失并直接进入第一题；<strong>成人 / 老年档默认科目固定为「安全」</strong>，切到这两档不再出现「无科目」空白。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag blue">调整</span> 直接读答案（v0.4.2）</td><td>答完题后语音反馈里<strong>直接读正确答案原文</strong>（如「hospital」），不再说「正确答案是 hospital」；答题页手动「朗读答案」按钮也去掉了前缀。孩子听到的就是答案本身，更清爽。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 答题提示音效（v0.4.2）</td><td>学习内容 → <strong>答题提示音</strong>：答对 4 款、答错 4 款共 <strong>8 款音效</strong>可选，点一下就试听；与语音反馈同时生效，答对「叮」一声更直观。默认答对 c05、答错 w09，可随时更换。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 家长模式「开始答题」（v0.4.2）</td><td>家长自己输密码测题时，登录页直接显示<strong>绿色「开始答题」按钮</strong>，点一下按钮消失并跳到第一道题，不用再绕回首页找入口；孩子端不受影响，不显示这个按钮。</td></tr>
+            <tr><td class="em"><span class="tag blue">优化</span> 成人 / 老年默认安全科目（v0.4.2）</td><td>学习内容切到<strong>成人、老年</strong>档时，科目自动固定勾选<strong>「安全」</strong>，不会再出现「无科目」提示；想练别的科目仍可手动勾选。</td></tr>
+        </tbody>
+  </table>
 
   <table class="table">
     <thead><tr><td class="em"><span class="tag green">重要</span> 朗读 8 声音直选 + 只读题干 + 年级档位（v0.4.1）</td><td>朗读声音从“四档音色 + 英美口音”合并为<strong>八种声音直选</strong>：美式男声（Guy / Christopher）、美式女声（Jenny / Michelle）、英式男声（Ryan / Thomas）、英式女声（Sonia / Libby）——口音随声音自带，不用再单独选英语口音；<strong>答题声音</strong>（答对夸奖/答错鼓励的语气）从规则页移到学习内容页，四选一并支持试听；<strong>自动朗读改为只读题干</strong>（不读选项、不读答案，孩子先自己想；答题页「朗读答案」手动按钮仍可用）；年级档位：初中改名<strong>初一 / 初二 / 初三</strong>、高中改名<strong>高一 / 高二 / 高三</strong>，新增<strong>成人、老年</strong>两个档位（全家安全自测与成人使用）；朗读引擎固定用系统默认语音，离线可用、不联网不上传。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
@@ -1695,8 +1705,8 @@ p.paragraph.no-indent{text-indent:0;}
 <section class="title end_page">
   <div class="end-mark">答题解锁 · ANSWER LOCK</div>
   <h1>先学会，再玩一会儿</h1>
-  <p>答题解锁 v0.4.0 · 家长使用说明书<br>本手册基于 v0.4.0 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
-  <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-20</p>
+  <p>答题解锁 v0.4.2 · 家长使用说明书<br>本手册基于 v0.4.2 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
+  <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-27</p>
 </section>
 
 </div>
