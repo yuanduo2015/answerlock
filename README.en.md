@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.4.2_mobile.apk](./answerlock_v0.4.2_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.7 MB) |
-| [answerlock_v0.4.2_tv.apk](./answerlock_v0.4.2_tv.apk) | Android TV build (all ABIs, 24.7 MB) |
-| [答题解锁_v0.4.2_使用说明书.html](./答题解锁_v0.4.2_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.4.3_mobile.apk](./answerlock_v0.4.3_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.7 MB) |
+| [answerlock_v0.4.3_tv.apk](./answerlock_v0.4.3_tv.apk) | Android TV build (all ABIs, 24.7 MB) |
+| [答题解锁_v0.4.3_使用说明书.html](./答题解锁_v0.4.3_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.4.2** (2026-11-27: after answering, the app now **reads the correct answer itself** instead of saying “the correct answer is …”; new **answer sound effects** — 4 right and 4 wrong sounds (8 total), tap to preview; the parent-mode login screen gained a **“开始答题” (Start) button** that jumps straight into the first question; **Adult / Senior grades now default to the Safety subject** so the list is never empty. Earlier v0.4.1: 8 read-aloud voices picked directly, auto read-aloud question-stem only, 14 grade tiers. v0.4.0: renamed to 答题解锁, free Safety Classroom with 3040 questions across 13 categories, per-question read-aloud, badge transparency, lockout ladder, HUAWEI/HONOR first-install black-screen fix)
-- Phone SHA256: `3E0419D1E1D8B7B4A26E2A88891A31157E5EE6EC359E3AF5D801FB83FB193584`
-- TV SHA256: `4724585590F378752653CB83C78B58893C25510439A4535046892605ED6B8E49`
+- Current version: **v0.4.3** (2026-11-27: the Study Content page **drops the 4-style reward voice** and shows **“correct answer sound” and “wrong answer sound”** instead — 4 effects each, each with its own preview button; the login-page **“开始答题” button is now red** and jumps straight into the first question in child mode. Earlier v0.4.2: answers read directly, answer sound effects, adult/senior default Safety subject. v0.4.1: 8 read-aloud voices. v0.4.0: free Safety Classroom with 3040 questions across 13 categories)
+- Phone SHA256: `0DE543CB5DF1478C737B74DCCB80D606C9EBBBA68E014AC270A90F94821EFC77`
+- TV SHA256: `2D7928B83152B479975B75F571CE341053A3B2E120D23F3D9D2685459BFE179E`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
