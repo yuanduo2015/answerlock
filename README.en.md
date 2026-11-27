@@ -1,4 +1,4 @@
-﻿# AnswerLock 答题解锁
+# AnswerLock 答题解锁
 
 An answer-to-unlock parental control app for Android — kids solve study questions to earn screen time. Turn "how long can I play" into "learn first, then play for a while."
 
@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.4.5_mobile.apk](./answerlock_v0.4.5_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.6 MB) |
-| [answerlock_v0.4.5_tv.apk](./answerlock_v0.4.5_tv.apk) | Android TV build (all ABIs, 24.6 MB) |
+| [answerlock_v0.4.6_mobile.apk](./answerlock_v0.4.6_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.6 MB) |
+| [answerlock_v0.4.6_tv.apk](./answerlock_v0.4.6_tv.apk) | Android TV build (all ABIs, 24.6 MB) |
 | [答题解锁_v0.4.5_使用说明书.html](./答题解锁_v0.4.5_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.4.5** (2026-11-27: **fixed answer sounds silent on real devices** — preview and quiz answer sounds now play; **fixed the status-bar badge staying green** after tapping Start Quiz in parent mode — it now turns red child mode immediately and returns green on finish/takeover. Earlier v0.4.4: safety bank compliance pass, 2756 questions. v0.4.3: correct/wrong sound pickers, red Start button. v0.4.2: answers read directly)
-- Phone SHA256: `89599C9DD697583BAC88AACEB8596EAC23FB1233DFBA5EDB8B73AFE2E7A53F45`
-- TV SHA256: `3F3E1C18F473871CE4C27D32FD06CD82EE81317AD3587C603A0AC363EC8A012F`
+- Current version: **v0.4.6** (2026-11-27: new **“answer feedback mode” 3-way choice** — sound + voice (default) / sound only / voice only, resolving the doubled feedback; setting lives in Study Content. Earlier v0.4.5: fixed silent answer sounds on devices + badge now turns red in child quiz session. v0.4.4: safety bank compliance pass, 2756 questions. v0.4.3: correct/wrong sound pickers, red Start button)
+- Phone SHA256: `7CFCD86ECC918DAC9004D3A0B4F2D2FB94D9C3CF1FFDD60ED20B5454EFA88414`
+- TV SHA256: `4520E39597E5AC54A1B946E668FB2F8623888DC82BC26401B7BB0CCF20FD5323`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
