@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.5.2_mobile.apk](./answerlock_v0.5.2_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, ~24.8 MB) |
-| [answerlock_v0.5.2_tv.apk](./answerlock_v0.5.2_tv.apk) | Android TV build (all ABIs, ~24.8 MB) |
-| [答题解锁_v0.5.2_使用说明书.html](./答题解锁_v0.5.2_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.6.0_mobile.apk](./answerlock_v0.6.0_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, ~24.8 MB) |
+| [answerlock_v0.6.0_tv.apk](./answerlock_v0.6.0_tv.apk) | Android TV build (all ABIs, ~24.8 MB) |
+| [答题解锁_v0.6.0_使用说明书.html](./答题解锁_v0.6.0_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.5.2** (2026-11-27: typing practice now shows **IPA**, and covers **primary through college** (PEP oral words / junior / senior / CET-4/6; adult & elder excluded); fixed "no questions" for adult/elder, college wrongly offering Chinese/Math, senior politics not matching, and junior-2 biology having no bank; difficulty auto-relaxes with a settings shortcut when empty. v0.5.1 fixed narrow-phone clipping)
-- Phone SHA256: `695C2418A329CDB587DB69BC87EBFF6A48DDE11BCD40964B559113522E25E530`
-- TV SHA256: `C2994F1C708976B0E535ECB1699D1A654A266E2ED2AC7F7C3DAA8AF236D5DFCF`
+- Current version: **v0.6.0** (2026-11-27: refreshed UI "Fresh Green" — gradient overview header with today's usage & pending typing reward pills, large-radius cards with soft shadows, card-style answer options, light-gray background across the parent side; TV keeps its dark large-screen style. v0.5.2 added typing IPA + four books from primary to college and fixed four question-bank mismatches)
+- Phone SHA256: `54037F58A46758E0668FAB7DDAA19A063620F361B6F46EB3C9FBDB33EA0CF743`
+- TV SHA256: `19BC3414D27E46D5013EBF5CB1BB8F0EB86636F4350770B08F6FBBE6FF4D3075`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
