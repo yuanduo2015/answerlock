@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.4.6_mobile.apk](./answerlock_v0.4.6_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.6 MB) |
-| [answerlock_v0.4.6_tv.apk](./answerlock_v0.4.6_tv.apk) | Android TV build (all ABIs, 24.6 MB) |
-| [答题解锁_v0.4.5_使用说明书.html](./答题解锁_v0.4.5_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.5.0_mobile.apk](./answerlock_v0.5.0_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.6 MB) |
+| [answerlock_v0.5.0_tv.apk](./answerlock_v0.5.0_tv.apk) | Android TV build (all ABIs, 24.6 MB) |
+| [答题解锁_v0.5.0_使用说明书.html](./答题解锁_v0.5.0_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.4.6** (2026-11-27: new **“answer feedback mode” 3-way choice** — sound + voice (default) / sound only / voice only, resolving the doubled feedback; setting lives in Study Content. Earlier v0.4.5: fixed silent answer sounds on devices + badge now turns red in child quiz session. v0.4.4: safety bank compliance pass, 2756 questions. v0.4.3: correct/wrong sound pickers, red Start button)
-- Phone SHA256: `7CFCD86ECC918DAC9004D3A0B4F2D2FB94D9C3CF1FFDD60ED20B5454EFA88414`
-- TV SHA256: `4520E39597E5AC54A1B946E668FB2F8623888DC82BC26401B7BB0CCF20FD5323`
+- Current version: **v0.5.0** (2026-11-27: new **English typing practice** — card-based levels, study the word first then type it from memory with the built-in QWERTY keyboard and per-letter feedback; 8 words per level, stars on completion, wrong words can be retried immediately. New **college grades (freshman–senior) with CET-4/6 English banks**, 300 questions per grade. Passing a level with 2+ stars for the first time on a given day earns 5 extra minutes of unlocked time. Earlier v0.4.6: answer feedback mode 3-way choice)
+- Phone SHA256: `BF72C2FA849D6F00CA0D2FCDC60EBAD83576DD3160C38AA64D67DDEB73E1F8BA`
+- TV SHA256: `EF5E48440208645EEE659438A2F770E27DC5291692F92A7CFA12392E1E17DE06`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
@@ -28,6 +28,8 @@ Note: the app interface and manual are currently Chinese-only; the steps above c
 
 ## Highlights
 
+- **English typing practice (v0.5.0, phone / tablet)** — card-based word typing: each level has 8 words, shown briefly (3 s by default, adjustable 1.5/3/5/8 s) then hidden, and the child types them on the built-in on-screen keyboard with per-letter validation (correct letters turn green, mistakes flash red); includes “listen” and “peek” helpers. Pass to earn stars, retry wrong words immediately afterwards; first 2+ star pass of a level each day grants 5 extra minutes of unlocked time
+- **College grades & CET-4/6 banks (v0.5.0)** — pick freshman to senior; subjects are Chinese / Math / English / Safety, with a 300-question CET English bank per grade (freshman selections never draw senior questions)
 - **Answer to unlock** — answer the required number of questions to earn a play session; wrong answers add extra questions (configurable 0–5) and go to a mistake notebook for review
 - **Safety Classroom (v0.4.0, free)** — the safety bank spans 5 stages (primary / junior / senior / adult / senior citizens) with **2756 questions** (284 sensitive-content questions removed as of v0.4.4), all free: blended into kids' quizzes (~1 in 5), a dedicated "Safety" difficulty card, and a family self-test that never consumes the child's quota; content written from public safety materials by the Ministry of Public Security and related authorities
 - **Time counts only when actually used (v0.3.59)** — play time is settled by actual usage: minutes not played before a parent takeover are refunded to the daily quota, and the in-app child-mode preview no longer consumes the child's quota
