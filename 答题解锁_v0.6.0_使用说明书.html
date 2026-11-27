@@ -1,11 +1,1839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>答题解锁 v0.6.0 使用说明书</title>
+<style>
+/* ========== 基础与调色板（青绿教育色） ========== */
+:root{
+  --c-primary:#0e6b57;
+  --c-accent:#14b8a6;
+  --c-bg:#f1faf7;
+  --c-bg-deep:#e2f4ee;
+  --c-bg-a:#f5fcfa;
+  --c-bg-b:#c3e8db;
+  --c-card:#ffffff;
+  --c-text:#134e4a;
+  --c-text-2:#5b8a85;
+  --c-border:#cdeee7;
+  --c-primary-light:#bfe3d8;
+  --c-accent-light:#e0f7f3;
+  --c-primary-dark:#0a5041;
+  --c-accent-dark:#0d9488;
+  --c-accent-bg:#e6faf6;
+  --c-gradient-start:#0f766e;
+  --c-gradient-mid:#14b8a6;
+  --c-gradient-end:#2dd4bf;
+  --c-success:#16a34a;
+  --c-warning:#d97706;
+  --green:#43A047;
+  --red:#E53935;
+  --amber:#B26A00;
+  --amber-bg:#FFF4E5;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{min-height:100%;scroll-behavior:smooth;}
+body{
+  position:relative;
+  font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI","Noto Sans SC",sans-serif;
+  color:var(--c-text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  max-width:980px;
+  margin:0 auto;
+  padding:34px 22px 64px;
+  background:linear-gradient(160deg,var(--c-bg-a) 0%,var(--c-card) 44%,var(--c-bg-b) 100%);
+  min-height:100vh;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 45% 35% at 16% 6%,rgba(255,255,255,.65) 0%,transparent 62%),
+    radial-gradient(ellipse 42% 32% at 88% 92%,rgba(255,255,255,.5) 0%,transparent 58%);
+}
+body.mode-explainer{overflow-x:hidden;}
+body>.doc-wrap{position:relative;z-index:1;}
+a{color:var(--c-primary-dark);text-decoration:none;}
+a:hover{text-decoration:underline;}
+strong{font-weight:700;color:var(--c-primary-dark);}
+
+/* ========== 封面 ========== */
+.title{position:relative;}
+.cover{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.18fr .82fr;
+  gap:26px;
+  align-items:center;
+  min-height:520px;
+  padding:46px 44px;
+  border-radius:22px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--c-gradient-start) 0%,var(--c-gradient-mid) 52%,var(--c-gradient-end) 100%);
+  box-shadow:0 10px 30px rgba(10,80,65,.22);
+  margin-bottom:20px;
+}
+.cover::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 85%,rgba(255,255,255,.14) 0%,transparent 62%),
+    radial-gradient(ellipse 50% 38% at 88% 12%,rgba(255,255,255,.1) 0%,transparent 56%);
+  pointer-events:none;
+}
+.cover::after{
+  content:'';
+  position:absolute;
+  right:-70px;bottom:-90px;
+  width:320px;height:320px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  box-shadow:0 0 0 34px rgba(255,255,255,.05),0 0 0 68px rgba(255,255,255,.035);
+  pointer-events:none;
+}
+.cover>*{position:relative;z-index:1;}
+.cover-top{display:flex;align-items:center;justify-content:flex-start;gap:16px;margin-bottom:20px;}
+.brand-mark{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.2);
+  border:1px solid rgba(255,255,255,.42);
+  font-weight:800;font-size:22px;letter-spacing:1px;
+}
+.version-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 13px;border-radius:999px;
+  background:rgba(0,0,0,.18);
+  border:1px solid rgba(255,255,255,.36);
+  color:#fff;font-size:12px;font-weight:800;letter-spacing:.5px;
+  text-shadow:0 1px 2px rgba(0,0,0,.18);
+}
+.version-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:#B9F6CA;box-shadow:0 0 0 3px rgba(185,246,202,.18);}
+.cover h1{
+  font-size:62px;line-height:1.05;letter-spacing:8px;font-weight:800;
+  margin-bottom:6px;text-shadow:0 4px 18px rgba(0,0,0,.12);
+}
+.cover-sub{font-size:23px;letter-spacing:5px;font-weight:600;color:rgba(255,255,255,.95);margin-bottom:16px;}
+.cover-desc{font-size:15px;line-height:1.9;color:rgba(255,255,255,.88);margin-bottom:24px;}
+.cover-meta{display:flex;flex-wrap:wrap;gap:3px 14px;font-size:11.5px;line-height:1.9;color:rgba(255,255,255,.9);margin-bottom:28px;}
+.cover-meta span{white-space:nowrap;}
+.cover-highlights{display:flex;flex-wrap:wrap;gap:8px;}
+.cover-highlights span{
+  padding:5px 10px;border-radius:999px;
+  background:#0a3f36;
+  border:1px solid rgba(255,255,255,.38);
+  font-size:11px;font-weight:700;color:#fff;
+}
+.cover-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:430px;}
+.phone{
+  width:236px;border-radius:34px;background:#0e1a17;padding:9px;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 22px 45px rgba(0,0,0,.28);
+}
+.phone-screen{border-radius:26px;overflow:hidden;background:#fff;min-height:410px;position:relative;}
+.phone-notch{
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:74px;height:6px;border-radius:999px;background:rgba(0,0,0,.35);z-index:3;
+}
+.phone-status{display:flex;justify-content:space-between;align-items:center;padding:12px 12px 6px;font-size:9px;color:#6b7b76;}
+.cover-screen{background:#2C2C2A;color:#fff;min-height:410px;display:flex;flex-direction:column;}
+.cover-screen .mini-lock{
+  width:44px;height:44px;margin:34px auto 14px;border:2px solid #FAC775;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;color:#FAC775;font-size:18px;transform:rotate(45deg);
+}
+.cover-screen .mini-lock span{transform:rotate(-45deg);}
+.cover-screen .mini-title{text-align:center;font-size:12.5px;color:#fff;padding:0 12px;line-height:1.6;}
+.cover-screen .mini-sub{text-align:center;font-size:9.5px;color:#B4B2A9;padding:8px 8px 0;line-height:1.9;}
+.cover-screen .mini-btn{
+  margin:22px auto 0;padding:7px 24px;border-radius:999px;
+  background:#FAC775;color:#3a2b10;font-size:10.5px;font-weight:700;
+}
+.cover-float{
+  position:absolute;left:-6px;bottom:54px;
+  padding:7px 11px;border-radius:10px;font-size:10px;font-weight:700;
+  background:#fff;color:var(--c-primary-dark);
+  box-shadow:0 8px 20px rgba(0,0,0,.14);
+  border-left:4px solid var(--green);
+}
+.cover-float.red{border-left-color:var(--red);left:auto;right:-4px;top:62px;bottom:auto;}
+
+/* ========== 目录 ========== */
+.toc{
+  background:rgba(255,255,255,.88);
+  border:1px solid var(--c-border);
+  border-radius:16px;
+  padding:18px 20px;
+  margin:0 0 34px;
+  box-shadow:0 4px 18px rgba(14,107,87,.06);
+}
+.toc-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;}
+.toc-head strong{font-size:15px;color:var(--c-primary-dark);}
+.toc-head span{font-size:11px;color:#3f6b63;}
+.toc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 14px;}
+.toc-grid a{display:block;padding:5px 0;font-size:13px;color:#174f46;border-bottom:1px dashed transparent;}
+.toc-grid a:hover{border-bottom-color:var(--c-primary-light);text-decoration:none;color:var(--c-primary-dark);}
+
+/* ========== 版式与标题 ========== */
+.section{margin:42px 0 0;scroll-margin-top:16px;}
+.kicker{font-size:11px;letter-spacing:2.5px;font-weight:800;color:#0a6b5e;margin-bottom:6px;text-transform:uppercase;}
+h1.heading{
+  font-size:28px;line-height:1.3;color:var(--c-primary-dark);
+  margin:0 0 16px;font-weight:800;
+  border-left:5px solid var(--c-accent);padding-left:14px;
+}
+h2.heading{
+  font-size:20px;line-height:1.4;color:var(--c-primary-dark);
+  margin:26px 0 12px;padding-bottom:7px;font-weight:700;
+  border-bottom:1.5px solid var(--c-primary-light);
+}
+h3.sub{font-size:16px;color:var(--c-primary-dark);margin:16px 0 8px;font-weight:700;}
+p.paragraph{font-size:14.5px;line-height:1.9;color:var(--c-text);margin:0 0 13px;text-align:justify;}
+p.paragraph.no-indent{text-indent:0;}
+.list{margin:0 0 14px;padding-left:22px;font-size:14.5px;line-height:1.9;}
+.list li{margin-bottom:5px;}
+.list li::marker{color:var(--c-accent-dark);}
+.small{font-size:12px;color:var(--c-text-2);line-height:1.7;}
+.center{text-align:center;}
+
+/* ========== 卡片与网格 ========== */
+.card{
+  background:var(--c-card);
+  border:1px solid var(--c-border);
+  border-radius:14px;
+  padding:18px 20px;
+  box-shadow:0 3px 14px rgba(14,107,87,.055);
+}
+.grid{display:grid;gap:13px;}
+.grid[data-cols="2"]{grid-template-columns:repeat(2,1fr);}
+.grid[data-cols="3"]{grid-template-columns:repeat(3,1fr);}
+.grid[data-cols="4"]{grid-template-columns:repeat(4,1fr);}
+.card h3{font-size:15.5px;color:var(--c-primary-dark);margin:0 0 8px;font-weight:700;}
+.card p{font-size:13.5px;line-height:1.8;color:var(--c-text);margin:0 0 6px;text-wrap:pretty;line-break:strict;}
+.card p:last-child{margin-bottom:0;}
+.card .icon{
+  width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:var(--c-accent-bg);color:var(--c-primary-dark);font-weight:800;font-size:15px;margin-bottom:8px;
+}
+.card.green-card{border-top:4px solid var(--green);}
+.card.red-card{border-top:4px solid var(--red);}
+.card.amber-card{border-top:4px solid var(--amber);}
+
+/* ========== 标签 ========== */
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10.5px;font-weight:700;line-height:1.6;white-space:nowrap;}
+.tag.green{background:#E8F5E9;color:#2E7D32;}
+.tag.red{background:#FDECEA;color:#C62828;}
+.tag.amber{background:#FFE7C2;color:#7A3B00;}
+.tag.blue{background:#E3F2FD;color:#1565C0;}
+.tag.gray{background:#F1F3F4;color:#5F6368;}
+
+/* ========== 提示框 ========== */
+.callout{
+  margin:0 0 15px;padding:14px 18px;border-radius:10px;text-wrap:pretty;line-break:strict;
+  border-left:4px solid var(--c-accent);
+  background:var(--c-accent-light);
+  font-size:13.5px;line-height:1.85;color:var(--c-text);
+}
+.callout strong{color:var(--c-primary-dark);}
+.callout.tip{background:#E8F5E9;border-left-color:#2E7D32;}
+.callout.warn{background:var(--amber-bg);border-left-color:var(--amber);}
+.callout.danger{background:#FDECEA;border-left-color:#C62828;}
+.callout.info{background:#E3F2FD;border-left-color:#1565C0;}
+.callout p{margin:0;}
+.callout .callout-title{font-weight:800;font-size:12px;letter-spacing:.8px;margin-bottom:2px;color:inherit;}
+
+/* ========== 数字指标 ========== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:0 0 16px;}
+.stat{
+  background:linear-gradient(180deg,#fff 0%,var(--c-bg) 100%);
+  border:1px solid var(--c-border);border-radius:13px;
+  padding:14px 12px;text-align:center;
+}
+.stat .num{font-size:25px;font-weight:800;color:var(--c-primary-dark);line-height:1.2;}
+.stat .label{font-size:10.5px;color:var(--c-text-2);margin-top:2px;}
+.stat .note{font-size:10px;color:var(--c-accent-dark);margin-top:2px;}
+
+/* ========== 步骤时间线 ========== */
+.timeline{list-style:none;padding:0;margin:0;counter-reset:step;}
+.timeline>li{
+  position:relative;padding:0 0 20px 48px;margin-left:16px;
+  border-left:2px solid var(--c-primary-light);
+}
+.timeline>li:last-child{border-left-color:transparent;padding-bottom:0;}
+.timeline>li::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;left:-18px;top:0;
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--c-primary);color:#fff;font-weight:800;font-size:14px;
+  box-shadow:0 0 0 4px var(--c-bg);
+}
+.timeline>li .step-title{font-size:15.5px;font-weight:800;color:var(--c-primary-dark);margin:3px 0 5px;}
+.timeline>li .step-body{font-size:13.5px;line-height:1.85;color:var(--c-text);text-wrap:pretty;line-break:strict;}
+.timeline>li .step-body p{margin:0 0 5px;}
+.timeline>li .step-body ul{margin:4px 0 0;padding-left:18px;font-size:13px;line-height:1.8;}
+.timeline>li .step-body ul li{margin-bottom:2px;}
+
+/* ========== 表格 ========== */
+.table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  font-size:12.8px;line-height:1.7;background:#fff;
+  border:1px solid var(--c-border);border-radius:12px;
+  overflow:hidden;margin:0 0 15px;table-layout:fixed;
+}
+.table th{
+  background:linear-gradient(90deg,var(--c-primary-light),var(--c-accent-light));
+  color:var(--c-primary-dark);font-weight:800;
+  text-align:left;padding:9px 10px;border-bottom:1px solid var(--c-border);
+  font-size:12px;
+}
+.table td{padding:10px 12px;border-bottom:1px solid #e7f4ef;vertical-align:top;word-break:break-word;line-height:1.85;text-wrap:pretty;line-break:strict;}
+.table tr:last-child td{border-bottom:none;}
+.table tbody tr:nth-child(even) td{background:#f8fdfb;}
+.table .em{color:var(--c-primary-dark);font-weight:700;}
+
+/* ========== 模式卡 ========== */
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0 0 15px;}
+.mode-card{
+  border-radius:14px;padding:16px 18px;background:#fff;
+  border:1px solid var(--c-border);
+}
+.mode-card.green{border-top:5px solid var(--green);background:linear-gradient(180deg,#F4FBF6 0%,#fff 55%);}
+.mode-card.red{border-top:5px solid var(--red);background:linear-gradient(180deg,#FFF6F5 0%,#fff 55%);}
+.mode-card .mode-name{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15.5px;margin-bottom:5px;}
+.mode-card.green .mode-name{color:#2E7D32;}
+.mode-card.red .mode-name{color:#C62828;}
+.mode-card .dot{width:10px;height:10px;border-radius:50%;}
+.mode-card.green .dot{background:var(--green);box-shadow:0 0 0 4px rgba(67,160,71,.14);}
+.mode-card.red .dot{background:var(--red);box-shadow:0 0 0 4px rgba(229,57,53,.12);}
+.mode-card p{font-size:13px;line-height:1.8;margin:0;color:var(--c-text);}
+
+/* ========== 手机示意 ========== */
+.phone-demo{width:226px;height:366px;border-radius:30px;background:#0e1a17;padding:8px;box-shadow:0 14px 28px rgba(0,0,0,.18);}
+.phone-demo .screen{border-radius:23px;overflow:hidden;background:#fff;height:350px;position:relative;}
+.phone-demo .status{display:flex;justify-content:space-between;align-items:center;padding:10px 10px 5px;font-size:8.5px;color:#71807b;}
+.badge-demo{display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:999px;color:#fff;font-size:8px;font-weight:700;}
+.badge-demo.green{background:var(--green);}
+.badge-demo.red{background:var(--red);}
+.lock-demo{background:#2C2C2A;min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 12px;color:#fff;}
+.lock-demo .diamond{width:32px;height:32px;border:2px solid #FAC775;border-radius:7px;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;color:#FAC775;font-size:13px;margin-bottom:14px;}
+.lock-demo .diamond span{transform:rotate(-45deg);}
+.lock-demo .t{font-size:12px;line-height:1.65;text-align:center;}
+.lock-demo .s{font-size:9.5px;color:#B4B2A9;line-height:1.9;text-align:center;margin-top:7px;}
+.lock-demo .b{margin-top:16px;padding:6px 18px;border-radius:999px;background:#FAC775;color:#3a2b10;font-size:9.5px;font-weight:700;}
+.parent-demo{padding:9px;background:#fff;min-height:290px;}
+.parent-demo .appbar{font-size:11px;font-weight:800;color:#134e4a;display:flex;align-items:center;gap:5px;padding-bottom:8px;border-bottom:1px solid #e7f4ef;}
+.parent-demo .appbar .warn{font-size:8px;color:#C62828;font-weight:700;}
+.parent-demo .mini-card{border:1px solid #dbeae4;border-radius:8px;padding:7px 8px;margin-top:7px;background:#fff;}
+.parent-demo .mini-card .h{font-size:8.5px;font-weight:800;color:#0e6b57;display:flex;justify-content:space-between;}
+.parent-demo .mini-card .r{font-size:7.5px;color:#6b7b76;display:flex;justify-content:space-between;margin-top:3px;}
+.parent-demo .green-dot{color:#2E7D32;font-weight:700;}
+.parent-demo .red-dot{color:#C62828;font-weight:700;}
+.parent-demo .cta{margin-top:7px;background:#D93025;color:#fff;text-align:center;border-radius:7px;padding:5px;font-size:8.5px;font-weight:700;}
+.phone-row{display:flex;gap:18px;align-items:stretch;flex-wrap:wrap;margin:0 0 15px;}
+.phone-row .card{min-height:366px;}
+
+/* ========== 流程条 ========== */
+.flow{display:flex;gap:6px;align-items:stretch;flex-wrap:wrap;margin:0 0 15px;}
+.flow-step{
+  display:flex;flex-direction:column;justify-content:flex-start;min-height:92px;
+  flex:1 1 125px;min-width:118px;background:#fff;border:1px solid var(--c-border);
+  border-radius:11px;padding:10px 11px;font-size:11.5px;line-height:1.82;
+  color:var(--c-text);position:relative;text-wrap:pretty;line-break:strict;
+}
+.flow-step strong{display:block;font-size:12.5px;color:var(--c-primary-dark);margin-bottom:2px;}
+.flow-step .n{font-size:9px;font-weight:800;color:#0a6b5e;letter-spacing:1.2px;margin-bottom:3px;}
+.flow-arrow{display:flex;align-items:center;align-self:center;line-height:1;color:#0a6b5e;font-weight:800;font-size:16px;padding:0 1px;}
+
+/* ========== 防线层级 ========== */
+.layers{display:grid;gap:9px;margin:0 0 15px;}
+.layer{
+  display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:flex-start;
+  background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-primary-light);border-radius:12px;padding:12px 14px;
+}
+.layer .ln{
+  width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--c-primary);color:#fff;font-weight:800;font-size:13px;
+}
+.layer .lt{font-size:14px;font-weight:800;color:var(--c-primary-dark);margin-bottom:2px;}
+.layer .ld{font-size:12.5px;line-height:1.75;color:var(--c-text);text-wrap:pretty;line-break:strict;}
+.layer.green-line{border-left:4px solid var(--green);}
+.layer.amber-line{border-left:4px solid var(--amber);}
+.layer.red-line{border-left:4px solid var(--red);}
+
+/* ========== 检查清单 ========== */
+.checklist{list-style:none;padding:0;margin:0 0 15px;display:grid;gap:7px;}
+.checklist li{position:relative;padding:7px 10px 7px 34px;background:#fff;border:1px solid var(--c-border);border-radius:9px;font-size:13px;line-height:1.7;text-wrap:pretty;line-break:strict;}
+.checklist li::before{
+  content:'';position:absolute;left:11px;top:12px;width:13px;height:13px;
+  border:2px solid var(--c-accent);border-radius:4px;background:#fff;
+}
+.checklist li strong{color:var(--c-primary-dark);}
+
+/* ========== FAQ ========== */
+.faq-item{
+  background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-primary-light);
+  border-radius:11px;padding:13px 16px;margin:0 0 9px;
+}
+.faq-item .q{font-size:13.5px;font-weight:800;color:var(--c-primary-dark);margin:0 0 4px;line-height:1.6;}
+.faq-item .a{font-size:13px;line-height:1.85;color:var(--c-text);margin:0;text-wrap:pretty;line-break:strict;}
+.faq-item .a p{margin:0 0 4px;}
+.faq-item .a p:last-child{margin-bottom:0;}
+
+/* ========== 尾页 ========== */
+.end_page{
+  margin-top:38px;padding:46px 26px;text-align:center;
+  background:linear-gradient(135deg,var(--c-primary-light) 0%,var(--c-accent-light) 100%);
+  border-radius:18px;border:1px solid var(--c-border);
+}
+.end_page h1{font-size:26px;color:var(--c-primary-dark);margin:0 0 10px;font-weight:800;letter-spacing:2px;}
+.end_page p{font-size:13.5px;color:var(--c-text-2);margin:0;line-height:1.9;}
+.end_page .end-mark{font-size:11px;letter-spacing:3px;color:var(--c-accent-dark);font-weight:800;margin-bottom:8px;}
+
+/* ========== 响应式 ========== */
+@media screen and (max-width:760px){
+  body{padding:16px 13px 40px;}
+  .cover{grid-template-columns:1fr;padding:30px 22px;min-height:auto;}
+  .cover h1{font-size:46px;letter-spacing:5px;}
+  .cover-sub{font-size:18px;letter-spacing:3px;}
+  .cover-visual{display:none;}
+  .cover-highlights{flex-direction:column;align-items:flex-start;gap:6px;}
+  .toc-grid{grid-template-columns:1fr 1fr;}
+  .grid[data-cols="2"],.grid[data-cols="3"],.grid[data-cols="4"],.mode-grid,.stats{grid-template-columns:1fr;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .table{font-size:11.5px;}
+  .table th,.table td{padding:7px 7px;}
+  h1.heading{font-size:23px;}
+  h2.heading{font-size:18px;}
+  .flow{flex-direction:column;}
+  .flow-arrow{transform:rotate(90deg);justify-content:center;padding:1px 0;}
+  .phone-row{justify-content:center;}
+  .phone-demo{height:auto;}
+  .phone-demo .screen{height:auto;min-height:310px;}
+  .phone-row .card{min-height:auto;}
+}
+
+/* ========== 打印优化 ========== */
+@media print{
+  @page{margin:14mm 12mm;}
+  body{
+    max-width:none;padding:0;margin:0;
+    background:#fff;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+    font-size:11pt;
+  }
+  body::before{display:none;}
+  .cover{min-height:auto;border-radius:0;box-shadow:none;padding:36px 28px;break-after:page;}
+  .cover-visual{display:none;}
+  .toc{display:none;}
+  .section{break-before:auto;}
+  h1.heading{break-before:page;break-after:avoid;}
+  h2.heading{break-after:avoid;}
+  .card,.callout,.table,.faq-item,.layer,.flow-step,.timeline>li{break-inside:avoid;}
+  .table{font-size:9.5pt;}
+  .phone-demo{box-shadow:none;}
+  a{color:var(--c-primary-dark);text-decoration:none;}
+  .end_page{break-before:page;border-radius:0;}
+}
+</style>
+</head>
+<body class="mode-explainer" data-palette="teal">
+<div class="doc-wrap">
+
+<!-- ==================== 封面 ==================== -->
+<section class="title cover">
+  <div>
+    <div class="cover-top">
+      <div class="brand-mark">答</div>
+      <span class="version-pill">v0.4.0 · 家长使用手册</span>
+    </div>
+    <h1>答题解锁</h1>
+    <div class="cover-sub">使用说明书</div>
+    <p class="cover-desc">家长管控 · 答题解锁 · 防卸载守护<br>把“玩多久”变成“先学会，再玩一会儿”。</p>
+    <div class="cover-meta"><span>适用设备：Android 手机 / 平板 / 电视</span><span>文档版本：2.12</span><span>更新日期：2026-11-27</span></div>
+    <div class="cover-highlights">
+      <span>5 分钟完成首次设置</span>
+      <span>四道防卸载防线</span>
+      <span>专业版 99 元/年</span>
+      <span>数据只存本机</span>
+    </div>
+  </div>
+  <div class="cover-visual">
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen cover-screen">
+        <div class="phone-status" style="color:#9aa7a2;">
+          <span>9:41</span>
+          <span class="badge-demo red">孩子 18:32</span>
+        </div>
+        <div class="mini-lock"><span>◇</span></div>
+        <div class="mini-title">今天的学习任务还没完成</div>
+        <div class="mini-sub">答对 2 道题，可以玩 20 分钟<br>答错会加一道题，慢慢来</div>
+        <div class="mini-btn">开始答题</div>
+      </div>
+    </div>
+    <div class="cover-float">家长模式 · 绿灯放行</div>
+    <div class="cover-float red">孩子模式 · 红灯禁行</div>
+  </div>
+</section>
+
+<!-- ==================== 目录 ==================== -->
+<nav class="toc">
+  <div class="toc-head"><strong>目录</strong><span>点击标题跳转 · 建议先读第 2 章再动手设置</span></div>
+  <div class="toc-grid">
+    <a href="#about">01　认识答题解锁</a>
+    <a href="#start">02　五分钟完成首次设置</a>
+    <a href="#home">03　家长设置页地图</a>
+    <a href="#mode">04　家长模式 / 孩子模式</a>
+    <a href="#rules">05　规则设置</a>
+    <a href="#apps">06　限制应用</a>
+    <a href="#study">07　学习内容与题库</a>
+    <a href="#child">08　孩子端完整流程</a>
+    <a href="#records">09　答题记录与错题本</a>
+    <a href="#protect">10　防卸载与防绕过</a>
+    <a href="#brand">11　机型专项设置</a>
+    <a href="#paid">12　免费版与专业版</a>
+    <a href="#faq">13　常见问题</a>
+    <a href="#privacy">14　隐私与数据</a>
+    <a href="#update">15　最新版本更新内容</a>
+    <a href="#checklist">附录 A　日常检查清单</a>
+    <a href="#glossary">附录 B　术语表</a>
+    <a href="#support">支持　获取帮助</a>
+  </div>
+</nav>
+
+<!-- ==================== 01 认识答题解锁 ==================== -->
+<section class="section" id="about">
+  <div class="kicker">01 / 先弄明白它是什么</div>
+  <h1 class="heading">认识答题解锁</h1>
+
+  <p class="paragraph">答题解锁不是“偷看孩子手机”的监控软件，也不是把手机一刀切没收的工具。它只做一件事：<strong>给娱乐类应用加一道“学习闸门”</strong>——孩子打开受限应用时，先完成几道题；答对了，才能获得一段明确时长的娱乐时间。时间用完，再次回到答题。</p>
+
+  <div class="stats">
+    <div class="stat"><div class="num">6,771</div><div class="label">道内置题目</div><div class="note">含大学四六级 1,200 题</div></div>
+    <div class="stat"><div class="num">16</div><div class="label">个年级</div><div class="note">小学到大学</div></div>
+    <div class="stat"><div class="num">4+1</div><div class="label">项系统守护</div><div class="note">核心 4 项 + 自启动</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">学习数据上传</div><div class="note">记录只存本机</div></div>
+  </div>
+
+  <div class="grid" data-cols="3">
+    <div class="card">
+      <div class="icon">1</div>
+      <h3>先答题，再放行</h3>
+      <p>孩子打开抖音、游戏等受限应用时，先看到答题解锁屏。答对家长设定的题数，才能解锁一段时间。</p>
+    </div>
+    <div class="card">
+      <div class="icon">2</div>
+      <h3>时间看得见</h3>
+      <p>单次时长、每日上限都由家长设定；到点弹回锁屏，今日额度用完当天不再解锁。</p>
+    </div>
+    <div class="card">
+      <div class="icon">3</div>
+      <h3>不容易被绕过</h3>
+      <p>设备管理、无障碍、悬浮窗、电池优化、自启动共同组成防卸载与防绕过体系；系统设置默认对孩子关闭。</p>
+    </div>
+  </div>
+
+  <h2 class="heading">三个核心概念</h2>
+  <table class="table">
+    <thead><tr><th style="width:18%;">概念</th><th style="width:41%;">是什么意思</th><th style="width:41%;">家长要记住什么</th></tr></thead>
+    <tbody>
+      <tr><td class="em">家长模式</td><td>家长输入 6 位密码后进入的状态。此时<strong>不拦截</strong>，方便家长改规则、加应用、看记录。</td><td>看到状态栏<strong>绿色“家长”</strong>徽章 = 当前无拦截。改完设置要记得点“开始答题”。</td></tr>
+      <tr><td class="em">孩子模式</td><td>家长点“开始答题”后交还手机的状态。此时受限应用会被拦截，需要答题解锁。</td><td>看到状态栏<strong>红色“孩子”</strong>徽章 = 正在拦截。徽章上会显示本轮剩余时间倒计时。</td></tr>
+      <tr><td class="em">答题解锁</td><td>孩子答对规定题数后，获得一段娱乐时长；答错会加题，连错多道本次结束。</td><td>题数、单次时长、每日上限、错题冷却都在“规则设置”里调整。</td></tr>
+    </tbody>
+  </table>
+
+  <aside class="callout warn">
+    <div class="callout-title">使用边界</div>
+    <p>答题解锁是<strong>家长履行监护职责的辅助工具</strong>，不能替代沟通与陪伴。不同手机厂商的省电策略、权限管控差异较大，拦截可能出现延迟或个别机型受限；请以本机实际体验为准，并把“规则事先和孩子说清楚”放在第一位。</p>
+  </aside>
+
+  <aside class="callout info">
+    <div class="callout-title">它不会做什么</div>
+    <p>不保存聊天内容、不录音、不拍照截屏、不记录孩子具体玩了什么。无障碍服务用于识别当前前台应用；为拦截卸载、强行停止等危险操作，会在本机读取当前窗口的文字特征做关键词判断，不保存、不上传。答题记录、错题本、规则配置只保存在本机。</p>
+  </aside>
+</section>
+
+<!-- ==================== 02 首次设置 ==================== -->
+<section class="section" id="start">
+  <div class="kicker">02 / 第一次使用</div>
+  <h1 class="heading">五分钟完成首次设置</h1>
+
+  <p class="paragraph">第一次打开答题解锁，会依次经过<strong>设置密码 → 学习档案 → 系统权限 → 家长设置</strong>四段流程。请按顺序完成，不要跳步；系统权限少开一项，拦截就可能失效。</p>
+
+  <ol class="timeline">
+    <li>
+      <div class="step-title">安装并打开答题解锁</div>
+      <div class="step-body">
+        <p>把 APK 安装到孩子日常使用的 Android 手机上，点击桌面“答题解锁”图标打开。首次安装需允许“安装未知来源应用”，安装完成后可关闭该权限。</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-title">设置 6 位数字密码</div>
+      <div class="step-body">
+        <p>先勾选《家长管控免责声明》，再输入 6 位数字密码，并<strong>再输入一次确认</strong>。两次不一致会提示重来。</p>
+        <ul>
+          <li>密码是家长模式的唯一入口，<strong>不要告诉孩子</strong>。</li>
+          <li>不要用孩子生日、手机号后六位等容易猜到的数字。</li>
+          <li>连续输错 5 次会锁定 10 分钟，页面显示倒计时，到期自动恢复输入。</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="step-title">填写孩子学习档案</div>
+      <div class="step-body">
+        <p>依次选择<strong>年级 → 科目 → 难度</strong>。新版已默认预选<strong>小学三年级、全部科目、全部难度</strong>并全部勾选点中，直接点“下一步”即可；孩子年级不同再自行调整，科目列表会随年级自动变化。</p>
+        <ul>
+          <li>默认预选小学三年级；孩子年级不同时先改年级，再核对科目。</li>
+          <li>只想补某一科，就只勾那一科；想混合练习，就多勾几科。</li>
+          <li>难度默认全选；建议初期只用“基础 + 中等”，正确率稳定后再加入“挑战”。</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="step-title">开启系统守护权限</div>
+      <div class="step-body">
+        <p>按页面顺序逐项点“去开启”。每一项都会弹出<strong>分机型分步指导</strong>：照着步骤做，点“去设置”直达系统页；回到答题解锁后会自动检测，变绿才算成功。</p>
+        <ul>
+          <li>4 项核心权限：设备管理（防卸载）、无障碍服务、悬浮窗、忽略电池优化。</li>
+          <li>华为 / 荣耀 / vivo / iQOO 会额外多出“自启动保护”一项；此项系统无法自动检测，按步骤开启后点“我已开启”，可用“测试一下”验证能否后台弹回。</li>
+          <li>全部变绿后，底部“开始使用”按钮才会亮起。</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="step-title">选择限制应用，设定规则</div>
+      <div class="step-body">
+        <p>进入家长设置后，先在“限制应用”里确认要管住哪些 App（默认预选抖音），再到“规则设置”里确认答对题数、单次时长、每日上限。</p>
+        <ul>
+          <li>先只限制 1–2 个最容易沉迷的应用，不要一口气全选。</li>
+          <li>微信、电话、学习类 App 不建议限制。</li>
+          <li>改完规则点“保存”，返回首页会立即显示新数值。</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="step-title">点“开始答题”，回到桌面</div>
+      <div class="step-body">
+        <p>在家长设置页底部点红色<strong>“开始答题”</strong>。弹窗会提示“10 秒后自动返回手机桌面”，也可以点“立即返回”。</p>
+        <ul>
+          <li><strong>必须回到桌面，拦截才会生效。</strong>停留在答题解锁内不算交给孩子使用。</li>
+          <li>回到桌面后，状态栏应出现红色“孩子”徽章，并显示剩余时间。</li>
+          <li>此时打开受限应用，应出现“这个应用现在不能玩哦，先完成答题解锁吧～”的遮罩。</li>
+        </ul>
+      </div>
+    </li>
+  </ol>
+
+  <h2 class="heading">首次设置检查表</h2>
+  <ul class="checklist">
+    <li><strong>密码</strong>：6 位数字，已两次确认，孩子不知道。</li>
+    <li><strong>年级</strong>：与孩子当前在读年级一致（默认已预选小学三年级）。</li>
+    <li><strong>科目</strong>：至少选 1 科；不确定就全选。</li>
+    <li><strong>防护状态</strong>：无障碍、设备管理、悬浮窗、电池优化全部绿色；华为 / 荣耀 / vivo / iQOO 的自启动也已确认。</li>
+    <li><strong>限制应用</strong>：至少 1 个，且是孩子真正会沉迷的娱乐 App。</li>
+    <li><strong>规则</strong>：答对题数、单次时长、每日上限符合家庭约定。</li>
+    <li><strong>开始答题</strong>：已点击，且已回到桌面。</li>
+    <li><strong>实测</strong>：打开受限应用能看到答题遮罩；打开系统设置会被拦截。</li>
+  </ul>
+
+  <aside class="callout tip">
+    <div class="callout-title">第一次实测怎么做</div>
+    <p>家长先自己走一遍孩子端流程：打开受限应用 → 点“去答题解锁” → 答对规定题数 → 看到“答对 N 题，解锁 M 分钟” → 点“返回，开始玩吧”。确认整条链路顺畅后，再把手机交给孩子。</p>
+  </aside>
+</section>
+
+<!-- ==================== 03 家长设置页地图 ==================== -->
+<section class="section" id="home">
+  <div class="kicker">03 / 家长的主控制台</div>
+  <h1 class="heading">家长设置页地图</h1>
+
+  <p class="paragraph">输入密码后进入“家长设置”。页面从上到下依次是防护状态、今日概况、规则、学习内容、主题风格、自定义题目、答题记录与版本升级、免费版信息。每个卡片标题旁都有<strong>“?”</strong>图标，点一下就能看这项功能的通俗说明。</p>
+
+  <table class="table">
+    <thead><tr><th style="width:22%;">页面卡片</th><th style="width:40%;">显示什么</th><th style="width:38%;">点它做什么</th></tr></thead>
+    <tbody>
+      <tr><td class="em">防护状态</td><td>无障碍、设备管理（防卸载）、悬浮窗、电池优化；华为 / 荣耀 / vivo / iQOO 另加“自启动”。<br>任一项未开，页面顶部会出现黄色提示条。</td><td>点某一项 → 弹出分机型分步指导 → “去设置”直达系统页；回来后自动检测。点“重新检测”可手动刷新。</td></tr>
+      <tr><td class="em">今日概况</td><td>孩子今天已答题数 / 答对数、已解锁分钟数、当日剩余额度。</td><td>只读统计。答题数/答对数来自本机答题记录；已解锁/剩余额度来自每日额度。清空答题记录只会清零答题数，不会退还已用额度。</td></tr>
+      <tr><td class="em">规则</td><td>答对几题、单次多少分钟、每日上限多少分钟。</td><td>点卡片进入“规则设置”，改完保存。</td></tr>
+      <tr><td class="em">学习内容</td><td>当前年级、科目、难度。</td><td>点卡片进入“学习内容”，修改抽题范围。</td></tr>
+      <tr><td class="em">主题风格</td><td>四套配色：清风蓝、暖阳橙、青竹绿、墨岩黑；字号小 / 中 / 大。</td><td>点色点切换主题；点字号切换全 App 文字大小。</td></tr>
+      <tr><td class="em">自定义上传题目（易错题）</td><td>题目格式说明、用途。</td><td>点卡片进入录入页；<strong>专业版功能</strong>，免费版会提示升级。</td></tr>
+      <tr><td class="em">答题记录与版本升级</td><td>会话次数、记录保留规则；下方“版本升级”一行。</td><td>点卡片看按日记录；点“版本升级”检查更新，有新版本时该行亮红点。</td></tr>
+      <tr><td class="em">免费版</td><td>已设置应用数、今日已用拦截次数（红色粗体）与上限提示；<strong>仅免费版显示</strong>。</td><td>点“升级专业版”查看价格与年限并激活；点“邀请家长得专业版”参加邀请奖励。</td></tr>
+      <tr><td class="em">专业版</td><td>可限制应用与每日拦截均不限；按年授权显示<strong>到期倒计时（精确到小时）</strong>，永久授权显示“永久有效”。<strong>仅已付费显示</strong>。</td><td>点“续费”打开升级弹窗继续购买。</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid" data-cols="3">
+    <div class="card">
+      <h3>底部主开关</h3>
+      <p>绿色<strong>“结束答题（答题进行中）”</strong>表示正在拦截；红色<strong>“开始答题”</strong>表示当前未拦截。结束答题会二次确认。</p>
+    </div>
+    <div class="card">
+      <h3>三个快捷按钮</h3>
+      <p><strong>孩子端预览</strong>：走一遍真实锁屏 / 答题 / 解锁流程；<strong>限制应用</strong>：增删受限 App；<strong>修改密码</strong>：验证旧密码后改新密码。</p>
+    </div>
+    <div class="card">
+      <h3>页面底部空白条</h3>
+      <p>浅灰色的“答题解锁”空白条是<strong>预留广告位</strong>，当前不展示任何广告、不联网、不可点击，不影响使用。</p>
+    </div>
+  </div>
+
+  <aside class="callout tip">
+    <div class="callout-title">“?”图标怎么用</div>
+    <p>每个卡片都配了说明。家长不确定某项是干什么的，先点“?”，看完再操作；说明里会写清楚“这项影响什么、建议怎么设”。</p>
+  </aside>
+
+  <aside class="callout warn">
+    <div class="callout-title">家长外出授权窗口</div>
+    <p>系统设置默认对孩子锁定。家长要在系统设置里开权限时，请从“防护状态”卡片底部点<strong>“临时进入系统设置（10 分钟）”</strong>，确认后系统会放行 10 分钟，到时自动恢复拦截。不要让孩子单独进入设置页。</p>
+  </aside>
+</section>
+
+<!-- ==================== 04 模式与徽章 ==================== -->
+<section class="section" id="mode">
+  <div class="kicker">04 / 一眼看懂现在拦不拦</div>
+  <h1 class="heading">家长模式 / 孩子模式</h1>
+
+  <p class="paragraph">答题解锁用“红绿灯”表达当前状态：<strong>绿色 = 家长模式 = 绿灯放行，无拦截；红色 = 孩子模式 = 红灯禁行，正在拦截。</strong>状态栏徽章、密码页顶部胶囊、家长设置标题红字，三处颜色始终一致。</p>
+
+  <div class="mode-grid">
+    <div class="mode-card green">
+      <div class="mode-name"><span class="dot"></span>家长模式（绿色）</div>
+      <p>输入正确密码后自动进入。此时所有拦截停止，方便家长配置规则、查看记录、修改密码。<br><strong>状态栏显示绿色“家长”徽章。</strong></p>
+    </div>
+    <div class="mode-card red">
+      <div class="mode-name"><span class="dot"></span>孩子模式（红色）</div>
+      <p>家长点“开始答题”并返回桌面后进入。受限应用会被拦截，孩子需答题解锁。<br><strong>状态栏显示红色“孩子”徽章，并带本轮剩余时间倒计时。</strong></p>
+    </div>
+  </div>
+
+  <div class="phone-row">
+    <div class="phone-demo">
+      <div class="screen parent-demo">
+        <div class="status"><span>9:41</span><span class="badge-demo green">家长</span></div>
+        <div class="appbar">家长设置 <span class="warn">↑ 家长模式下无拦截</span></div>
+        <div class="mini-card"><div class="h"><span>防护状态</span><span class="green-dot">全部已开启</span></div><div class="r"><span>无障碍服务</span><span class="green-dot">已开启</span></div><div class="r"><span>设备管理（防卸载）</span><span class="green-dot">已开启</span></div></div>
+        <div class="mini-card"><div class="h"><span>今日概况</span><span>—</span></div><div class="r"><span>已答题</span><span>12 题 · 对 10</span></div><div class="r"><span>已解锁</span><span>40 分钟</span></div></div>
+        <div class="cta">开始答题</div>
+      </div>
+    </div>
+    <div class="phone-demo">
+      <div class="screen lock-demo">
+        <div class="status" style="width:100%;color:#9aa7a2;"><span>9:41</span><span class="badge-demo red">孩子 18:32</span></div>
+        <div class="diamond"><span>◇</span></div>
+        <div class="t">今天的学习任务还没完成</div>
+        <div class="s">答对 2 道题，可以玩 20 分钟<br>答错会加一道题，慢慢来</div>
+        <div class="b">开始答题</div>
+      </div>
+    </div>
+    <div class="card" style="flex:1;min-width:220px;">
+      <h3>三处颜色提醒</h3>
+      <p><strong>状态栏徽章</strong>：绿“家长” / 红“孩子+倒计时”。可拖动换位置，App 会记住；可在规则页关闭或调透明度。</p>
+      <p><strong>密码页顶部胶囊</strong>：进入密码页先看到当前模式。家长模式会提示“要拦截需点开始答题”。</p>
+      <p><strong>家长设置标题</strong>：红字“家长模式下无拦截，孩子模式下才会拦截”+ 向上箭头，指向状态栏徽章。</p>
+    </div>
+  </div>
+
+  <h2 class="heading">最容易弄错的一件事</h2>
+  <aside class="callout danger">
+    <div class="callout-title">输入密码 = 自动结束答题</div>
+    <p>家长每次输入正确密码进入家长端，答题解锁都会<strong>自动结束答题</strong>，这是为了方便家长改设置。改完以后，必须再点一次红色<strong>“开始答题”</strong>，并等它自动返回桌面，拦截才会重新生效。否则孩子拿到的是一部“没有拦截”的手机。</p>
+  </aside>
+
+  <h2 class="heading">徽章设置</h2>
+  <table class="table">
+    <thead><tr><th style="width:24%;">设置项</th><th style="width:36%;">在哪里</th><th style="width:40%;">说明</th></tr></thead>
+    <tbody>
+      <tr><td class="em">显示 / 隐藏徽章</td><td>规则设置 → 激励开关 → 状态栏模式徽章</td><td>关闭后状态栏不再显示家长 / 孩子徽章，但拦截逻辑不受影响。</td></tr>
+      <tr><td class="em">徽章透明度</td><td>同一位置，开关下方的滑块</td><td>范围 0%–100%，默认 80%。调低可减少遮挡，0% 为完全隐藏。</td></tr>
+      <tr><td class="em">拖动位置</td><td>直接按住状态栏徽章拖动</td><td>拖到不挡图标的位置，松手即记住；默认位置已左移到屏幕宽度约 27% 处。</td></tr>
+    </tbody>
+  </table>
+
+  <aside class="callout info">
+    <div class="callout-title">孩子玩耍中重新打开答题解锁</div>
+    <p>会先看到“请输入六位数字密码”页面。孩子可点底部绿色<strong>“返回”</strong>回到桌面继续玩，倒计时不受影响；家长输入密码则会结束本轮玩耍、结束答题并进入家长设置。</p>
+  </aside>
+</section>
+
+<!-- ==================== 05 规则设置 ==================== -->
+<section class="section" id="rules">
+  <div class="kicker">05 / 答题与放行的尺度</div>
+  <h1 class="heading">规则设置</h1>
+
+  <p class="paragraph">规则决定“答几题、玩多久、一天最多玩多久”。从家长设置首页点“规则”卡片进入，改完点底部“保存”即可。规则修改<strong>下一轮答题生效</strong>，孩子当前正在进行的倒计时不受影响。</p>
+
+  <table class="table">
+    <thead><tr><th style="width:12%;">设置项</th><th style="width:14%;">范围</th><th style="width:8%;">默认</th><th style="width:66%;">怎么理解 / 建议</th></tr></thead>
+    <tbody>
+      <tr><td class="em">答对题数</td><td>1–100 题</td><td>2 题</td><td>孩子每次解锁前需要答对的题量。<strong>答错会自动加一道题</strong>，所以实际题量可能多于设定值。低年级建议 2–3 题，初高中可 3–5 题；一开始不要设太高。</td></tr>
+      <tr><td class="em">单次时长</td><td>1–180 分钟<br><span class="tag amber">免费版 ≤20</span></td><td>20 分钟</td><td>答对后一次可以连续玩的时长。到点弹出锁屏，再次答题才能继续。建议 15–30 分钟，给“自然停顿”留出空间。</td></tr>
+      <tr><td class="em">每日上限</td><td>0–1440 分钟<br><span class="tag amber">免费版 ≤120</span></td><td>120 分钟</td><td>一天内所有解锁时长的总和上限。<strong>0 = 当天完全不允许</strong>；1440 = 全天不设限。达到上限后当天不能再答题解锁，次日自动恢复。</td></tr>
+      <tr><td class="em">错题冷却</td><td>0–120 秒</td><td>0 秒</td><td>答错后要等几秒才能答下一题，防止乱点蒙答案。建议 5–15 秒；设太长孩子容易烦躁。</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="heading">休息时段（不允许答题）</h2>
+  <div class="card">
+    <p>开启后可设置一个时间段，例如 <strong>22:00 至 06:00</strong>。时段内孩子点“开始答题”会看到“现在是休息时间，乖乖睡觉，明天再来答题吧～”，不能答题解锁。支持跨零点，时间粒度为半小时。</p>
+    <p><span class="tag amber">专业版功能</span> 免费版点击开关会提示升级。设置入口：规则设置 → 休息时段 → 开启 → 选择起止时间。</p>
+  </div>
+
+  <h2 class="heading">每周更新一部分题目</h2>
+  <div class="card">
+    <p>开启后，内置题库每周轮换激活一批题目，降低“刷熟题、背答案”的可能。<strong>家长自定义的易错题不参与轮换</strong>，会一直留在抽题池里。默认开启。</p>
+    <p><span class="tag amber">专业版功能</span> 免费版不可用。</p>
+  </div>
+
+  
+  <h2 class="heading">专业版题库扩充（每库 150+ 题）</h2>
+  <div class="card">
+    <p>开启后，所选年级、科目的每个题库都会扩充到 <strong>150 题以上</strong>（全书库合计 10,000 题），孩子长期答题不容易「刷到重复题」。默认开启，手机端在规则页的「专业版题库扩充」卡片里开关；电视端在规则设置页最后一行开关（免费版选中会提示升级）。</p>
+    <p>题库扩充由程序生成并逐题验算、或来自教科书知识点编写，答案与解析在入库前经过校验；<strong>不会改变题目难度筛选与答题规则</strong>，关闭开关即回到基础题库（5,571 题）。</p>
+    <p><span class="tag amber">专业版功能</span> 免费版锁定（显示但不可开启）。</p>
+  </div>
+
+  <h2 class="heading">激励开关</h2>
+  <p class="paragraph">激励只影响孩子答题时的趣味反馈，不影响任何管控功能。三项全部关闭后，孩子端退回纯粹的“答对解锁”模式。</p>
+  <div class="grid" data-cols="3">
+    <div class="card"><h3>宠物养成</h3><p>答对得积分，宠物吃积分升级进化：蛋 → 幼崽 → 少年 → 成年 → 神话。关闭后答题页和解锁页不再展示宠物。</p></div>
+    <div class="card"><h3>连击</h3><p>连续答对累积连击，5 连及以上积分翻倍。关闭后不再展示连击数。</p></div>
+    <div class="card"><h3>成就</h3><p>达到里程碑（如一周累计答对 50 题）时给成就徽章，纯本地记录。关闭后不再展示。</p></div>
+  </div>
+
+  <aside class="callout tip">
+    <div class="callout-title">状态栏徽章也在这一页</div>
+    <p>“状态栏模式徽章”开关和“徽章透明度”滑块在激励开关卡片内。关闭徽章不影响拦截，只是不再显示绿 / 红标识。</p>
+  </aside>
+
+  <h2 class="heading">推荐起步参数</h2>
+  <table class="table">
+    <thead><tr><th style="width:20%;">孩子阶段</th><th style="width:16%;">答对题数</th><th style="width:18%;">单次时长</th><th style="width:20%;">每日上限</th><th style="width:26%;">说明</th></tr></thead>
+    <tbody>
+      <tr><td class="em">小学低年级</td><td>2 题</td><td>15–20 分钟</td><td>60–90 分钟</td><td>以建立习惯为主，题量少、反馈快。</td></tr>
+      <tr><td class="em">小学高年级</td><td>3 题</td><td>20 分钟</td><td>90–120 分钟</td><td>可加入“基础 + 中等”难度。</td></tr>
+      <tr><td class="em">初高中</td><td>3–5 题</td><td>20–30 分钟</td><td>120–180 分钟</td><td>可加入“挑战”难度；错题冷却 10–15 秒。</td></tr>
+    </tbody>
+  </table>
+
+  <aside class="callout warn">
+    <div class="callout-title">规则要和孩子提前约定</div>
+    <p>建议在开始答题前，把“每天大概能玩多久、答几题、什么时间不能玩”跟孩子说清楚。规则突然从宽变严，最容易引发对抗；可以一周调整一次，每次只改一个数值。</p>
+  </aside>
+</section>
+
+<!-- ==================== 06 限制应用 ==================== -->
+<section class="section" id="apps">
+  <div class="kicker">06 / 管住哪些 App</div>
+  <h1 class="heading">限制应用</h1>
+
+  <p class="paragraph">“限制应用”决定哪些 App 会被纳入答题管控。默认只预选<strong>抖音</strong>一个，其他应用需要家长自己添加。勾选后<strong>立即生效</strong>，但要让重启手机后仍保留，必须点底部“保存并生效”。</p>
+
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>添加应用</h3>
+      <p>点“添加应用”展开面板，可按名称搜索；点一下应用即加入限制，再点一下取消。已选应用会置顶显示。</p>
+    </div>
+    <div class="card">
+      <h3>移除应用</h3>
+      <p>在“已限制的应用”区域点应用右侧的 ×，即可移出名单。移除后该应用不再受答题管控。</p>
+    </div>
+  </div>
+
+  <h2 class="heading">操作步骤</h2>
+  <ol class="timeline">
+    <li>
+      <div class="step-title">进入限制应用页</div>
+      <div class="step-body"><p>家长设置首页底部 → “限制应用”。页面顶部会显示“已限制 N 个”。</p></div>
+    </li>
+    <li>
+      <div class="step-title">勾选想管住的应用</div>
+      <div class="step-body"><p>点“添加应用” → 搜索或滚动找到目标 → 点一下勾选。勾选状态会实时同步到系统守护，不用等保存。</p></div>
+    </li>
+    <li>
+      <div class="step-title">保存并生效</div>
+      <div class="step-body"><p>点底部“保存并生效”。保存成功后按钮会显示“已保存 · 2 秒后自动返回”，并回到家长首页。</p></div>
+    </li>
+  </ol>
+
+  <aside class="callout info">
+    <div class="callout-title">限制的不是“能不能打开”</div>
+    <p>受限应用不是永久封禁。孩子打开后先完成答题，或本轮时长用完后再次答题，就能继续使用。答题解锁管的是“使用时长”，不是“禁止使用”。</p>
+  </aside>
+
+  <aside class="callout warn">
+    <div class="callout-title">免费版最多 2 个应用</div>
+    <p>免费版最多同时限制 <strong>2 个应用</strong>、每天最多拦截 <strong>10 次</strong>。勾选第 3 个时会提示“免费版最多限制 2 个应用，升级专业版后不限量”。专业版不限应用数量、不限每日拦截次数。</p>
+  </aside>
+
+  <h2 class="heading">建议限制哪些，不建议限制哪些</h2>
+  <table class="table">
+    <thead><tr><th style="width:18%;">类型</th><th style="width:40%;">举例</th><th style="width:42%;">建议</th></tr></thead>
+    <tbody>
+      <tr><td class="em">优先限制</td><td>短视频、游戏、漫画、小说、直播</td><td>这些是最容易“一刷停不下来”的应用，优先纳入。</td></tr>
+      <tr><td class="em">谨慎限制</td><td>社交软件、浏览器</td><td>社交软件可能承担家庭沟通功能；浏览器可能用于查学习资料。确需限制时，先和孩子说明原因。</td></tr>
+      <tr><td class="em">不建议限制</td><td>微信、电话、短信、学习类 App、地图、支付</td><td>影响正常沟通与安全，不建议纳入；答题解锁也不会读取这些应用的内容。</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="heading">系统设置为什么也被拦住</h2>
+  <p class="paragraph">孩子最容易的绕过方式不是“破解答题”，而是进入系统设置关闭无障碍、停用设备管理、卸载应用。因此管控期间，<strong>系统设置、厂商安全中心、应用信息页、卸载确认页</strong>都会被拦截。孩子点开设置会看到“管控期间不允许进入手机设置页面，请从答题解锁 App 输入家长密码进入”，10 秒后自动返回桌面。</p>
+  <p class="paragraph">家长需要进设置时，从“防护状态”卡片底部点<strong>“临时进入系统设置（10 分钟）”</strong>，确认后放行 10 分钟，到时自动恢复拦截。</p>
+
+  <aside class="callout danger">
+    <div class="callout-title">不要让孩子知道家长密码</div>
+    <p>孩子只要拿到家长密码，就能进入家长模式、结束答题、关闭权限。密码泄露等于全部防护失效；如果怀疑孩子知道了，请立即在“修改密码”里更换。</p>
+  </aside>
+</section>
+
+<!-- ==================== 07 学习内容与题库 ==================== -->
+<section class="section" id="study">
+  <div class="kicker">07 / 题目从哪来</div>
+  <h1 class="heading">学习内容与题库</h1>
+
+  <p class="paragraph">答题解锁内置 <strong>66 个题库、5,571 道题</strong>，覆盖小学一年级到高中三年级的语文、数学、英语、物理、化学、生物、历史、地理、道德与法治；专业版家长可开启「题库扩充」，把每库题目补足到 <strong>100 题以上</strong>（全书库合计 10,000 题），长期使用不重样。题目按年级、科目、难度过滤后随机抽取；每次进入答题，选项顺序也会重新打乱。</p>
+
+  <h2 class="heading">学习内容怎么选</h2>
+  <table class="table">
+    <thead><tr><th style="width:16%;">项目</th><th style="width:34%;">可选范围</th><th style="width:50%;">说明</th></tr></thead>
+    <tbody>
+      <tr><td class="em">年级</td><td>小学 1–6 年级；初一 / 初二 / 初三；高一 / 高二 / 高三；成人；老年，共 14 个档</td><td>决定抽题的学段。选错年级，题目会过难或过易。换年级后，科目列表会自动切换为该年级实际开设的科目；成人 / 老年档适合全家安全自测与成人使用。</td></tr>
+      <tr><td class="em">科目</td><td>随年级变化：小学语文 / 数学 / 英语；初中增加物理、化学、生物、历史、地理、道德与法治；高中九科齐全；<strong>大学为语文 / 数学 / 英语（四六级词表）/ 安全</strong>；<strong>「安全」公益科目全年级可选</strong>（首装默认已选）</td><td>可多选。只选一科适合补短板；多选则混合抽题。勾「安全」约每 5 题混 1 道公益安全题，<strong>只勾「安全」即专练</strong>。</td></tr>
+      <tr><td class="em">难度</td><td>基础 / 中等 / 挑战</td><td>可多选。基础偏课本例题，中等偏课后作业，挑战偏拓展。不选等于全部。</td></tr>
+    </tbody>
+  </table>
+
+  <aside class="callout tip">
+    <div class="callout-title">题目质量小说明</div>
+    <p>选择题的干扰项会从同科目、同类型的题目里生成，尽量做到“看起来都像正确答案”；英语词汇题以中译英为主，选项保持全英文。语文古诗“下一句”题的干扰项与正确答案<strong>字数一致</strong>，且全部换成真实诗句（v0.3.27 起对齐），降低蒙对概率。选项顺序每次随机，减少孩子背“第几个选项”。</p>
+  </aside>
+
+  <h2 class="heading">安全公益课堂（反诈题免费）</h2>
+  <p class="paragraph">v0.4.0 起内置<strong>公益安全题库</strong>：<strong>2756 道题</strong>（v0.4.4 起删除 284 道敏感内容题）按学段分成小学 / 初中 / 高中 / 成人 / 老年五库，覆盖反诈、消防、交通安全、防溺水、用电居家、防拐骗防走失、校园欺凌、食品安全、网络安全、急救自救、自然灾害防灾、身体保护、毒品防范等 <strong>13 个品类</strong>，<strong>全部免费</strong>，不进专业版付费墙。题目依据公安部、应急管理部、交通运输部等公开资料编写，只讲怎么识别与应对，不教诈骗细节。</p>
+
+  <table class="table">
+    <thead><tr><th style="width:20%;">玩法</th><th style="width:80%;">说明</th></tr></thead>
+    <tbody>
+      <tr><td class="em">混入答题</td><td>「安全」科目首装默认已选，孩子答题时约<strong>每 5 题混 1 道</strong>公益安全题，学常识不打断节奏；在「安全公益课堂」页可按品类勾选（反诈/消防/交通安全/防溺水/用电居家，全不勾=五类都混）；混入的题同样有解析，答错也能学到。</td></tr>
+      <tr><td class="em">专练模式</td><td>在学习内容的科目里<strong>只勾「安全」</strong>，孩子就专练安全题（按孩子年级自动匹配对应学段题库，学什么学段的安全常识）。</td></tr>
+      <tr><td class="em">全家自测</td><td>点「全家安全自测」选学段开始，每轮 10 题、答完即看解析，最后出正确率和错题回顾。<strong>不占孩子答题额度</strong>，爷爷奶奶也能测；记录只存本机（最近 20 条），不上传任何数据。</td></tr>
+      <tr><td class="em">五类全上线</td><td>反诈、消防、交通安全、防溺水、用电居家<strong>五大主题本次全部上线</strong>，在「安全公益课堂」页按需勾选即可。</td></tr>
+    </tbody>
+  </table>
+
+  <aside class="callout tip">
+    <div class="callout-title">提示</div>
+    <p>安全公益课堂入口在<strong>家长设置首页的青绿色卡片</strong>（电视端在「安全公益课堂」卡）。混入开关与学习内容里的「安全」科目是同一个开关，两边都能改；不想让孩子遇到安全题，把科目里的「安全」取消勾选即可，常规答题完全不受影响。</p>
+  </aside>
+
+  <h2 class="heading">自定义上传题目（易错题）</h2>
+  <p class="paragraph">家长可以把孩子常错的题、老师布置的重点题自己录进 App。自定义题会进入答题池，并优先被抽中；<strong>每周换题不会把自定义题换掉</strong>。此功能为<span class="tag amber">专业版功能</span>，免费版点击会提示升级。</p>
+
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>格式 A：自动生成选项</h3>
+      <p><strong>题目 | 答案</strong></p>
+      <p class="small">多个答案用 / 分隔。例：<br>36 ÷ 4 = ? | 9<br>“apple”的中文意思 | 苹果</p>
+      <p>系统会自动补足选项，适合填空题、口算题、单词题。</p>
+    </div>
+    <div class="card">
+      <h3>格式 B：指定四个选项</h3>
+      <p><strong>题目 || 选项1,选项2,选项3,选项4 | 答案</strong></p>
+      <p class="small">例：<br>我国最长的河流是 || 长江,黄河,珠江,黑龙江 | 长江</p>
+      <p>选项顺序会自动打乱，答案必须与某个选项完全一致。</p>
+    </div>
+  </div>
+
+  <h2 class="heading">录入与导入</h2>
+  <ol class="timeline">
+    <li>
+      <div class="step-title">先在家长设置里选好年级和科目</div>
+      <div class="step-body"><p>自定义题会归入<strong>当前年级 + 当前第一个科目 + 中等难度</strong>。如果年级或科目没选，题目可能不会进入孩子的抽题范围。</p></div>
+    </li>
+    <li>
+      <div class="step-title">进入“自定义上传题目（易错题）”</div>
+      <div class="step-body"><p>每行一题，按格式 A 或 B 输入；也可以点“从文件导入”，选择本机的 txt / csv 文件。导入后仍可继续编辑。</p></div>
+    </li>
+    <li>
+      <div class="step-title">保存题目</div>
+      <div class="step-body"><p>点“保存题目”。格式错误的行会标红并提示行号，改对后再保存。保存成功会提示“已保存 N 道题”。</p></div>
+    </li>
+  </ol>
+
+  <aside class="callout warn">
+    <div class="callout-title">题目格式常见错误</div>
+    <p>缺少分隔符“|”、答案为空、指定选项少于 2 个、答案不在选项里，都会导致该行保存失败。先用少量题目试一遍，确认孩子端能正常抽到，再批量导入。</p>
+  </aside>
+
+  <h2 class="heading">题库用完怎么办</h2>
+  <p class="paragraph">如果当前年级 / 科目 / 难度组合下题目被抽完，孩子答题页会显示“题库已用完，请家长补充题目”，并提供<strong>“家长进入 · 补充题目”</strong>按钮。点它 → 输入家长密码 → 回到家长端补题或放宽年级 / 科目 / 难度范围。</p>
+</section>
+
+<!-- ==================== 07A 英语打字练习 ==================== -->
+<section class="section" id="typing">
+  <div class="kicker">07A / 英语怎么练</div>
+  <h1 class="heading">英语打字练习（卡片闯关）</h1>
+
+  <p class="paragraph">答题解锁 0.5.0 给英语加了一种新练法：<strong>卡片打字</strong>。孩子在屏幕上先看一眼单词（带<strong>音标</strong>），藏起来后自己把单词打出来——记忆 + 拼写 + 读音一起练。它和答题解锁是并列的两条路，入口在家长首页，家长陪着打开即可（手机 / 平板可用；成人/老年档不做）。</p>
+
+  <h2 class="heading">入口与结构</h2>
+  <p class="paragraph">家长首页 → <strong>「英语打字练习」</strong>卡片 → 练习本列表 → 点开展开关卡 → 点关卡进打字页。练习本按孩子学段自动推荐（v0.5.2 四本）：</p>
+  <ul class="checklist">
+    <li><strong>PEP 高频口语词</strong>：小学推荐，来自常用口语与教材词汇，30 关 × 8 词。</li>
+    <li><strong>初中核心词</strong>：初中推荐，25 关 × 8 词。</li>
+    <li><strong>高中核心词</strong>：高中推荐，24 关 × 8 词。</li>
+    <li><strong>四六级核心词</strong>：选「大学」年级时推荐，30 关 × 8 词。</li>
+    <li><strong>成人 / 老年</strong>：不需要英语打字，首页不展示入口。</li>
+  </ul>
+
+  <h2 class="heading">一关怎么打</h2>
+  <ol class="timeline">
+    <li>
+      <div class="step-title">先看：单词、音标、中文、例句（默认 3 秒）</div>
+      <div class="step-body"><p>单词会大声读一遍（可点音标旁的噇叭重读）；这段时间是给孩子记的，时间到自动藏起来。先看时长可在学习内容页调：<strong>1.5 / 3 / 5 / 8 秒</strong>。</p></div>
+    </li>
+    <li>
+      <div class="step-title">默打：屏幕自带键盘，逐字母校验</div>
+      <div class="step-body"><p>敲对一格变绿前进，敲错格子红一下、不计入，可以接着敲（不用按提交键）。下一个该敲的字母会在键盘上高亮，例句里的目标词已用「____」遮住，防照抄。卡住了可以点<strong>「听读」</strong>再听一遍，或点<strong>「看一眼」</strong>重新显示 1 秒。</p></div>
+    </li>
+    <li>
+      <div class="step-title">结算：星星 + 错词</div>
+      <div class="step-body"><p>8 个词打完结算星星：全程零错 <strong>3 星</strong>，错误 ≤4 次 <strong>2 星</strong>，更多 <strong>1 星</strong>。打错的词会列在结算页上。</p></div>
+    </li>
+    <li>
+      <div class="step-title">错词回炉：立即只打错词</div>
+      <div class="step-body"><p>点「错词再练一遍」，只把刚才打错的词重打一遍，<strong>全对才算真过关</strong>；星星按重练结果重新计算，进度只升不降（取历史最好）。</p></div>
+    </li>
+  </ol>
+
+  <h2 class="heading">通关奖励：把练字变成解锁时长</h2>
+  <p class="paragraph">每关<strong>当天首次</strong>拿到 <strong>2 星及以上</strong>，奖励 <strong>5 分钟解锁时长</strong>。奖励先攒着，孩子下次答题解锁时<strong>自动并入单次时长</strong>（例如单次 20 分钟 → 本次 25 分钟）；家长首页「今日概况」会显示「打字奖励 · 待领 X 分钟」。同一关反复刷不会重复发奖，避免为了刷时长反复打同一关。</p>
+
+  <aside class="callout">
+    <div class="callout-title">建议的陪练节奏</div>
+    <p>一天一关（8 个词）就够，不要贪多。孩子全对 3 星就换下一关；错得多的关，先点「错词再练一遍」，等熟练了再往下走。奖励时长是「加分项」，日常解锁仍以答题为主。</p>
+  </aside>
+
+  <aside class="callout warn">
+    <div class="callout-title">窄屏手机也能完整显示（v0.5.1）</div>
+    <p>格子宽度与字号会随屏宽自动缩放，键盘每行按键均分屏宽并避让系统导航条；8～9 字母的长单词在 360dp 宽的手机上也不会被裁。若把系统字体调到最大，默打页面可以上下滑动。</p>
+  </aside>
+
+  <h2 class="heading">开关与参数（学习内容页最下方）</h2>
+  <ul class="checklist">
+    <li><strong>开启英语打字练习</strong>：默认开；关掉后打字相关选项置灰。</li>
+    <li><strong>先看时长</strong>：1.5 / 3 / 5 / 8 秒，默认 3 秒。</li>
+    <li><strong>练习时读单词</strong>：默认开，关掉后静音打字，适合睡前或在外使用。</li>
+  </ul>
+
+  <aside class="callout warn">
+    <div class="callout-title">电视端不支持打字</div>
+    <p>遥控器逐字母输入体验差，TV 版不做打字练习；电视端的英语练习走原来的答题（选大学年级可抽四六级题）。</p>
+  </aside>
+</section>
+
+<!-- ==================== 08 孩子端流程 ==================== -->
+<section class="section" id="child">
+  <div class="kicker">08 / 孩子实际看到什么</div>
+  <h1 class="heading">孩子端完整流程</h1>
+
+  <p class="paragraph">孩子端的体验被刻意做得简单：没有“跳过”“稍后再说”，也没有讨价还价入口。孩子只有一条路——完成答题，获得时长；时间用完，再回到答题。</p>
+
+  <div class="flow">
+    <div class="flow-step"><div class="n">STEP 1</div><strong>打开受限应用</strong>抖音、游戏等被拦截，出现答题遮罩。</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="n">STEP 2</div><strong>进入答题</strong>点“去答题解锁”，10 秒后也会自动进入。</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="n">STEP 3</div><strong>答对规定题数</strong>答错加一道；连错多道，本次结束。</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="n">STEP 4</div><strong>解锁成功</strong>显示“答对 N 题，解锁 M 分钟”。</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="n">STEP 5</div><strong>返回桌面开始玩</strong>点“返回，开始玩吧”，倒计时启动。</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="n">STEP 6</div><strong>时间到再答题</strong>弹出锁屏，重新答题。</div>
+  </div>
+
+  <div class="phone-row">
+    <div class="phone-demo">
+      <div class="screen lock-demo">
+        <div class="status" style="width:100%;color:#9aa7a2;"><span>9:41</span><span class="badge-demo red">孩子 18:32</span></div>
+        <div class="diamond"><span>◇</span></div>
+        <div class="t">今天的学习任务还没完成</div>
+        <div class="s">答对 2 道题，可以玩 20 分钟<br>答错会加一道题，慢慢来</div>
+        <div class="b">开始答题</div>
+      </div>
+    </div>
+    <div class="card" style="flex:1;min-width:260px;">
+      <h3>锁屏页说了什么</h3>
+      <p><strong>标题</strong>：今天的学习任务还没完成。</p>
+      <p><strong>说明</strong>：答对 N 道题，可以玩 M 分钟；答错会加一道题，慢慢来。</p>
+      <p><strong>按钮</strong>：只有一个“开始答题”，没有跳过、没有稍后。</p>
+      <p class="small">锁屏期间按返回键、切到其他应用，都会被拉回锁屏；孩子只能答题。</p>
+    </div>
+    <div class="card" style="flex:1;min-width:260px;">
+      <h3>解锁成功页</h3>
+      <p><strong>主文案</strong>：答对 N 题，解锁 M 分钟。</p>
+      <p><strong>主按钮</strong>：返回，开始玩吧。孩子必须自己点，倒计时才开始。</p>
+      <p><strong>加练按钮</strong>：“我还想继续 3 个题目”，答对后再加时长，仍受每日上限限制。</p>
+    </div>
+  </div>
+
+  <h2 class="heading">答题页规则</h2>
+  <table class="table">
+    <thead><tr><th style="width:12%;">机制</th><th style="width:88%;">具体表现</th></tr></thead>
+    <tbody>
+      <tr><td class="em">进度显示</td><td>顶部“第 X 题”，下方“答对 x / N 题”和点格进度条；答对一格亮一格。</td></tr>
+      <tr><td class="em">两种题型</td><td>选择题点选项；填空题输入答案后点“提交”。答完立即显示对错、正确答案和小提示。</td></tr>
+      <tr><td class="em">答错加题</td><td>答错一道，需要答对的总题数 +1。页面会提示“差一点点，我们再练一道”。</td></tr>
+      <tr><td class="em">错题冷却</td><td>家长若设置了冷却秒数，答错后“下一题”按钮会显示“错题冷却 Ns”，到 0 才能继续。</td></tr>
+      <tr><td class="em">连续答错</td><td>连续答错 5 题，本次答题结束，显示“连着几道没答上，先休息一下，回头再来试试”，按钮变为“返回休息”，本次不解锁。</td></tr>
+      <tr><td class="em">防背题</td><td>同一天同一道题最多出现 2 次；短时间内再次解锁，优先抽本轮没出过的题。</td></tr>
+      <tr><td class="em">题目用完</td><td>显示“题库已用完，请家长补充题目”，可点“家长进入 · 补充题目”验密码后回家长端。</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="heading">玩耍期间</h2>
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>倒计时通知</h3>
+      <p>点“返回，开始玩吧”后，答题解锁退回桌面，通知栏显示“答题解锁 · 玩耍中”和“距下次拦截还剩 M:SS”。到点提示“时间到，答题解锁才能继续玩”。</p>
+    </div>
+    <div class="card">
+      <h3>重新打开答题解锁</h3>
+      <p>玩耍中再点桌面图标，会先看到 6 位密码页。孩子可点绿色“返回”回桌面继续玩；家长输入密码则结束本轮、结束答题、进入家长设置。</p>
+    </div>
+  </div>
+
+  <aside class="callout info">
+    <div class="callout-title">每日上限与休息时段</div>
+    <p>当天累计解锁时长达到“每日上限”后，孩子再答题会提示“今日使用时长已达上限，明天再来吧”，当天不再放行。若当前处于“休息时段”，锁屏页不显示“开始答题”，而是提示“现在是休息时间，乖乖睡觉，明天再来答题吧～”。</p>
+  </aside>
+
+  <aside class="callout tip">
+    <div class="callout-title">给孩子的解释可以这样说</div>
+    <p>“手机可以玩，但先完成几道题，答对就能玩一段时间。时间到了再答几道，就能继续。题目按你的年级出，不会故意为难你；连续答错就先休息一下。”把规则说在前面，比事后没收更容易执行。</p>
+  </aside>
+</section>
+
+<!-- ==================== 09 记录与错题本 ==================== -->
+<section class="section" id="records">
+  <div class="kicker">09 / 看见进步，而不是盯着孩子</div>
+  <h1 class="heading">答题记录与错题本</h1>
+
+  <p class="paragraph">答题记录只呈现事实：哪天答了多少题、正确率多少、解锁了多久。它不记录孩子具体看了什么内容，也不评价“乖不乖”。错题本则把答错的题收起来，方便针对性练习。</p>
+
+  <h2 class="heading">答题记录页</h2>
+  <div class="grid" data-cols="3">
+    <div class="card"><h3>按日汇总</h3><p>日期、答题数、正确率、解锁时长。新记录在前，按天聚合。</p></div>
+    <div class="card"><h3>导出</h3><p>点“导出”把全部记录复制到剪贴板，可粘贴到微信、备忘录或表格里留存。</p></div>
+    <div class="card"><h3>清空</h3><p>点“清空”并二次确认后删除全部记录。只影响统计展示，不影响拦截、额度与错题本。</p></div>
+  </div>
+  <p class="paragraph">记录明细保留 90 天，之后归档保留至 180 天，到期自动清理。所有记录只存本机，不上传。</p>
+
+  <h2 class="heading">错题本</h2>
+  <p class="paragraph">孩子在答题页答错的题会自动进入错题本。入口：答题记录页底部 →“错题本”。</p>
+  <table class="table">
+    <thead><tr><th style="width:22%;">功能</th><th style="width:78%;">说明</th></tr></thead>
+    <tbody>
+      <tr><td class="em">统计</td><td>顶部显示未掌握、已掌握、合计三个数字。</td></tr>
+      <tr><td class="em">题目列表</td><td>每题显示题干、累计错次、答对进度（x/2）、掌握状态、科目。未掌握的题排在前面。</td></tr>
+      <tr><td class="em">反复训练</td><td>点“反复训练 N 题”，只练未掌握的题；同一题连续答对 2 次即标记为“已掌握”。全部掌握后提示“错题全部掌握，太棒了”。</td></tr>
+      <tr><td class="em">导出错题</td><td>把错题文本复制到剪贴板，可发给老师或粘贴到文档里。</td></tr>
+      <tr><td class="em">清除已掌握</td><td>二次确认后清除已掌握的题，未掌握的保留。</td></tr>
+    </tbody>
+  </table>
+
+  <aside class="callout tip">
+    <div class="callout-title">怎么用错题本最有效</div>
+    <p>每周固定看一次错题本，先让孩子自己讲一遍错因，再点“反复训练”。连续答对 2 次算掌握，但隔一周最好再抽查一次，避免“短期记住、长期忘记”。</p>
+  </aside>
+</section>
+
+<!-- ==================== 10 防卸载与防绕过 ==================== -->
+<section class="section" id="protect">
+  <div class="kicker">10 / 孩子最容易从这里突破</div>
+  <h1 class="heading">防卸载与防绕过</h1>
+
+  <p class="paragraph">如果孩子曾经成功卸载过答题解锁，通常不是“答题解锁完全没防护”，而是<strong>某一层权限在当时没有真正生效</strong>：设备管理没激活、无障碍被关掉、家长密码被看到、或者家长自己停在家长模式没有开始答题。下面四道防线加上家长通道全部到位，普通孩子拿手机直接卸载的难度会大幅提高。</p>
+
+  <div class="layers">
+    <div class="layer green-line">
+      <div class="ln">1</div>
+      <div>
+        <div class="lt">设备管理（防卸载）——硬门槛</div>
+        <div class="ld">激活“答题解锁防卸载”后，系统卸载应用前会要求先停用设备管理器。孩子不知道家长密码、也无法在设置里操作，普通卸载流程走不通。<strong>这是防卸载的第一道硬防线，务必激活。</strong></div>
+      </div>
+    </div>
+    <div class="layer amber-line">
+      <div class="ln">2</div>
+      <div>
+        <div class="lt">系统设置 / 卸载界面拦截——不让进战场</div>
+        <div class="ld">管控期间，系统设置、厂商安全中心、应用信息页、卸载确认页都会被拦截；窗口里出现“卸载”“强行停止”“停用设备管理”等字样也会被识别。孩子点开设置只会看到拦截页，10 秒后自动回桌面。</div>
+      </div>
+    </div>
+    <div class="layer green-line">
+      <div class="ln">3</div>
+      <div>
+        <div class="lt">前台服务 + 自启动——被划掉也能回来</div>
+        <div class="ld">答题解锁有常驻前台服务，并在华为 / 荣耀 / vivo / iQOO 上引导开启自启动、关联启动、后台活动。孩子从最近任务里划掉后，服务会尽量自动恢复；恢复后倒计时仍然有效。</div>
+      </div>
+    </div>
+    <div class="layer red-line">
+      <div class="ln">4</div>
+      <div>
+        <div class="lt">无障碍断线锁屏——最后一道急刹</div>
+        <div class="ld">如果无障碍服务被系统关闭或被强行终止，答题解锁会用已激活的设备管理权限<strong>立即锁屏</strong>，阻断孩子继续在设置页或卸载页操作，同时留下日志供排查。设备管理未激活时，这一层无法生效。</div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="ln">5</div>
+      <div>
+        <div class="lt">家长通道（辅助）——只给家长留门</div>
+        <div class="ld">家长要进系统设置，只能从答题解锁内点“临时进入系统设置（10 分钟）”；锁屏页和拦截页的标题<strong>2 秒内连点 5 次</strong>可进入密码页。孩子不知道密码，进不去。</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="heading">交给孩子前，做这 6 项检查</h2>
+  <ul class="checklist">
+    <li><strong>设备管理</strong>：防护状态里“设备管理（防卸载）”为绿色；系统设备管理器里“答题解锁防卸载”显示已激活。</li>
+    <li><strong>无障碍</strong>：防护状态里“无障碍服务”为绿色；系统无障碍里“答题解锁守护”开关已打开。</li>
+    <li><strong>悬浮窗 / 电池</strong>：悬浮窗、电池优化均为绿色。</li>
+    <li><strong>自启动</strong>：华为 / 荣耀 / vivo / iQOO 上“自启动”为绿色；不确定就点“测试一下”，能自动弹回即通过。</li>
+    <li><strong>密码</strong>：孩子不知道；不是生日、手机号后六位等易猜数字。</li>
+    <li><strong>开始答题</strong>：已点“开始答题”，已回到桌面，状态栏为红色“孩子”徽章。</li>
+  </ul>
+
+  <h2 class="heading">如果孩子已经把答题解锁卸载了</h2>
+  <ol class="timeline">
+    <li>
+      <div class="step-title">重新安装同一版本</div>
+      <div class="step-body"><p>用家长保存的 APK 重新安装。卸载会清空本机数据，之前的规则、记录、错题本都不会保留。</p></div>
+    </li>
+    <li>
+      <div class="step-title">先设新密码，再开权限</div>
+      <div class="step-body"><p>设置一个孩子不知道的新密码；按首次设置流程选年级、科目、难度；逐项开启权限。</p></div>
+    </li>
+    <li>
+      <div class="step-title">优先激活设备管理</div>
+      <div class="step-body"><p>在防护状态里点“设备管理（防卸载）”，按分机型指导激活。vivo / iQOO 部分机型系统开关可能是灰色或点不动，<strong>以答题解锁内防护卡是否变绿、设备管理器是否显示“已激活”为准</strong>；若确实无法激活，至少保证无障碍 + 系统设置拦截正常。</p></div>
+    </li>
+    <li>
+      <div class="step-title">重新添加限制应用与规则</div>
+      <div class="step-body"><p>默认只预选抖音，需要重新勾选其他应用；规则也会恢复默认值，请按家庭约定重新设置。</p></div>
+    </li>
+    <li>
+      <div class="step-title">开始答题并实测</div>
+      <div class="step-body"><p>点“开始答题”回桌面；打开受限应用确认出现遮罩；打开系统设置确认被拦截；状态栏确认红色“孩子”徽章。</p></div>
+    </li>
+    <li>
+      <div class="step-title">专业版用户联系客服恢复激活</div>
+      <div class="step-body"><p>如果之前是专业版，重装后可能回到免费版。把新的机器码发给客服微信，核验后重新激活；同一台手机的机器码通常不变。</p></div>
+    </li>
+  </ol>
+
+  <aside class="callout danger">
+    <div class="callout-title">这些情况仍可能失效</div>
+    <p>① 设备管理和无障碍<strong>同时</strong>被关闭；② 孩子知道家长密码；③ 手机厂商的“强制停止”或“恢复出厂设置”被孩子拿到；④ 家长自己停留在答题解锁内，没有返回桌面；⑤ 系统大版本升级后权限被重置。出现以上情况，任何管控类 App 都无法做到百分之百；请把“权限周检”和“密码保密”作为日常习惯。</p>
+  </aside>
+
+  <aside class="callout warn">
+    <div class="callout-title">家长专用，请勿让孩子看到本页</div>
+    <p>锁屏页或拦截页的标题<strong>2 秒内连点 5 次</strong>，会进入家长密码页；这是家长在锁屏状态下的应急通道。知道这个动作不影响安全性——仍然需要密码——但没必要主动告诉孩子。</p>
+  </aside>
+
+  <h2 class="heading">不建议做的四件事</h2>
+  <div class="grid" data-cols="2">
+    <div class="card red-card"><h3>不要为了省电关闭无障碍</h3><p>无障碍是识别“孩子打开了哪个应用”的核心。关闭后拦截基本失效，设备管理只能挡卸载，挡不住使用。</p></div>
+    <div class="card red-card"><h3>不要安装“清理 / 加速”类工具</h3><p>这类工具可能把答题解锁的前台服务一起清掉，导致倒计时和拦截消失。</p></div>
+    <div class="card red-card"><h3>不要把家长密码告诉孩子</h3><p>密码等于最高权限。孩子知道密码后，可以结束答题、关闭权限、修改规则。</p></div>
+    <div class="card red-card"><h3>不要让孩子单独进系统设置</h3><p>管控期间系统设置默认锁定；家长需要进设置时，走“临时进入系统设置（10 分钟）”。</p></div>
+  </div>
+</section>
+
+<!-- ==================== 11 机型专项 ==================== -->
+<section class="section" id="brand">
+  <div class="kicker">11 / 不同手机，路径不一样</div>
+  <h1 class="heading">机型专项设置</h1>
+
+  <p class="paragraph">答题解锁的权限引导会按手机品牌给出分步路径。下表是常见品牌的补充说明；如果系统设置被答题解锁拦截，请先从家长端点“临时进入系统设置（10 分钟）”，再按路径操作。</p>
+
+  <table class="table">
+    <thead><tr><th style="width:17%;">品牌</th><th style="width:31%;">自启动 / 后台弹出</th><th style="width:29%;">电池 / 后台耗电</th><th style="width:23%;">特别注意</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="em">华为 / 荣耀</td>
+        <td>设置 → 应用 → 启动管理 → 答题解锁 → 关闭“自动管理” → 打开“允许自启动、允许关联启动、允许后台活动”</td>
+        <td>设置 → 应用 → 应用管理 → 答题解锁 → 电池 → 允许后台活动</td>
+        <td>三项启动开关要全开；少一项都可能被划掉后不自动恢复。点答题解锁里的“去开启”会直达系统设置的「应用启动管理」页。</td>
+      </tr>
+      <tr>
+        <td class="em">vivo / iQOO</td>
+        <td>设置 → 应用 → 自启动 → 答题解锁 → 打开；<br>设置 → 应用 → 权限管理 → 答题解锁 → 后台弹出界面 → 允许</td>
+        <td>设置 → 电池 → 后台耗电管理 → 答题解锁 → 允许后台高耗电</td>
+        <td>设备管理部分机型需在答题解锁内点防护卡跳转激活；设置里的开关灰色不代表已激活，以答题解锁内变绿为准。自启动点“去开启”直达系统设置的「自启动」页。</td>
+      </tr>
+      <tr>
+        <td class="em">小米 / 红米</td>
+        <td>设置 → 应用设置 → 应用管理 → 答题解锁 → 自启动；<br>最近任务里下拉答题解锁卡片加锁</td>
+        <td>设置 → 应用设置 → 应用管理 → 答题解锁 → 省电策略 → 无限制</td>
+        <td>“省电策略”必须无限制；否则后台容易被清理。</td>
+      </tr>
+      <tr>
+        <td class="em">OPPO / 一加 / realme</td>
+        <td>设置 → 应用 → 自启动管理 → 答题解锁 → 允许</td>
+        <td>设置 → 电池 → 应用耗电管理 → 答题解锁 → 允许完全后台行为</td>
+        <td>部分 ColorOS 版本把自启动放在“权限管理”里。</td>
+      </tr>
+      <tr>
+        <td class="em">其他 Android</td>
+        <td>设置里搜索“自启动”“后台运行”“后台弹出界面”，有就打开</td>
+        <td>设置 → 应用 → 答题解锁 → 电池 → 不受限制</td>
+        <td>不同 ROM 名称差异较大，以“允许后台运行”类选项为准。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="heading">通用权限路径速查</h2>
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>无障碍服务</h3>
+      <p>设置 → 无障碍 / 辅助功能 → 已下载的应用 / 已安装的服务 → 答题解锁守护 → 打开 → 允许。</p>
+    </div>
+    <div class="card">
+      <h3>设备管理（防卸载）</h3>
+      <p>设置 → 安全 → 更多安全设置 → 设备管理器 / 设备管理应用 → 答题解锁防卸载 → 激活 → 允许。</p>
+    </div>
+    <div class="card">
+      <h3>悬浮窗</h3>
+      <p>设置 → 应用 → 答题解锁 → 显示在其他应用上层 / 显示悬浮窗 → 允许。</p>
+    </div>
+    <div class="card">
+      <h3>忽略电池优化</h3>
+      <p>设置 → 电池 → 电池优化 → 答题解锁 → 不优化 / 允许后台活动；或按答题解锁弹出的系统确认窗点“允许”。</p>
+    </div>
+  </div>
+
+  <aside class="callout tip">
+    <div class="callout-title">“自启动”为什么一直黄色？</div>
+    <p>系统不提供“自启动是否已开启”的自动检测。家长按步骤开启后，点“我已开启”即可变绿；想确认是否真的生效，点“测试一下”——App 会短暂退回桌面，再自动弹回，能弹回即通过。<strong>变绿即可，不用反复检测。</strong></p>
+  </aside>
+
+  <aside class="callout warn">
+    <div class="callout-title">系统升级 / 重启后</div>
+    <p>部分手机系统升级、恢复出厂设置或长期未重启后，会重置无障碍、自启动等权限。建议每次系统升级后打开答题解锁，看一眼前四项是否仍为绿色；不绿就按指导重新开启。</p>
+  </aside>
+</section>
+
+<!-- ==================== 12 免费版与专业版 ==================== -->
+<section class="section" id="paid">
+  <div class="kicker">12 / 先免费体验，需要时再升级</div>
+  <h1 class="heading">免费版与专业版</h1>
+
+  <p class="paragraph">新安装默认是免费版，无需付费即可使用“答题解锁”的核心流程；在应用数量、每日拦截次数、单次时长、每日上限和部分进阶功能上有限制。专业版按年订阅或一次性买断（永久），一次激活解锁全部功能；按年订阅到期自动降回免费版，永久授权不设到期日，规则、记录、错题本都不受影响。</p>
+
+  <aside class="callout info">
+    <div class="callout-title">激活码只能激活一次（v0.3.29 起）</div>
+    <p>每个激活码<strong>只能成功激活一次</strong>：使用过之后，再输入同一个激活码会提示“该激活码已被使用过”，不会重复加时长。需要续费或补发时，请<strong>联系客服获取新激活码</strong>（同一台手机、同一档时长的新码），不要重复粘贴旧码。这样既保证您购买的时长不会被重复消耗，也避免激活码被截图流传后被人冒用。</p>
+  </aside>
+
+  <aside class="callout info">
+    <div class="callout-title">永久授权是什么（一次性买断）</div>
+    <p>① 永久授权指激活时限不设到期日；激活校验完全在手机本地完成，<strong>即使开发者停止运营，已激活手机不受任何影响</strong>。② 授权与手机机器码绑定，换手机联系客服免费转移激活。③ 仅一种情况会吊销授权：退款；正常使用没有任何远程限制。</p>
+  </aside>
+
+  <table class="table">
+    <thead><tr><th style="width:30%;">项目</th><th style="width:35%;">免费版</th><th style="width:35%;">专业版</th></tr></thead>
+    <tbody>
+      <tr><td class="em">限制应用数量</td><td>最多 2 个</td><td>不限</td></tr>
+      <tr><td class="em">每日拦截次数</td><td>每天最多 10 次</td><td>不限</td></tr>
+      <tr><td class="em">单次时长</td><td>最多 20 分钟</td><td>最多 180 分钟</td></tr>
+      <tr><td class="em">每日上限</td><td>最多 120 分钟</td><td>最多 1440 分钟</td></tr>
+      <tr><td class="em">休息时段</td><td>不可用</td><td>可用</td></tr>
+      <tr><td class="em">每周换题</td><td>不可用</td><td>可用</td></tr><tr><td class="em">题库扩充（每库 150+ 题）</td><td>不可用</td><td>可用（默认开启，可在规则页关闭）</td></tr>
+      <tr><td class="em">自定义上传题目</td><td>不可用</td><td>可用</td></tr>
+      <tr><td class="em">后续新功能</td><td>—</td><td>包含</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>价格：99 元 / 年起（限时优惠）</h3>
+      <p>专业版 <strong>1 年 99 元</strong>、<strong>3 年 249 元</strong>（折合 83 元/年）、<strong>永久 399 元</strong>（一次性买断·永久授权，首发价；正式价 449 元）。买越久越划算，一次买断不用惦记续费。</p>
+    </div>
+    <div class="card">
+      <h3>邀请家长，免费得专业版</h3>
+      <p>每邀请 1 位家长完成安装使用，可得 <strong>1 周专业版</strong>，最多累计 <strong>52 周</strong>，由客服人工核验发放。参加方式见本章下方“邀请家长得专业版”。</p>
+    </div>
+  </div>
+
+  <h2 class="heading">升级专业版：三步</h2>
+  <ol class="timeline">
+    <li>
+      <div class="step-title">打开升级弹窗，选时长并复制机器码</div>
+      <div class="step-body"><p>家长设置页底部“免费版”卡片 → 点“升级专业版”。弹窗显示 <strong>99 元 / 年起</strong>（“限时优惠”标签），先选 1 年 / 3 年 / 永久档，再点“复制”，机器码和所选档位一次复制好（永久档末尾为 P），客服收到就知道该发哪种码。</p></div>
+    </li>
+    <li>
+      <div class="step-title">加客服微信，发送机器码并付款</div>
+      <div class="step-body"><p>客服微信：<strong>hiyuanmi2015</strong>。把复制好的信息发给客服，按客服说明完成付款。</p></div>
+    </li>
+    <li>
+      <div class="step-title">输入客服回复的激活码</div>
+      <div class="step-body"><p>在弹窗输入框粘贴激活码 → 点“激活”。激活码错误会在输入框下方提示，不会关窗，可直接重输；激活成功会提示“已升级专业版（N 年）：限制应用与拦截次数不限”。<strong>每个激活码只能激活一次</strong>，如提示“该激活码已被使用过”，说明这串码已经用过，续费 / 补发请联系客服获取新激活码。</p></div>
+    </li>
+  </ol>
+
+  <h2 class="heading">专业版卡：到期倒计时看得见</h2>
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>倒计时精确到小时</h3>
+      <p>升级成功后，“免费版”卡会换成<strong>“专业版”卡</strong>，显示到期倒计时，例如“还剩 276 天 12 小时到期续费”。到期前会提示及时续费，点“续费”再走一遍升级流程即可。</p>
+    </div>
+    <div class="card">
+      <h3>到期自动降回免费版</h3>
+      <p>到期时无需手动操作：App 在启动或回到前台时自动校验，过期后回到免费版限制。规则、答题记录、错题本<strong>全部保留</strong>，续费激活后立即恢复专业版。永久激活码则显示“永久有效，无需续费”。</p>
+    </div>
+  </div>
+
+  <h2 class="heading">邀请家长得专业版：三步</h2>
+  <ol class="timeline">
+    <li>
+      <div class="step-title">复制邀请码</div>
+      <div class="step-body"><p>免费版卡上点“邀请家长得专业版 →”，在弹窗里复制<strong>邀请码</strong>（就是本机机器码），发给身边也在用答题解锁的家长。</p></div>
+    </li>
+    <li>
+      <div class="step-title">被邀请的家长填码</div>
+      <div class="step-body"><p>对方安装答题解锁后，在他的免费版卡同一入口打开弹窗，在“我是被邀请的家长”区域填入邀请码并保存。填码只登记邀请关系，<strong>不会自动加时长</strong>。</p></div>
+    </li>
+    <li>
+      <div class="step-title">客服核验，邀请人领周卡</div>
+      <div class="step-body"><p>双方联系客服人工核验后，<strong>邀请人</strong>获得 1 周专业版周卡激活码，在“升级专业版”弹窗里激活。1 位有效邀请 = 1 周，累计上限 52 周。</p></div>
+    </li>
+  </ol>
+
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>机器码是什么</h3>
+      <p>机器码是一串与本机绑定的 10 位字母数字，用于生成对应激活码，在邀请活动里<strong>同时作为邀请码</strong>使用。它不包含手机号、微信、位置等个人信息。</p>
+    </div>
+    <div class="card">
+      <h3>换手机怎么办</h3>
+      <p>激活码与本机机器码绑定。换手机后需要把新手机的机器码发给客服，重新获取对应激活码；旧手机的激活不会自动迁移。同一台手机卸载重装，机器码通常不变，可联系客服恢复激活。</p>
+    </div>
+  </div>
+
+  <aside class="callout warn">
+    <div class="callout-title">激活失效提示</div>
+    <p>如果检测到激活码已退款 / 被停用，App 会提示“激活已失效”，专业版功能关闭并回到免费版。如有疑问，联系客服微信处理。</p>
+  </aside>
+
+  <aside class="callout info">
+    <div class="callout-title">免费版卡在页尾，进度看得见</div>
+    <p>“免费版”卡片在家长设置页最下方，用<strong>红色粗体数字</strong>显示“可限制应用：已设置 N 个”和“每日拦截：今日已用 M 次”，当天额度用了多少一目了然。当日 <strong>10 次</strong>拦截额度用完后，当天不再拦截（受限应用直接放行），并通过系统通知提醒家长升级专业版；升级专业版后，这张卡会换成显示到期倒计时的专业版卡。</p>
+  </aside>
+</section>
+
+<!-- ==================== 13 常见问题 ==================== -->
+<section class="section" id="faq">
+  <div class="kicker">13 / 先看这里，再找客服</div>
+  <h1 class="heading">常见问题</h1>
+
+  <div class="faq-item">
+    <p class="q">Q1：我已经设了密码，为什么孩子还能一直玩？</p>
+    <p class="a">大概率是当前仍在“家长模式”。输入密码进入家长端会自动结束答题；改完设置后必须点红色“开始答题”，并等它自动返回桌面。确认状态栏是红色“孩子”徽章，再打开受限应用测试。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q2：孩子能卸载答题解锁吗？</p>
+    <p class="a">四道防线到位时，普通卸载流程会被挡住：设备管理要求先停用、系统设置和卸载确认页被拦截、前台服务和自启动负责恢复、无障碍断线会触发锁屏兜底。但如果设备管理没激活、无障碍被关闭、孩子知道家长密码，仍可能被卸载。请按第 10 章逐项检查。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q3：孩子把“无障碍服务”关掉了怎么办？</p>
+    <p class="a">如果设备管理已激活，答题解锁会在无障碍被终止的瞬间用设备管理权限锁屏，阻断继续操作。家长拿回手机后，重新进入“防护状态”→“无障碍服务”→“去开启”，开启后点“重新检测”，确认变绿。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q4：时间到了，为什么没有弹出锁屏？</p>
+    <p class="a">依次检查：① 是否在家长模式（状态栏绿色）；② 无障碍是否仍为绿色；③ 悬浮窗权限是否在；④ 电池优化是否允许后台；⑤ 华为 / 荣耀 / vivo / iQOO 的自启动是否开启；⑥ 是否被“清理 / 加速”类工具杀掉了后台。可以连点家长设置页底部空白处 5 次，打开“守护诊断”看最近拦截记录。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q5：孩子在最近任务里把答题解锁划掉了，倒计时还在吗？</p>
+    <p class="a">答题解锁会尽量通过前台服务和自启动恢复，倒计时结束时间已持久化，恢复后仍能按原截止时间拦截。若机型省电策略较激进，仍可能延迟；请把电池设为“不优化”、自启动打开，并在最近任务里给答题解锁加锁。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q6：“自启动”一直显示未开启 / 黄色，是坏了吗？</p>
+    <p class="a">不是。系统不提供自启动状态的自动检测，所以这一项需要家长按步骤开启后点“我已开启”确认。想验证就点“测试一下”：App 会短暂退回桌面再自动弹回，能弹回即通过。变绿即可，不用反复检测。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q7：忘记家长密码了怎么办？</p>
+    <p class="a">连续输错 5 次会锁定 10 分钟，页面有倒计时，到期自动恢复输入。确实忘记密码，请联系客服微信 <strong>hiyuanmi2015</strong>，提供机器码与购买信息核验后处理；不要反复乱试，以免一直处于锁定状态。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q8：孩子知道家长密码了怎么办？</p>
+    <p class="a">立即进入家长端 → 底部“修改密码”→ 验证旧密码 → 设置新密码。孩子知道密码意味着他可以结束答题、关闭权限、修改规则，务必尽快更换，并检查限制应用名单是否被改动。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q9：状态栏徽章不见了，或者挡住图标？</p>
+    <p class="a">去“规则设置 → 激励开关 → 状态栏模式徽章”确认开关是否打开；打开后可用下方滑块调透明度（0%–100%）。徽章支持直接拖动，拖到不挡图标的位置会记住。关闭徽章不影响拦截，只是看不到绿 / 红提示。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q10：今日概况为什么是 0？</p>
+    <p class="a">今日概况里，答题数/答对数来自本机答题记录，已解锁/剩余额度来自每日额度。当天还没完成过答题解锁，或刚清空答题记录，答题数会显示 0；已用额度不会因为清空记录而退还。孩子端预览从 v0.3.59 起不再计入今日额度与答题记录，家长可以放心预览孩子的真实体验。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q11：题目太难 / 太简单，怎么调？</p>
+    <p class="a">进入“学习内容”检查年级、科目、难度是否匹配。年级选错是最常见原因；也可以只保留“基础 + 中等”，或关闭“挑战”。如果孩子某类题总错，用“自定义上传题目”录入同类练习，或在错题本里反复训练。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q12：提示“题库已用完”怎么办？</p>
+    <p class="a">说明当前“年级 + 科目 + 难度”组合下可抽的题已经达到每日上限。可以放宽科目或难度、换一个年级范围，或在专业版里上传自定义题目。答题页点“家长进入 · 补充题目”，验密码后可回家长端调整。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q13：免费版到底限制什么？</p>
+    <p class="a">最多限制 2 个应用、每天最多拦截 10 次、单次最多 20 分钟、每日最多 120 分钟；休息时段、每周换题、自定义上传题目不可用。专业版 1 年 99 元 / 3 年 249 元 / 永久 399 元（一次性买断），不限应用数量和每日拦截次数，单次最高 180 分钟、每日最高 1440 分钟，并解锁全部进阶功能。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q14：换手机 / 重装后数据还在吗？</p>
+    <p class="a">规则、记录、错题本、自定义题目都只存本机，卸载或换机不会自动迁移。专业版激活码与机器码绑定，换机后需要联系客服重新获取对应激活码。建议升级前用记录页“导出”备份一份答题记录。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q15：会不会影响微信、电话、学习 App？</p>
+    <p class="a">不会。只有家长在“限制应用”里勾选的 App 才会被管控；未勾选的应用不受影响。答题解锁不保存聊天内容、不录音、不截图；无障碍用于识别前台应用，并在本机读取窗口文字特征以拦截卸载、强行停止等危险操作，不保存、不上传。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q16：孩子乱点选项、背答案怎么办？</p>
+    <p class="a">答题解锁有多层防作弊：答错加题、连续答错 5 题本次结束、错题冷却（家长可设 5–15 秒）、同题每天最多出现 2 次、短时间重复解锁优先出新题、每周换题（专业版）。选项顺序每次随机，干扰项尽量同类近似，减少“背第几个选项”。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q17：手机系统升级后，拦截失效了？</p>
+    <p class="a">系统升级可能重置无障碍、自启动、电池优化等权限。打开答题解锁 → 防护状态 → 点“重新检测”；未绿的项按指导重新开启。建议每次系统升级后都做一次“打开受限应用 / 打开设置”的实测。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q18：为什么孩子进不去系统设置？我想进去怎么办？</p>
+    <p class="a">这是防卸载设计：管控期间系统设置对孩子锁定。家长需要进设置时，从“防护状态”卡片底部点“临时进入系统设置（10 分钟）”，确认后放行 10 分钟，到时自动恢复拦截。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q19：专业版到期后会怎样？</p>
+    <p class="a">专业版卡上的倒计时精确到小时，会提前告诉你还剩多久；到期后 App 自动降回免费版，出现免费版限制，但规则、答题记录、错题本都不受影响。点“续费”再走一遍升级流程，或用邀请得到的周卡激活码续时长；永久激活码则显示“永久有效，无需续费”。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q20：邀请家长得专业版怎么参加？</p>
+    <p class="a">家长设置页底部免费版卡 → “邀请家长得专业版 →”：① 复制自己的邀请码（即机器码）发给对方；② 对方安装答题解锁后，在同一入口填入邀请码保存；③ 双方联系客服人工核验，<strong>邀请人</strong>获得 1 周专业版周卡激活码，在“升级专业版”弹窗激活。1 位有效邀请 = 1 周，累计上限 52 周；填码本身不会自动加时长。</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="q">Q21：激活码提示“已被使用过”怎么办？</p>
+    <p class="a">每个激活码只能成功激活一次。提示已被使用，说明这个码此前已激活过（可能你重复输入、或转发给过别人）。这不是故障，也不影响你已获得的专业版时长。需要继续使用时，请联系客服微信 <strong>hiyuanmi2015</strong> 索取新激活码，不要反复粘贴旧码。</p>
+  </div>
+</section>
+
+<!-- ==================== 14 隐私与数据 ==================== -->
+<section class="section" id="privacy">
+  <div class="kicker">14 / 数据留在本机</div>
+  <h1 class="heading">隐私与数据</h1>
+
+  <p class="paragraph">答题解锁的设计原则是“最少采集、只存本机”。它不需要注册账号，不上传通讯录、短信、位置、照片，也不保存或上传聊天内容。</p>
+
+  <table class="table">
+    <thead><tr><th style="width:24%;">数据</th><th style="width:26%;">存放位置</th><th style="width:50%;">用途</th></tr></thead>
+    <tbody>
+      <tr><td class="em">家长密码</td><td>本机（哈希存储）</td><td>验证家长身份；不保存明文密码。</td></tr>
+      <tr><td class="em">规则 / 学习档案</td><td>本机</td><td>决定答题题数、时长、年级、科目、难度。</td></tr>
+      <tr><td class="em">答题记录</td><td>本机</td><td>按日统计答题数、正确率、解锁时长；明细 90 天、归档 180 天。</td></tr>
+      <tr><td class="em">错题本</td><td>本机</td><td>保存答错题目，供查看、导出、反复训练。</td></tr>
+      <tr><td class="em">自定义题目</td><td>本机</td><td>家长录入的易错题，进入抽题池。</td></tr>
+      <tr><td class="em">机器码 / 激活状态</td><td>本机</td><td>专业版激活校验；机器码不含手机号、微信、位置等信息。</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>会联网的场景</h3>
+      <p>检查新版本、专业版激活校验。联网只传版本号 / 激活码等必要信息，<strong>不上传答题记录、错题、学习内容</strong>。</p>
+    </div>
+    <div class="card">
+      <h3>不会做的事</h3>
+      <p>不保存聊天记录、不录音、不拍照截屏、不采集通讯录 / 短信 / 位置 / 照片，不记录孩子具体看了什么内容。</p>
+    </div>
+    <div class="card">
+      <h3>权限分别做什么</h3>
+      <p><strong>无障碍</strong>：识别前台应用，并读取窗口文字特征用于防卸载判断；<strong>悬浮窗</strong>：显示拦截遮罩；<strong>设备管理</strong>：防卸载与断线锁屏；<strong>电池优化</strong>：保持后台守护。</p>
+    </div>
+    <div class="card">
+      <h3>卸载会怎样</h3>
+      <p>卸载即删除本机全部数据：规则、记录、错题本、自定义题目、激活状态。需要留存的记录，请先在记录页“导出”。</p>
+    </div>
+  </div>
+
+  <aside class="callout info">
+    <div class="callout-title">家长的控制权</div>
+    <p>家长可以随时查看、导出、清空答题记录；可以清除已掌握的错题；可以结束答题、关闭徽章、修改规则。所有操作都在本机完成，不需要把数据交给第三方。</p>
+  </aside>
+</section>
+
+<!-- ==================== 15 最新版本更新 ==================== -->
+<section class="section" id="update">
+  <div class="kicker">15 / 这一版有什么不同</div>
+    <h1 class="heading">最新版本更新内容（v0.3.33 – v0.6.0）</h1>
+
+  <p class="paragraph">v0.3.33 至 v0.3.60 的升级围绕「多设备支持」「更懂孩子的人性化体验」展开：新增电视版与平板适配、忘记密码自助找回、游戏不打断、答错加题可设置，并全面优化了界面文案与按键体验；v0.3.59 把每日额度改成“按实际用时结算”，玩了多久扣多久，没玩完的时长自动退；v0.3.60 修复了跳设置返回时的黑屏观感，并把「开启后直接答题」也计入每日拦截。核心的答题解锁与防卸载逻辑没有变。已经会用的家长，可以只看下面这张表。</p>
+
   <table class="table">
     <thead><tr><td class="em"><span class="tag green">重要</span> 界面换新「青绿清爽」（v0.6.0）</td><td>家长端整体换成青绿渐变风格：首页顶部新增<strong>渐变概览头</strong>（家长模式、年级、今天已用/待领奖励两个胶囊）；所有卡片改为<strong>大圆角 + 轻阴影</strong>，家长端页面统一浅灰底；孩子答题页的四个选项换成<strong>白色卡片</strong>（A/B/C/D 字母徽章、点按有水波反馈）。电视端仍保持深色大屏风格不动。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
         <tbody>
             <tr><td class="em"><span class="tag green">新增</span> 首页渐变概览头（v0.6.0）</td><td>打开家长端第一眼就能看到：今天已用多少分钟、打字奖励待领多少分钟、孩子在哪个年级、当前规则（答对几题解锁几分钟），不用再往下翻。</td></tr>
             <tr><td class="em"><span class="tag blue">调整</span> 卡片与按钮统一（v0.6.0）</td><td>所有卡片改成 18 圆角、细边叠轻阴影；按钮圆角加大、开关/输入框/提示条统一配色，手机与平板观感一致。</td></tr>
-            <tr><td class="em"><span class="tag blue">调整</span> 答题选项卡片化（v0.6.0）</td><td>选项从描边按钮变成白色卡片，孩子手指更容易点中；字母徽章用主题色，报答案（"我选 B"）更方便。</td></tr>
+            <tr><td class="em"><span class="tag blue">调整</span> 答题选项卡片化（v0.6.0）</td><td>选项从描边按钮变成白色卡片，孩子手指更容易点中；字母徽章用主题色，报答案（“我选 B”）更方便。</td></tr>
         </tbody>
   </table>
 
   <table class="table">
-    <thead><tr><td class="em"><span class="tag green">重要</span> 英语打字：音标 + 覆盖小学到大学（v0.5.2）</td>","oldString": "  <table class=\"table\">\n    <thead><tr><td class=\"em\"><span class=\"tag green\">重要</span> 英语打字：音标 + 覆盖小学到大学（v0.5.2）</td>"}]
+    <thead><tr><td class="em"><span class="tag green">重要</span> 英语打字：音标 + 覆盖小学到大学（v0.5.2）</td><td>打字页现在显示<strong>国际音标</strong>：先看时有音标和噇叭键，藏起单词后仍保留音标提示；练习本扩展到四本并按学段推荐：<strong>小学 PEP 口语词 / 初中核心词 / 高中核心词 / 大学四六级</strong>，成人与老年档不做英语打字。同时修掉三处“选完科目提示暂无题”的问题。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag green">新增</span> 音标显示（v0.5.2）</td><td>每个词带国际音标（如 chicken /ˈtʃɪkən/）；先看时大字显示，可点噇叭重读；默打时音标仍保留，帮孩子从读音想起拼写。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 四本练习本（v0.5.2）</td><td>选不同年级自动换练习本：小学→PEP 口语词，初中→初中核心词，高中→高中核心词，大学→四六级核心词。</td></tr>
+            <tr><td class="em"><span class="tag yellow">修复</span> 成人/老年提示暂无题（v0.5.2）</td><td>成人、老年档没有独立的语数英题库，之前科目表却给了九科，一选就抽空。现改为复用高中九科 + 成人/老年专属安全库，选哪科都有题。</td></tr>
+            <tr><td class="em"><span class="tag yellow">修复</span> 大学误设语文/数学（v0.5.2）</td><td>大学题库只有四六级英语，科目表却给了语文和数学。现大学只保留英语 + 安全（与课程实际一致）。</td></tr>
+            <tr><td class="em"><span class="tag yellow">修复</span> 高中道德与法治抽不到题（v0.5.2）</td><td>题库里写作「政治」，科目表叫「道德与法治」，字面对不上就抽不到。已加别名匹配，高中政治题正常抽题。</td></tr>
+            <tr><td class="em"><span class="tag blue">优化</span> 难度无题自动放宽（v0.5.2）</td><td>难度选得太窄（例如某库只有中等题）时自动放宽并提示，不再停在空页；真的没题时提示会带「去设置」直达。</td></tr>
+        </tbody>
+  </table>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag yellow">修复</span> 窄屏手机显示不全（v0.5.1）</td><td>修复打字练习页在窄屏手机上<strong>长单词格子右侧被裁、键盘 P 键被切、最下排按键被系统导航条压住</strong>的问题：格子宽度与字号随屏宽自适应，键盘每行按键均分屏宽，底部自动避让导航条；小屏或字体调大时默打页可上下滚动。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag yellow">修复</span> 格子不再被裁（v0.5.1）</td><td>8～9 字母的长单词（如 dumpling / arbitrary）在 360dp 宽的常见手机上也能完整显示，最后一格不再跑到屏幕外。</td></tr>
+            <tr><td class="em"><span class="tag yellow">修复</span> 键盘完整可见（v0.5.1）</td><td>三行字母键全部在屏内，P 键不再被切；最下排不被安卓导航条遮挡，孩子点得到。</td></tr>
+        </tbody>
+  </table>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 英语打字练习 + 大学年级四六级题库（v0.5.0）</td><td>新增<strong>「英语打字练习」</strong>：仿卡片闯关，先看单词和例句，藏起来后用屏幕自带键盘默打，逐字母校验；每关 8 个词，打完结算星星。学习内容新增<strong>大学年级（大一~大四）与四六级英语题库</strong>，每个年级独立 300 题。打字通关可拿<strong>解锁时长奖励</strong>，错词可<strong>立即回炉重练</strong>。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag green">新增</span> 英语打字练习（v0.5.0）</td><td>家长首页新增「英语打字练习」卡片（手机/平板）：练习本 → 关卡 → 卡片打字。先看阶段默认 3 秒（可调 1.5/3/5/8 秒），单词隐藏后逐字母默打，敲对绿格前进、敲错红一下；带「听读」「看一眼」两个温和帮助键。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 大学年级 + 四六级题库（v0.5.0）</td><td>学习内容页年级分组的「大学」下可选大一~大四，学段科目为语文/数学/英语/安全；每个年级有独立 300 题的四六级英语库，选大一不会抽到大四的题。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 打字通关奖励（v0.5.0）</td><td>每关<strong>当天首次</strong>拿到 2 星及以上，奖励 <strong>5 分钟解锁时长</strong>，下次解锁时自动并入单次时长（家长首页「今日概况」显示待领奖励）。同一关反复刷不会重复发奖。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 错词回炉（v0.5.0）</td><td>结算页列出打错的词，点「错词再练一遍」只打错词，全对才算真过关，星星按重练结果重新计算（取历史最好）。</td></tr>
+        </tbody>
+  </table>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 提示音无声 + 徽章不变红 修复（v0.4.5）</td><td>修复真机上<strong>答对/答错提示音试听与答题提示音没有声音</strong>的问题（音频文件路径没找对）；修复家长模式点「开始答题」进孩子答题页后<strong>顶部状态栏徽章不变红</strong>的问题，现在随即切换红色孩子模式，答完/家长接管后自动回绿。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag yellow">修复</span> 提示音无声（v0.4.5）</td><td>学习内容页里点选项或「试听」都真正出声了；答题时答对「叮」一声、答错提示音也一并生效，孩子的反馈更直观。</td></tr>
+            <tr><td class="em"><span class="tag yellow">修复</span> 徽章不变红（v0.4.5）</td><td>家长模式登录页点红色「开始答题」进孩子答题页时，<strong>顶部屏幕徽章立即变红色「孩子」</strong>（左侧红绿灯心智一致）；答完解锁或家长接管后自动回绿「家长」。</td></tr>
+        </tbody>
+  </table>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 安全题库合规过滤（v0.4.4）</td><td>按应用商店合规要求，<strong>删除 284 道含敏感内容的题</strong>（涉毒、自残自杀、性/身体、赌博、极端暴力及高危字眼等），安全题库从 3040 题调整为 <strong>2756 题</strong>；13 个品类全部保留，公益免费不变。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag yellow">合规</span> 敏感内容题删除（v0.4.4）</td><td>反诈、消防、交通、防溺水、用电居家、防拐骗、校园欺凌、食品安全、网络安全、急救自救、自然灾害、身体保护、毒品防范 13 个品类都在，日常安全教育不受影响；只是去掉了描述上容易触发应用商店审核的内容。</td></tr>
+        </tbody>
+  </table>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 答题声音换为答对/答错提示音 + 红色「开始答题」（v0.4.3）</td><td>学习内容页取消「答题声音」四选一，直接换成<strong>「答对提示音」与「答错提示音」</strong>两栏：各 4 款音效，点选项即试听，两栏各带一个<strong>试听按钮</strong>，选完立刻能听；登录页的<strong>「开始答题」按钮改为红色</strong>，点一下直接进入孩子模式的第一道题。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag blue">调整</span> 答对 / 答错提示音（v0.4.3）</td><td>学习内容 → 语音朗读下方：<strong>答对提示音</strong>（胜利小号 / 荣誉铜管 / 铃+星 / 魔法竖琴）与<strong>答错提示音</strong>（叹气下滑 / 下台阶 / 叮-咚 / 风铃下行）两栏，点选项就试听；每栏右侧有<strong>「试听」</strong>按钮，可分别单独听当前选中的那一个。原来的「答题声音」四选一（可爱/标准/沉稳/活泼）已取消。</td></tr>
+            <tr><td class="em"><span class="tag blue">调整</span> 红色「开始答题」（v0.4.3）</td><td>家长模式登录页的<strong>「开始答题」按钮改为红色</strong>，与绿色「返回」区分开，不容易点错；点一下按钮消失，直接进孩子模式的<strong>第一道题</strong>。</td></tr>
+        </tbody>
+  </table>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 直接读答案 + 答题音效 + 家长「开始答题」（v0.4.2）</td><td>答对/答错后<strong>直接读出正确答案原文</strong>，不再念「正确答案是……」，听着像老师在旁边随口点一句；新增<strong>答题提示音效</strong>，答对、答错各 4 款可选（共 8 款），学习内容页点选即试听；<strong>家长模式登录页</strong>增加<strong>「开始答题」</strong>按钮，点一下按钮消失并直接进入第一题；<strong>成人 / 老年档默认科目固定为「安全」</strong>，切到这两档不再出现「无科目」空白。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag blue">调整</span> 直接读答案（v0.4.2）</td><td>答完题后语音反馈里<strong>直接读正确答案原文</strong>（如「hospital」），不再说「正确答案是 hospital」；答题页手动「朗读答案」按钮也去掉了前缀。孩子听到的就是答案本身，更清爽。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 答题提示音效（v0.4.2）</td><td>学习内容 → <strong>答题提示音</strong>：答对 4 款、答错 4 款共 <strong>8 款音效</strong>可选，点一下就试听；与语音反馈同时生效，答对「叮」一声更直观。默认答对 c05、答错 w09，可随时更换。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 家长模式「开始答题」（v0.4.2）</td><td>家长自己输密码测题时，登录页直接显示<strong>「开始答题」按钮</strong>（v0.4.3 起改为红色），点一下按钮消失并跳到第一道题，不用再绕回首页找入口；孩子端不受影响，不显示这个按钮。</td></tr>
+            <tr><td class="em"><span class="tag blue">优化</span> 成人 / 老年默认安全科目（v0.4.2）</td><td>学习内容切到<strong>成人、老年</strong>档时，科目自动固定勾选<strong>「安全」</strong>，不会再出现「无科目」提示；想练别的科目仍可手动勾选。</td></tr>
+        </tbody>
+  </table>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 朗读 8 声音直选 + 只读题干 + 年级档位（v0.4.1）</td><td>朗读声音从“四档音色 + 英美口音”合并为<strong>八种声音直选</strong>：美式男声（Guy / Christopher）、美式女声（Jenny / Michelle）、英式男声（Ryan / Thomas）、英式女声（Sonia / Libby）——口音随声音自带，不用再单独选英语口音；<strong>答题声音</strong>（答对夸奖/答错鼓励的语气）从规则页移到学习内容页，四选一并支持试听；<strong>自动朗读改为只读题干</strong>（不读选项、不读答案，孩子先自己想；答题页「朗读答案」手动按钮仍可用）；年级档位：初中改名<strong>初一 / 初二 / 初三</strong>、高中改名<strong>高一 / 高二 / 高三</strong>，新增<strong>成人、老年</strong>两个档位（全家安全自测与成人使用）；朗读引擎固定用系统默认语音，离线可用、不联网不上传。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag green">新增</span> 朗读八种声音（v0.4.1）</td><td>学习内容 → 语音朗读 → 朗读声音，分<strong>美式 / 英式</strong>两组各四个：<strong>美式</strong> Guy·男、Christopher·男、Jenny·女、Michelle·女；<strong>英式</strong> Ryan·男、Thomas·男、Sonia·女、Libby·女。选谁用谁的音调与口音，底部试听按钮中英文各读一句，点了马上能听到效果。</td></tr>
+            <tr><td class="em"><span class="tag blue">调整</span> 答题声音移位（v0.4.1）</td><td>孩子答对时语音夸奖、答错时语音鼓励的语气（<strong>可爱 / 标准 / 沉稳 / 活泼</strong>）从规则页移到<strong>学习内容页</strong>，与朗读声音放在一起；新增<strong>试听</strong>按钮，答对、答错各读一句，选完即听。</td></tr>
+            <tr><td class="em"><span class="tag blue">调整</span> 自动朗读只读题干（v0.4.1）</td><td>自动朗读开启后<strong>每题只读题干</strong>，不再读选项、不读答案——减少提示泄漏，孩子先自己看选项作答；想听答案可点答题页的「朗读答案」按钮（手动）。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 成人 / 老年档位（v0.4.1）</td><td>学习内容的年级列表新增<strong>成人、老年</strong>两档（共 14 档），全家自测、成人使用更方便；孩子首装向导仍只列小学/初中/高中。</td></tr>
+        </tbody>
+  </table>
+
+  <table class="table">
+    <thead><tr><td class="em"><span class="tag green">重要</span> 品牌更名 + 安全公益课堂（v0.4.0）</td><td>App 正式更名为<strong>「答题解锁」</strong>（原名「答题锁」，桌面图标名会同步更新，<strong>正常覆盖安装即可</strong>，答题、记录与激活状态全部保留）。同版上线<strong>公益「安全公益课堂」</strong>：<strong>400 道安全题全部免费</strong>——反诈 200 题，消防、交通安全、防溺水、用电居家各 50 题，覆盖小学到老年 5 个学段；「安全」直接放在学习内容的科目里（首次安装默认已选）；<strong>安全公益题库 13 个品类（v0.4.4 起共 2756 题）</strong>（新增防拐骗、校园欺凌、食品安全、网络安全、急救自救、自然灾害、身体保护、毒品防范）；<strong>每题自动语音朗读</strong>（默认开，只读题目不读答案，声音四档可选、语速 0.5～2 倍速六档、支持试听，英语口音美式/英式）；答对/答错有语音反馈（可爱/标准/沉稳/活泼四种声音可选）；悬浮窗徽章透明度可调 0%～100%；家长密码输错 5 次锁定时长阶梯升级（1→2→5→10 分钟封顶）；图标文字更新为白色；修复华为/荣耀手机首次安装点悬浮窗授权黑屏的问题；并修复电视老版本点「立即更新」跳到手机下载页的问题。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+        <tbody>
+            <tr><td class="em"><span class="tag green">新增</span> 安全公益课堂（v0.4.0）</td><td>家长设置首页新增<strong>青绿色「安全公益课堂」卡片</strong>：<strong>2756 道安全题全部免费</strong>，不进专业版付费墙，覆盖反诈、消防、交通、防溺水、用电居家等 13 个品类。「安全」在学习内容的科目里勾选（首装默认已选），开启后约每 5 题混 1 道；只勾「安全」即专练；「全家安全自测」一家人都能测，不占孩子答题额度，纯本地记录。题目依据公安部、应急管理部、交通运输部等公开资料编写。</td></tr><tr><td class="em"><span class="tag green">新增</span> 自动语音朗读（v0.4.0）</td><td>答题时<strong>每题自动读出题目和选项</strong>（默认开启，只读题目不读答案，让孩子先自己想）；在学习内容页可关闭，也可开启「朗读答案」（默认关）；声音可选<strong>清亮 / 女声 / 柔和 / 男声</strong>四档，语速<strong>0.5～2 倍速共六档</strong>（0.5/0.75/1/1.25/1.5/2），英语科目朗读可选<strong>美式 / 英式</strong>口音，设置旁有<strong>试听</strong>按钮（中英文各读一句）；除英语科目外一律用中文朗读（数学算式、安全题等不会被英文语音读）。朗读直接读内容，不加「题目」「选项」提示语。答对/答错还有语音反馈，在规则页选<strong>可爱 / 标准 / 沉稳 / 活泼</strong>四种声音。</td></tr><tr><td class="em"><span class="tag green">新增</span> 安全题库扩容（v0.4.0）</td><td>安全公益题库从 400 题扩容到 3040 题、13 个品类（v0.4.4 起删除 284 道敏感内容题，现为 <strong>2756 题</strong>）：在原反诈、消防、交通安全、防溺水、用电居家基础上，新增<strong>防拐骗防走失、校园欺凌、食品安全、网络安全（防沉迷）、急救自救、自然灾害防灾、身体保护、毒品防范</strong>八个品类；按小学/初中/高中/成人/老年五个学段分库，家长在学习内容页勾选「安全」科目即可免费使用，可单独勾选品类（默认全选）。</td></tr><tr><td class="em"><span class="tag yellow">修复</span> 悬浮窗授权黑屏（v0.4.0）</td><td>修复<strong>华为 / 荣耀手机首次安装</strong>时点「悬浮窗权限」跳转后黑屏的问题：现在改跳系统的「悬浮窗应用列表页」，在列表里找到「答题解锁」打开开关即可（多一步但稳定）。</td></tr><tr><td class="em"><span class="tag green">新增</span> 徽章透明度 0～100%（v0.4.0）</td><td>悬浮窗红绿灯徽章的透明度可调范围从 30%～90% 扩大到 <strong>0%～100%</strong>（0% 为完全隐藏），在规则页「徽章设置」里拖动滑块即可。</td></tr><tr><td class="em"><span class="tag blue">调整</span> 品牌更名（v0.4.0）</td><td>「答题解锁」原名「答题锁」，为更贴合「答对题目 → 解锁时长」的产品含义正式更名。玩法、题库、数据、激活状态全部不变，正常覆盖升级即可。</td></tr><tr><td class="em"><span class="tag green">修复</span> 电视版更新跳转（v0.4.0）</td><td>0.3.65 及更早的电视版点「立即更新」会跳到手机版下载页，v0.4.0 起电视版直接跳电视版下载页。<strong>老版本电视</strong>更新到本版仍需手动：用手机浏览器打开 pgyer.com/datisuodianshi 下载电视新包，装一次后恢复正常。</td></tr>
+        <tbody>
+            <tr><td class="em"><span class="tag green">新增</span> 专业版题库扩充（v0.3.64）</td><td>规则页新增「专业版题库扩充」开关（电视端为规则页最后一行）。开启后所选年级科目的每个题库扩充到 100 题以上（合计 7,915 题，新增约 2,300 题）；免费版锁定不可开启，关闭开关即回到基础题库。</td></tr><tr><tr><td class="em"><span class="tag green">修复</span> 悬浮窗授权黑屏（v0.3.63）</td><td>华为 / 荣耀机型点「悬浮窗」授权时改为打开应用详情页（在「权限」里开启悬浮窗），不再出现黑屏。其他品牌保持系统直达页。</td></tr><tr><td class="em"><span class="tag green">新增</span> 答题选项字母标号（v0.3.63）</td><td>手机版答题页的四个选项加上 <strong>A / B / C / D</strong> 圆形标号，与电视版一致；孩子描述选项更方便，家长对照错题本也更好定位。</td></tr><tr><td class="em"><span class="tag blue">调整</span> 限制应用默认「开启后直接答题」（v0.3.63）</td><td>新安装的家庭，「限制应用」默认选中「开启后直接答题」：点「开始答题」孩子直接从第一题开始，不用先挑应用名单；想按名单限制，随时可在页内切回。<strong>已保存过设置的家庭不受影响</strong>。</td></tr><tr><td class="em"><span class="tag blue">调整</span> 命名更清晰（v0.3.62）</td><td>「体验版」更名为<strong>「免费版」</strong>、「标准版」更名为<strong>「专业版」</strong>，规则、限制与价格完全不变。</td></tr><tr><td class="em"><span class="tag blue">调整</span> 密保设置移到修改密码处（v0.3.62）</td><td>安装引导不再设密保，装得更快。家长修改密码成功后会温和提示设置密保（<strong>可跳过</strong>，跳过会提醒记牢密码与后果）；也可随时在「家长设置 → 修改密码」页补设。没设密保时忘记密码无法自助找回，只能联系客服人工处理。</td></tr><tr><td class="em"><span class="tag green">新增</span> 电视端修改密码与密保入口（v0.3.62）</td><td>TV 家长设置新增「修改密码」「密保问题」两个入口（遥控器全流程），电视上也能改密码、补设密保。</td></tr><tr><td class="em"><span class="tag green">修复</span> 启动崩溃（v0.3.61）</td><td>v0.3.60 在部分设备上打开即提示“屡次停止运行”的问题已修复（启动画面 logo 改用静态图片资源）。若你装的 v0.3.60 打不开，从下载页重新下载 0.3.61 覆盖安装即可，本机规则与记录不会丢失。</td></tr>
+      <tr><td class="em"><span class="tag green">修复</span> 跳设置返回黑屏（v0.3.60）</td><td>跳系统设置（电池优化等）返回时，华为等机型偶尔会立即销毁答题解锁窗口，重建的那约 1 秒显示纯黑屏幕，看着像“坏了”。现在重建 / 启动时显示品牌加载画面（浅色暖灰底 / 深色墨蓝底 + 居中 logo），不再出现黑屏。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 开启后直接答题计入每日拦截（v0.3.60）</td><td>「开启后直接答题」模式点「开始答题」现在会像名单模式拦截一样计入免费版每日拦截次数（10 次/天）；当日额度用完会温和提示明天再来。专业版不限，不受影响。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 额度按实际用时结算（v0.3.59）</td><td>答对题解锁后，玩了多久扣多久：家长中途输密码接管时，没玩完的时长会自动退还到今日额度里，不再“预扣不退”。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 孩子端预览不占额度（v0.3.59）</td><td>家长设置页里的“孩子端演示”不再计入孩子的真实额度与答题记录，家长随时预览，不怕占用孩子当天能玩的时间。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 低年级拼音注音（v0.3.56）</td><td>一年级、二年级的题目、选项和答案，都会在汉字上方标注拼音，孩子自己也能读出来，识字量小也友好。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 朗读题目与答案（v0.3.56）</td><td>答题页新增「朗读题目」「朗读答案」按钮，点一下孩子能听读题、听答案（手机和电视都支持）；再点一下即可暂停。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 小学题库扩容（v0.3.56）</td><td>小学语文、英语每个难度都补齐到 50 题以上，孩子抽到的题更多、不容易背答案。</td></tr>
+      <tr><td class="em"><span class="tag green">修复</span> 系统设置拦截失效（v0.3.57）</td><td>修复「开始答题」后点手机或电视的「系统设置」不再被拦截的问题；现在孩子/锁屏/玩耍期进系统设置会被送回家并提示。家长模式下保持不拦截、不读屏（避免被银行等金融 App 误判为共享屏幕）。</td></tr>
+
+      <tr><td class="em"><span class="tag green">新增</span> 电视版（v0.3.43 起）</td><td>安卓智能电视可安装 TV 版：遥控器全流程操作（设密码、选题、开关），孩子答题、解锁、限制应用与手机版同口径。<strong>v0.3.57 完成全型号自适应</strong>——不同品牌、不同屏幕大小的电视都能一屏看全、按键到位。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 平板适配（v0.3.35）</td><td>手机版安装包在平板上自动切换大屏布局，一个包同时管手机和平板，无需另外下载。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 忘记密码自助找回（v0.3.51）</td><td>在「家长设置 → 修改密码」处设置一个密保问题，忘了家长密码，答对密保就能自己重设，<strong>不用再联系客服</strong>。（v0.3.62 起设置入口从安装引导移到这里）</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 游戏不打断（v0.3.53 · 专业版）</td><td>玩耍时间到了，如果孩子正在游戏对局里，答题解锁会<strong>等这一局结束</strong>（结算 / 退出 / 切后台）再弹答题，避免正在团战被硬打断引发亲子冲突；手机最多等 30 分钟、电视 15 分钟，到点强制拦。等待期间状态栏显示「孩子 · 待答题」，家长首页也能看到。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 答错加题可设置（v0.3.53）</td><td>答错一题要多答几题，家长可以在规则页设置（0–5 题，默认 1）；答题页顶部会直接提醒孩子「答错一题要多答 N 题，认真看题哦」，引导认真审题而非乱蒙。</td></tr>
+      <tr><td class="em"><span class="tag green">修复</span> 每日额度用完不再卡住（v0.3.54）</td><td>当天时长用完后，锁屏改显示「今天的时长用完啦」+ <strong>「家长登录」按钮</strong>，家长随时输密码退出调整规则；此前家长不知道隐藏入口、会被卡在锁屏。</td></tr>
+      <tr><td class="em"><span class="tag green">新增</span> 先答题再玩耍模式（v0.3.48）</td><td>不想一个一个挑应用？开启后点「开始答题」孩子直接从第一题开始答，答对解锁一段时间自由使用，到点想接着玩再答一轮。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 文案更柔和（v0.3.53）</td><td>「开始管控 / 停止管控」统一改为<strong>「开始答题 / 结束答题」</strong>；权限引导每项可跳过但会先说明后果；检测通过自动收起弹层，全程温和、不说教。</td></tr>
+      <tr><td class="em"><span class="tag green">修复</span> 电视按键可用性（v0.3.49 – v0.3.52）</td><td>修复遥控器方向键聚不到部分按钮、规则页保存按了没反应、诊断页重新检测无反馈等问题；「保存」固定在屏幕底部，第一行按 ↑ 直接跳到。</td></tr>
+      <tr><td class="em"><span class="tag blue">调整</span> 免费版功能边界清晰（v0.3.54）</td><td>每周换题、游戏不打断为<strong>专业版功能</strong>，免费版不再显示「已开启」误导家长；升级专业版后自动解锁。</td></tr>
+    </tbody>
+  </table>
+  <h2 class="heading">怎么升级</h2>
+  <ol class="timeline">
+    <li>
+      <div class="step-title">看红点</div>
+      <div class="step-body"><p>家长设置 → “答题记录与版本升级”卡片 → 看“版本升级”一行。有新版本时右侧亮红点，并显示“发现新版本 vX.X.X”。</p></div>
+    </li>
+    <li>
+      <div class="step-title">点开查看更新说明</div>
+      <div class="step-body"><p>点“版本升级”弹出更新说明；点“立即更新”打开下载链接，点“暂不更新”关闭。远程未强制弹窗时，只亮红点，不打扰。</p></div>
+    </li>
+    <li>
+      <div class="step-title">覆盖安装</div>
+      <div class="step-body"><p>下载新 APK 后覆盖安装，本机数据（规则、记录、错题本）会保留；安装完成后建议打开“防护状态”点一次“重新检测”。</p></div>
+    </li>
+  </ol>
+
+  <aside class="callout tip">
+    <div class="callout-title">升级后建议做一次实测</div>
+    <p>打开一个受限应用，确认能出现答题遮罩；打开系统设置，确认被拦截；看状态栏是否为红色“孩子”徽章。三项都正常，再交给孩子使用。</p>
+  </aside>
+</section>
+
+<!-- ==================== 附录 A 检查清单 ==================== -->
+<section class="section" id="checklist">
+  <div class="kicker">附录 A</div>
+  <h1 class="heading">日常检查清单</h1>
+
+  <h2 class="heading">每天 1 分钟</h2>
+  <ul class="checklist">
+    <li>状态栏是<strong>红色“孩子”</strong>徽章，不是绿色“家长”。</li>
+    <li>打开一个受限应用，能看到答题遮罩或锁屏。</li>
+    <li>通知栏有“答题解锁 · 玩耍中”倒计时（孩子正在玩时）。</li>
+  </ul>
+
+  <h2 class="heading">每周 5 分钟</h2>
+  <ul class="checklist">
+    <li>防护状态四项核心全绿；华为 / 荣耀 / vivo / iQOO 的自启动也为绿。</li>
+    <li>打开系统设置，确认仍被拦截（家长测试后从 App 内退出）。</li>
+    <li>看一次答题记录：答题数、正确率、解锁时长是否异常。</li>
+    <li>看一次错题本：未掌握题是否在减少，是否需要反复训练。</li>
+    <li>检查“版本升级”是否有红点。</li>
+  </ul>
+
+  <h2 class="heading">每月 10 分钟</h2>
+  <ul class="checklist">
+    <li>更换一次家长密码，确认孩子不知道。</li>
+    <li>复核限制应用名单：有没有新装的短视频 / 游戏漏掉。</li>
+    <li>复核规则：题数、单次时长、每日上限是否还适合当前阶段。</li>
+    <li>系统升级 / 恢复出厂后，重新做一次完整权限检查。</li>
+  </ul>
+
+  <aside class="callout warn">
+    <div class="callout-title">出现这些信号，要立刻检查</div>
+    <p>孩子突然能长时间玩受限应用、状态栏徽章消失、答题解锁图标不见了、通知栏倒计时不再更新、家长设置里防护项变红。任意一条出现，先按第 10 章检查权限，不要只看“还能不能打开 App”。</p>
+  </aside>
+</section>
+
+<!-- ==================== 附录 B 术语 ==================== -->
+<section class="section" id="glossary">
+  <div class="kicker">附录 B</div>
+  <h1 class="heading">术语表</h1>
+
+  <table class="table">
+    <thead><tr><th style="width:22%;">术语</th><th style="width:78%;">解释</th></tr></thead>
+    <tbody>
+      <tr><td class="em">家长模式</td><td>输入家长密码后的状态，不拦截，用于配置与查看。状态栏绿色“家长”徽章。</td></tr>
+      <tr><td class="em">孩子模式</td><td>点“开始答题”并返回桌面后的状态，受限应用会被拦截。状态栏红色“孩子”徽章，带剩余时间。</td></tr>
+      <tr><td class="em">受限应用</td><td>家长在“限制应用”里勾选的娱乐类 App，只有这些应用会被答题管控。</td></tr>
+      <tr><td class="em">答题解锁</td><td>孩子答对规定题数后获得一段娱乐时长；答错会加题，连错多道本次结束。</td></tr>
+      <tr><td class="em">单次时长</td><td>一次答题解锁后可以连续玩多久，到点弹回锁屏。</td></tr>
+      <tr><td class="em">每日上限</td><td>一天内所有解锁时长的总和上限，达到后当天不再放行，次日恢复。</td></tr>
+      <tr><td class="em">错题冷却</td><td>答错后需要等待的秒数，防止乱点蒙答案；家长可在规则里设置。</td></tr>
+      <tr><td class="em">设备管理</td><td>Android 的系统级管理权限，用于防卸载与断线锁屏；激活后卸载前需先停用。</td></tr>
+      <tr><td class="em">无障碍服务</td><td>用于识别当前前台应用；并在本机读取窗口文字特征，拦截卸载、强行停止等危险操作；不保存、不上传、不截图。</td></tr>
+      <tr><td class="em">悬浮窗</td><td>允许答题解锁在游戏 / 视频上方显示拦截遮罩的权限。</td></tr>
+      <tr><td class="em">电池优化</td><td>把答题解锁加入“不优化”名单，减少后台被系统清理的概率。</td></tr>
+      <tr><td class="em">自启动</td><td>华为 / 荣耀 / vivo / iQOO 等品牌的后台启动白名单，被划掉后能自动恢复。</td></tr>
+      <tr><td class="em">机器码</td><td>与本机绑定的 10 位字母数字，用于生成专业版激活码；在邀请活动里同时作为邀请码使用。</td></tr>
+      <tr><td class="em">免费版 / 专业版</td><td>免费版限制应用数量、拦截次数与部分功能；专业版按 99 元 / 年起（可选 1 / 3 年，或永久 399 元一次性买断）解锁不限量与全部进阶功能，按年订阅到期自动降回免费版。</td></tr>
+      <tr><td class="em">邀请码 / 周卡</td><td>邀请码即邀请人的机器码，被邀请家长填写、客服人工核验；周卡是 1 周专业版时长的激活码，可累计，上限 52 周。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== 获取帮助 ==================== -->
+<section class="section" id="support">
+  <div class="kicker">需要帮助时</div>
+  <h1 class="heading">获取帮助</h1>
+
+  <div class="grid" data-cols="2">
+    <div class="card">
+      <h3>客服微信</h3>
+      <p style="font-size:20px;font-weight:800;color:var(--c-primary-dark);letter-spacing:.5px;">hiyuanmi2015</p>
+      <p>专业版开通、激活码、换机、忘记密码、拦截异常，都可以加客服微信。添加时请备注“答题解锁 + 手机品牌”。</p>
+    </div>
+    <div class="card">
+      <h3>反馈问题时请提供</h3>
+      <p>① 手机品牌与型号；② Android 版本；③ 答题解锁版本（密码页中部可见）；④ 问题发生的大致时间；⑤ 录屏或截图；⑥ 是否是专业版。</p>
+    </div>
+  </div>
+
+  <aside class="callout tip">
+    <div class="callout-title">售后排查小入口</div>
+    <p>家长设置页最底部有一块空白区域，<strong>2 秒内连续点击 5 次</strong>可显示“守护诊断”卡片，里面会列出无障碍连接状态、最近前台应用、最近拦截方式、悬浮窗权限等，方便客服快速定位问题。普通使用不需要打开。</p>
+  </aside>
+
+  <aside class="callout warn">
+    <div class="callout-title">请勿在公开渠道晒机器码</div>
+    <p>机器码本身不含个人身份信息，但它是激活码的生成依据。把机器码发给官方客服即可，不要发到公开群聊或社交平台。</p>
+  </aside>
+</section>
+
+<!-- ==================== 尾页 ==================== -->
+<section class="title end_page">
+  <div class="end-mark">答题解锁 · ANSWER LOCK</div>
+  <h1>先学会，再玩一会儿</h1>
+  <p>答题解锁 v0.6.0 · 家长使用说明书<br>本手册基于 v0.6.0 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
+  <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-27</p>
+</section>
+
+</div>
+</body>
+</html>
