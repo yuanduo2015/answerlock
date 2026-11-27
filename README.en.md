@@ -8,14 +8,14 @@ English | [简体中文](./README.md)
 
 | File | Description |
 | --- | --- |
-| [answerlock_v0.5.0_mobile.apk](./answerlock_v0.5.0_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, 24.6 MB) |
-| [answerlock_v0.5.0_tv.apk](./answerlock_v0.5.0_tv.apk) | Android TV build (all ABIs, 24.6 MB) |
-| [答题解锁_v0.5.0_使用说明书.html](./答题解锁_v0.5.0_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [answerlock_v0.5.1_mobile.apk](./answerlock_v0.5.1_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, ~24.8 MB) |
+| [answerlock_v0.5.1_tv.apk](./answerlock_v0.5.1_tv.apk) | Android TV build (all ABIs, ~24.8 MB) |
+| [答题解锁_v0.5.1_使用说明书.html](./答题解锁_v0.5.1_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
-- Current version: **v0.5.0** (2026-11-27: new **English typing practice** — card-based levels, study the word first then type it from memory with the built-in QWERTY keyboard and per-letter feedback; 8 words per level, stars on completion, wrong words can be retried immediately. New **college grades (freshman–senior) with CET-4/6 English banks**, 300 questions per grade. Passing a level with 2+ stars for the first time on a given day earns 5 extra minutes of unlocked time. Earlier v0.4.6: answer feedback mode 3-way choice)
-- Phone SHA256: `BF72C2FA849D6F00CA0D2FCDC60EBAD83576DD3160C38AA64D67DDEB73E1F8BA`
-- TV SHA256: `EF5E48440208645EEE659438A2F770E27DC5291692F92A7CFA12392E1E17DE06`
+- Current version: **v0.5.1** (2026-11-27: fixed **typing page clipped on narrow phones** — long-word cells cut off on the right, the P key cut off, bottom key row hidden behind the system navigation bar; cells and font size now scale to screen width, keyboard rows split the width evenly and avoid the nav bar, full display on common 360dp phones. v0.5.0 added English typing practice + college grades with CET-4/6 banks + 5-minute typing reward + wrong-word retry)
+- Phone SHA256: `7A5F8A0133A9A3CE67702FAC00FB9736431060A176C5490366A36656D2FB8C8E`
+- TV SHA256: `0C43E6E098E9A7F1C720515F383D84A515DAB638A788566AD84302A8FBE1E68E`
 - ⚠️ **Signing note**: v0.3.65+ is signed with the official key. When upgrading from v0.3.63/0.3.64, please uninstall the old version first (uninstalling clears local answers and settings); v0.3.65 and later upgrade over the top as usual.
 
 ## Quick start
