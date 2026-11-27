@@ -17,7 +17,7 @@ https://github.com/yuanduo2015/answerlock
 | --- | --- |
 | [answerlock_v0.6.0_mobile.apk](./answerlock_v0.6.0_mobile.apk) | 手机 / 平板安装包（Android，arm64 + v7a + x86_64，约 24.8 MB） |
 | [answerlock_v0.6.0_tv.apk](./answerlock_v0.6.0_tv.apk) | 智能电视安装包（Android TV，全架构，约 24.8 MB） |
-| [答题解锁_v0.6.0_使用说明书.html](./答题解锁_v0.6.0_使用说明书.html) | 家长使用说明书（可离线打开，可 Ctrl+P 导出 PDF） |
+| [答题解锁_v0.6.0_使用说明书.html](https://github.com/yuanduo2015/answerlock/blob/master/答题解锁_v0.6.0_使用说明书.html) | 家长使用说明书（可离线打开，可 Ctrl+P 导出 PDF；Gitee 若提示无法访问，请用此 GitHub 链接） |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | 一页版产品说明（给家长看，简单易懂，适合转发） |
 
 - 当前版本：**v0.6.0**（2026-11-27：界面换新「青绿清爽」——首页渐变概览头（今日已用/待领奖励胶囊）、卡片大圆角轻阴影、答题选项卡片化、家长端统一浅灰底；电视端保持深色大屏。上一版 v0.5.2：英语打字音标 + 覆盖小学→大学四本，修复成人/老年暂无题目等四处题库问题）

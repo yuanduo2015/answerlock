@@ -10,7 +10,7 @@ English | [简体中文](./README.md)
 | --- | --- |
 | [answerlock_v0.6.0_mobile.apk](./answerlock_v0.6.0_mobile.apk) | Phone / tablet build (Android, arm64 + v7a + x86_64, ~24.8 MB) |
 | [answerlock_v0.6.0_tv.apk](./answerlock_v0.6.0_tv.apk) | Android TV build (all ABIs, ~24.8 MB) |
-| [答题解锁_v0.6.0_使用说明书.html](./答题解锁_v0.6.0_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF) |
+| [答题解锁_v0.6.0_使用说明书.html](https://github.com/yuanduo2015/answerlock/blob/master/答题解锁_v0.6.0_使用说明书.html) | Full user manual (Chinese, opens offline, printable to PDF; use this GitHub link if Gitee blocks it) |
 | [答题锁_家长版产品说明.html](./答题锁_家长版产品说明.html) | One-page product intro for parents (Chinese, easy to read and share) |
 
 - Current version: **v0.6.0** (2026-11-27: refreshed UI "Fresh Green" — gradient overview header with today's usage & pending typing reward pills, large-radius cards with soft shadows, card-style answer options, light-gray background across the parent side; TV keeps its dark large-screen style. v0.5.2 added typing IPA + four books from primary to college and fixed four question-bank mismatches)
