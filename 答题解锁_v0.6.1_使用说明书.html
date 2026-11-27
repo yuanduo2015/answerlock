@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>答题解锁 v0.6.0 使用说明书</title>
+<title>答题解锁 v0.6.1 使用说明书</title>
 <style>
 /* ========== 基础与调色板（青绿教育色） ========== */
 :root{
@@ -987,12 +987,13 @@ p.paragraph.no-indent{text-indent:0;}
   <p class="paragraph">答题解锁 0.5.0 给英语加了一种新练法：<strong>卡片打字</strong>。孩子在屏幕上先看一眼单词（带<strong>音标</strong>），藏起来后自己把单词打出来——记忆 + 拼写 + 读音一起练。它和答题解锁是并列的两条路，入口在家长首页，家长陪着打开即可（手机 / 平板可用；成人/老年档不做）。</p>
 
   <h2 class="heading">入口与结构</h2>
-  <p class="paragraph">家长首页 → <strong>「英语打字练习」</strong>卡片 → 练习本列表 → 点开展开关卡 → 点关卡进打字页。练习本按孩子学段自动推荐（v0.5.2 四本）：</p>
+  <p class="paragraph">家长首页 → <strong>「英语打字练习」</strong>卡片 → 练习本列表 → 点开展开关卡 → 点关卡进打字页。练习本按孩子年级自动推荐，<strong>每个年级一本</strong>（v0.6.1 起共 16 本）：</p>
   <ul class="checklist">
-    <li><strong>PEP 高频口语词</strong>：小学推荐，来自常用口语与教材词汇，30 关 × 8 词。</li>
-    <li><strong>初中核心词</strong>：初中推荐，25 关 × 8 词。</li>
-    <li><strong>高中核心词</strong>：高中推荐，24 关 × 8 词。</li>
-    <li><strong>四六级核心词</strong>：选「大学」年级时推荐，30 关 × 8 词。</li>
+    <li><strong>小学</strong>：一～六年级各一本，各 15 关 × 8 词，来自教材与常用口语词。</li>
+    <li><strong>初中</strong>：初一～初三各一本，各 12～13 关 × 8 词。</li>
+    <li><strong>高中</strong>：高一～高三各一本，各 11 关 × 8 词。</li>
+    <li><strong>大学</strong>：大一～大四各一本，各 30 关 × 8 词（四六级词）。</li>
+    <li><strong>全部单词都带音标</strong>；练习本页按学段分组，当前年级那本置顶并标「推荐」。</li>
     <li><strong>成人 / 老年</strong>：不需要英语打字，首页不展示入口。</li>
   </ul>
 
@@ -1084,7 +1085,7 @@ p.paragraph.no-indent{text-indent:0;}
       <h3>解锁成功页</h3>
       <p><strong>主文案</strong>：答对 N 题，解锁 M 分钟。</p>
       <p><strong>主按钮</strong>：返回，开始玩吧。孩子必须自己点，倒计时才开始。</p>
-      <p><strong>加练按钮</strong>：“我还想继续 3 个题目”，答对后再加时长，仍受每日上限限制。</p>
+      <p><strong>加练按钮</strong>：“我还想继续 3 个题目获得 3 分钟”——点它再答对 3 题，本次解锁在家长设置的单次时长之外<strong>额外 +3 分钟</strong>（如设 20 分钟即 23 分钟），仍受每日上限限制。</p>
     </div>
   </div>
 
@@ -1601,13 +1602,16 @@ p.paragraph.no-indent{text-indent:0;}
 <!-- ==================== 15 最新版本更新 ==================== -->
 <section class="section" id="update">
   <div class="kicker">15 / 这一版有什么不同</div>
-    <h1 class="heading">最新版本更新内容（v0.3.33 – v0.6.0）</h1>
+    <h1 class="heading">最新版本更新内容（v0.3.33 – v0.6.1）</h1>
 
   <p class="paragraph">v0.3.33 至 v0.3.60 的升级围绕「多设备支持」「更懂孩子的人性化体验」展开：新增电视版与平板适配、忘记密码自助找回、游戏不打断、答错加题可设置，并全面优化了界面文案与按键体验；v0.3.59 把每日额度改成“按实际用时结算”，玩了多久扣多久，没玩完的时长自动退；v0.3.60 修复了跳设置返回时的黑屏观感，并把「开启后直接答题」也计入每日拦截。核心的答题解锁与防卸载逻辑没有变。已经会用的家长，可以只看下面这张表。</p>
 
   <table class="table">
-    <thead><tr><td class="em"><span class="tag green">重要</span> 界面换新「青绿清爽」（v0.6.0）</td><td>家长端整体换成青绿渐变风格：首页顶部新增<strong>渐变概览头</strong>（家长模式、年级、今天已用/待领奖励两个胶囊）；所有卡片改为<strong>大圆角 + 轻阴影</strong>，家长端页面统一浅灰底；孩子答题页的四个选项换成<strong>白色卡片</strong>（A/B/C/D 字母徽章、点按有水波反馈）。电视端仍保持深色大屏风格不动。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
+    <thead><tr><td class="em"><span class="tag green">重要</span> 打字本按年级拆分 + 继续答题奖励 + 白字修复（v0.6.1）</td><td>英语打字练习本从「按学段四本」改成<strong>每个年级一本</strong>（小学一～六年级、初一～初三、高一～高三、大一～大四，共 16 本），每本都带国际音标；解锁后想再练，点<strong>「我还想继续 3 个题目获得 3 分钟」</strong>，再答对 3 题本次解锁时长额外 +3 分钟；同时修复了 0.6.0 学习内容页年级/科目按钮<strong>白底白字看不见</strong>的问题，并把页面灰色说明文字整体加深。</td></tr><tr><td class="em"><span class="tag green">重要</span> 界面换新「青绿清爽」（v0.6.0）</td><td>家长端整体换成青绿渐变风格：首页顶部新增<strong>渐变概览头</strong>（家长模式、年级、今天已用/待领奖励两个胶囊）；所有卡片改为<strong>大圆角 + 轻阴影</strong>，家长端页面统一浅灰底；孩子答题页的四个选项换成<strong>白色卡片</strong>（A/B/C/D 字母徽章、点按有水波反馈）。电视端仍保持深色大屏风格不动。</td></tr><tr><th style="width:24%;">变化</th><th style="width:76%;">对家长有什么用</th></tr></thead>
         <tbody>
+            <tr><td class="em"><span class="tag green">新增</span> 练习本按年级一本（v0.6.1）</td><td>小学 6 本、初中 3 本、高中 3 本、大学 4 本，每个年级一本；练习本页按学段分组，当前年级那本置顶并标「推荐」，也可以自由练别的年级。</td></tr>
+            <tr><td class="em"><span class="tag green">新增</span> 继续答题奖励（v0.6.1）</td><td>解锁后想再学的孩子可选「我还想继续 3 个题目获得 3 分钟」：再答对 3 题，本次解锁在家长设置的单次时长之外额外 +3 分钟（如设 20 分钟即 23 分钟），仍计入每日上限。</td></tr>
+            <tr><td class="em"><span class="tag blue">修复</span> 按钮文字看不清（v0.6.1）</td><td>0.6.0 学习内容页的年级/科目/难度选项出现白底白字，本版已修复（文字改为深灰/深绿，对比度达标）；首页概览头配色加深，灰色说明文字与按钮描边整体加深，白底上更清楚。</td></tr>
             <tr><td class="em"><span class="tag green">新增</span> 首页渐变概览头（v0.6.0）</td><td>打开家长端第一眼就能看到：今天已用多少分钟、打字奖励待领多少分钟、孩子在哪个年级、当前规则（答对几题解锁几分钟），不用再往下翻。</td></tr>
             <tr><td class="em"><span class="tag blue">调整</span> 卡片与按钮统一（v0.6.0）</td><td>所有卡片改成 18 圆角、细边叠轻阴影；按钮圆角加大、开关/输入框/提示条统一配色，手机与平板观感一致。</td></tr>
             <tr><td class="em"><span class="tag blue">调整</span> 答题选项卡片化（v0.6.0）</td><td>选项从描边按钮变成白色卡片，孩子手指更容易点中；字母徽章用主题色，报答案（“我选 B”）更方便。</td></tr>
@@ -1830,7 +1834,7 @@ p.paragraph.no-indent{text-indent:0;}
 <section class="title end_page">
   <div class="end-mark">答题解锁 · ANSWER LOCK</div>
   <h1>先学会，再玩一会儿</h1>
-  <p>答题解锁 v0.6.0 · 家长使用说明书<br>本手册基于 v0.6.0 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
+  <p>答题解锁 v0.6.1 · 家长使用说明书<br>本手册基于 v0.6.1 编写，不同机型与系统版本的菜单名称可能略有差异，请以实际界面为准。</p>
   <p style="margin-top:14px;font-size:12px;">客服微信：hiyuanmi2015　|　更新日期：2026-11-27</p>
 </section>
 
